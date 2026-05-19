@@ -85,6 +85,51 @@
     .footer-note{font-size:11px;color:rgba(255,255,255,0.2);font-style:italic;}
     .fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
     .fade-in.visible{opacity:1;transform:translateY(0);}
+
+    /* ======== PATHFINDER ======== */
+    .pf-bubble{position:fixed;bottom:2rem;right:2rem;z-index:999;}
+    .pf-btn{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#1A6FFF,#7B6FFF);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 4px 24px rgba(26,111,255,0.45);transition:transform 0.2s,box-shadow 0.2s;}
+    .pf-btn:hover{transform:scale(1.08);box-shadow:0 6px 32px rgba(26,111,255,0.6);}
+    .pf-label{position:absolute;right:64px;top:50%;transform:translateY(-50%);background:rgba(18,18,30,0.95);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.1);color:#fff;font-size:12px;font-weight:700;padding:6px 12px;border-radius:6px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity 0.2s;font-family:'Archivo Black',sans-serif;}
+    .pf-bubble:hover .pf-label{opacity:1;}
+    .pf-window{position:fixed;bottom:5.5rem;right:2rem;width:390px;height:560px;background:rgba(10,10,20,0.97);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.1);border-radius:18px;box-shadow:0 24px 64px rgba(0,0,0,0.6),0 0 0 1px rgba(26,111,255,0.12);z-index:998;display:flex;flex-direction:column;overflow:hidden;transform:scale(0.9) translateY(20px);opacity:0;pointer-events:none;transition:transform 0.25s ease,opacity 0.25s ease,width 0.3s,height 0.3s,bottom 0.3s,right 0.3s,border-radius 0.3s;}
+    .pf-window.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all;}
+    .pf-window.fullscreen{width:calc(100vw - 4rem);height:calc(100vh - 4rem);bottom:2rem;right:2rem;border-radius:18px;}
+    .pf-header{padding:1rem 1.2rem;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;gap:10px;flex-shrink:0;background:rgba(18,18,30,0.5);}
+    .pf-header-icon{width:36px;height:36px;background:linear-gradient(135deg,#1A6FFF,#7B6FFF);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
+    .pf-header-name{font-family:'Archivo Black',sans-serif;font-size:14px;color:#fff;letter-spacing:0.2px;}
+    .pf-header-status{font-size:11px;color:rgba(255,255,255,0.35);display:flex;align-items:center;gap:4px;margin-top:1px;}
+    .pf-header-status::before{content:'';width:6px;height:6px;border-radius:50%;background:#22c55e;display:inline-block;}
+    .pf-header-actions{margin-left:auto;display:flex;gap:6px;}
+    .pf-icon-btn{background:none;border:none;color:rgba(255,255,255,0.3);font-size:15px;cursor:pointer;padding:5px;line-height:1;transition:color 0.15s;border-radius:4px;}
+    .pf-icon-btn:hover{color:#fff;background:rgba(255,255,255,0.07);}
+    .pf-messages{flex:1;overflow-y:auto;padding:1.2rem;display:flex;flex-direction:column;gap:14px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.08) transparent;}
+    .pf-msg{display:flex;gap:8px;align-items:flex-start;max-width:85%;}
+    .pf-msg.user{align-self:flex-end;flex-direction:row-reverse;max-width:80%;}
+    .pf-avatar{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;background:linear-gradient(135deg,#1A6FFF,#7B6FFF);margin-top:2px;}
+    .pf-msg.user .pf-avatar{background:rgba(255,255,255,0.1);}
+    .pf-bubble-inner{font-size:13px;line-height:1.65;padding:10px 14px;border-radius:14px;max-width:100%;font-family:'Inter',sans-serif;}
+    .pf-msg.ai .pf-bubble-inner{background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.85);border-radius:4px 14px 14px 14px;border:1px solid rgba(255,255,255,0.07);}
+    .pf-msg.user .pf-bubble-inner{background:linear-gradient(135deg,#1A6FFF,#7B6FFF);color:#fff;border-radius:14px 4px 14px 14px;}
+    /* Blinking cursor while typing */
+    .pf-bubble-inner.typing::after{content:'▋';animation:blink 0.7s infinite;color:#7EB3FF;font-size:11px;margin-left:1px;}
+    @keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+    .pf-typing{display:flex;gap:8px;align-items:center;}
+    .pf-typing-dots{display:flex;gap:4px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);padding:10px 14px;border-radius:4px 14px 14px 14px;}
+    .pf-typing-dots span{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.3);animation:pfDot 1.2s infinite;}
+    .pf-typing-dots span:nth-child(2){animation-delay:0.2s;}
+    .pf-typing-dots span:nth-child(3){animation-delay:0.4s;}
+    @keyframes pfDot{0%,60%,100%{opacity:0.3;transform:translateY(0);}30%{opacity:1;transform:translateY(-3px);}}
+    .pf-suggestions{display:flex;flex-wrap:wrap;gap:6px;padding:0 1rem 0.8rem;flex-shrink:0;}
+    .pf-suggestion{background:rgba(26,111,255,0.08);border:1px solid rgba(26,111,255,0.2);color:#7EB3FF;font-size:11px;font-weight:500;padding:5px 11px;border-radius:999px;cursor:pointer;font-family:'Inter',sans-serif;transition:background 0.15s;white-space:nowrap;}
+    .pf-suggestion:hover{background:rgba(26,111,255,0.18);}
+    .pf-input-area{padding:0.8rem 1rem;border-top:1px solid rgba(255,255,255,0.07);display:flex;gap:8px;align-items:flex-end;flex-shrink:0;}
+    .pf-input{flex:1;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:9px 13px;font-size:13px;color:#fff;font-family:'Inter',sans-serif;resize:none;outline:none;line-height:1.5;max-height:100px;transition:border-color 0.15s;}
+    .pf-input::placeholder{color:rgba(255,255,255,0.22);}
+    .pf-input:focus{border-color:rgba(26,111,255,0.5);}
+    .pf-send{width:36px;height:36px;background:linear-gradient(135deg,#1A6FFF,#7B6FFF);border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:opacity 0.15s;font-size:14px;color:#fff;}
+    .pf-send:disabled{opacity:0.35;cursor:not-allowed;}
+    .pf-send:not(:disabled):hover{opacity:0.82;}
   </style>
 </head>
 <body>
@@ -94,7 +139,6 @@
     <div class="nav-logo">This Wasn't On The Syllabus</div>
     <div class="nav-joke" id="navJoke" onclick="cycleJoke()">click for a joke</div>
   </nav>
-
   <div class="hero">
     <div class="hero-tag">Est. the day you realized school lied to you</div>
     <h1 class="hero-title">School didn't<br>teach you.<br><span class="blue">ChatGPT did.</span></h1>
@@ -102,72 +146,33 @@
     <p class="hero-aside" onclick="this.textContent='(okay fine, you might still be a little lost. but at least you\'ll know about taxes.)'">*(we cannot guarantee you will have your life together after reading this)</p>
     <div class="hero-btns">
       <div class="btn-primary" onclick="location.href='brain.html'">Start reading →</div>
-      <div class="btn-secondary" onclick="location.href='why.html'">Wait, why does this exist?</div>
+      <div class="btn-secondary" onclick="location.href='about.html'">Wait, why does this exist?</div>
     </div>
     <div class="hero-face" id="heroFace" onclick="rotateFace()">😐</div>
     <div class="face-caption">click me</div>
   </div>
-
   <div class="ticker">
     <div class="ticker-inner">
       <span>TAXES ARE REAL <span class="dot">✦</span></span><span>YOUR COUNSELOR MEANT WELL <span class="dot">✦</span></span><span>NO THIS IS NOT A SCHOOL ASSIGNMENT <span class="dot">✦</span></span><span>YES YOU NEED TO KNOW THIS <span class="dot">✦</span></span><span>THE MITOCHONDRIA IS USELESS RIGHT NOW <span class="dot">✦</span></span><span>ADULTING IS HARD BUT WE GOT YOU <span class="dot">✦</span></span><span>TAXES ARE REAL <span class="dot">✦</span></span><span>YOUR COUNSELOR MEANT WELL <span class="dot">✦</span></span><span>NO THIS IS NOT A SCHOOL ASSIGNMENT <span class="dot">✦</span></span><span>YES YOU NEED TO KNOW THIS <span class="dot">✦</span></span><span>THE MITOCHONDRIA IS USELESS RIGHT NOW <span class="dot">✦</span></span><span>ADULTING IS HARD BUT WE GOT YOU <span class="dot">✦</span></span>
     </div>
   </div>
-
   <div class="section fade-in">
     <div class="section-eyebrow">The curriculum</div>
     <div class="section-title">Six things school skipped.</div>
     <div class="section-sub">Click any topic to start reading.</div>
     <div class="cards-wrap">
       <div class="cards-row">
-        <a href="brain.html" class="card">
-          <div class="card-num">01</div>
-          <span class="card-icon">🧠</span>
-          <div class="card-title">Your brain is not broken</div>
-          <div class="card-real">Anxiety, burnout, and what actually helps.</div>
-          <div class="card-arrow">Read this →</div>
-        </a>
-        <a href="conversations.html" class="card">
-          <div class="card-num">02</div>
-          <span class="card-icon">💬</span>
-          <div class="card-title">How to have a hard conversation</div>
-          <div class="card-real">Without blowing everything up.</div>
-          <div class="card-arrow">Read this →</div>
-        </a>
-        <a href="counselor.html" class="card" style="border-right:none;">
-          <div class="card-num">03</div>
-          <span class="card-icon">🎓</span>
-          <div class="card-title">The stuff your counselor forgot</div>
-          <div class="card-real">FAFSA, deadlines, financial aid gaps.</div>
-          <div class="card-arrow">Read this →</div>
-        </a>
+        <a href="brain.html" class="card"><div class="card-num">01</div><span class="card-icon">🧠</span><div class="card-title">Your brain is not broken</div><div class="card-real">Anxiety, burnout, and what actually helps.</div><div class="card-arrow">Read this →</div></a>
+        <a href="conversations.html" class="card"><div class="card-num">02</div><span class="card-icon">💬</span><div class="card-title">How to have a hard conversation</div><div class="card-real">Without blowing everything up.</div><div class="card-arrow">Read this →</div></a>
+        <a href="counselor.html" class="card" style="border-right:none;"><div class="card-num">03</div><span class="card-icon">🎓</span><div class="card-title">The stuff your counselor forgot</div><div class="card-real">FAFSA, deadlines, financial aid gaps.</div><div class="card-arrow">Read this →</div></a>
       </div>
       <div class="cards-row">
-        <a href="college.html" class="card">
-          <div class="card-num">04</div>
-          <span class="card-icon">🏠</span>
-          <div class="card-title">What college is actually like</div>
-          <div class="card-real">Roommates, freedom, the real version.</div>
-          <div class="card-arrow">Read this →</div>
-        </a>
-        <a href="taxes.html" class="card">
-          <div class="card-num">05</div>
-          <span class="card-icon">💸</span>
-          <div class="card-title">So you have to pay taxes</div>
-          <div class="card-real">W-2s, filing, no jargon.</div>
-          <div class="card-arrow">Read this →</div>
-        </a>
-        <a href="career.html" class="card" style="border-right:none;">
-          <div class="card-num">06</div>
-          <span class="card-icon">💼</span>
-          <div class="card-title">Nobody's going to hire you like this</div>
-          <div class="card-real">Resumes, interviews, honest version.</div>
-          <div class="card-arrow">Read this →</div>
-        </a>
+        <a href="college.html" class="card"><div class="card-num">04</div><span class="card-icon">🏠</span><div class="card-title">What college is actually like</div><div class="card-real">Roommates, freedom, the real version.</div><div class="card-arrow">Read this →</div></a>
+        <a href="taxes.html" class="card"><div class="card-num">05</div><span class="card-icon">💸</span><div class="card-title">So you have to pay taxes</div><div class="card-real">W-2s, filing, no jargon.</div><div class="card-arrow">Read this →</div></a>
+        <a href="career.html" class="card" style="border-right:none;"><div class="card-num">06</div><span class="card-icon">💼</span><div class="card-title">Nobody's going to hire you like this</div><div class="card-real">Resumes, interviews, honest version.</div><div class="card-arrow">Read this →</div></a>
       </div>
     </div>
   </div>
-
   <div class="section fade-in">
     <div class="section-eyebrow">Hover to see the truth</div>
     <div class="section-title">Things adults say vs. reality.</div>
@@ -179,7 +184,6 @@
       <div class="hover-card"><div class="real-text">"You'll use math every day."</div><div class="funny-text">You will use a calculator every day. Same thing, different font.</div></div>
     </div>
   </div>
-
   <div class="quiz-section fade-in">
     <div class="quiz-eyebrow">Pop quiz (the fun kind)</div>
     <div class="quiz-title">How prepared are you, actually?</div>
@@ -189,7 +193,6 @@
     <div class="quiz-options" id="quizOpts"></div>
     <div class="quiz-result" id="quizResult"></div>
   </div>
-
   <div class="reveal-section fade-in">
     <div class="section-eyebrow">Tap to find out</div>
     <div class="section-title">Things nobody told you.</div>
@@ -203,7 +206,6 @@
       <div class="reveal-btn" onclick="toggleReveal(this)"><div class="q">What's the hardest part of adulting?</div><div class="a">Nobody tells you when you've done enough for the day. There's no bell. No dismissal. You just have to decide. Wild, right?</div><div class="tap">tap to reveal</div></div>
     </div>
   </div>
-
   <div class="footer fade-in">
     <div class="footer-title">13 years of school.<br><span>None of it covered this.</span></div>
     <div class="footer-right">
@@ -213,34 +215,57 @@
   </div>
 </div>
 
+<!-- PATHFINDER -->
+<div class="pf-bubble" id="pfBubble">
+  <div class="pf-window" id="pfWindow">
+    <div class="pf-header">
+      <div class="pf-header-icon">🧭</div>
+      <div>
+        <div class="pf-header-name">Pathfinder</div>
+        <div class="pf-header-status">AI Career Advisor</div>
+      </div>
+      <div class="pf-header-actions">
+        <button class="pf-icon-btn" id="pfFullscreenBtn" title="Fullscreen">⛶</button>
+        <button class="pf-icon-btn" id="pfClose" title="Close">✕</button>
+      </div>
+    </div>
+    <div class="pf-messages" id="pfMessages"></div>
+    <div class="pf-suggestions" id="pfSuggestions">
+      <button class="pf-suggestion" onclick="pfSuggest('I have no idea what I want to do')">No idea what I want</button>
+      <button class="pf-suggestion" onclick="pfSuggest('I like working with my hands')">I like working with my hands</button>
+      <button class="pf-suggestion" onclick="pfSuggest('I want to make good money fast')">Good money, fast</button>
+      <button class="pf-suggestion" onclick="pfSuggest('I love tech and computers')">I love tech</button>
+    </div>
+    <div class="pf-input-area">
+      <textarea class="pf-input" id="pfInput" placeholder="What are you into? Tell Pathfinder..." rows="1"></textarea>
+      <button class="pf-send" id="pfSend">➤</button>
+    </div>
+  </div>
+  <button class="pf-btn" id="pfBtn">🧭</button>
+  <div class="pf-label">Pathfinder</div>
+</div>
+
 <script>
+/* ---- MESH GRADIENT ---- */
 const canvas=document.getElementById('chrome-canvas');
 const ctx=canvas.getContext('2d');
-let W,H,t=0;
-let mouseX=0.5,mouseY=0.5,smoothX=0.5,smoothY=0.5;
+let W,H,t=0,mouseX=0.5,mouseY=0.5,smoothX=0.5,smoothY=0.5;
 function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
-resize();
-window.addEventListener('resize',resize);
+resize();window.addEventListener('resize',resize);
 window.addEventListener('mousemove',e=>{mouseX=e.clientX/W;mouseY=e.clientY/H;});
-const points=[
-  {tx:0.0,ty:0.0,r:0.7,h:230,s:80,l:20,pull:0.12},
-  {tx:1.0,ty:0.0,r:0.65,h:260,s:70,l:15,pull:0.08},
-  {tx:0.0,ty:1.0,r:0.7,h:240,s:75,l:12,pull:0.06},
-  {tx:1.0,ty:1.0,r:0.65,h:250,s:65,l:18,pull:0.09},
-  {tx:0.5,ty:0.5,r:0.55,h:220,s:85,l:22,pull:0.15},
-  {tx:0.2,ty:0.7,r:0.5,h:275,s:70,l:16,pull:0.07},
+const pts=[
+  {tx:0.0,ty:0.0,r:0.7,h:230,s:80,l:20,pull:0.12},{tx:1.0,ty:0.0,r:0.65,h:260,s:70,l:15,pull:0.08},
+  {tx:0.0,ty:1.0,r:0.7,h:240,s:75,l:12,pull:0.06},{tx:1.0,ty:1.0,r:0.65,h:250,s:65,l:18,pull:0.09},
+  {tx:0.5,ty:0.5,r:0.55,h:220,s:85,l:22,pull:0.15},{tx:0.2,ty:0.7,r:0.5,h:275,s:70,l:16,pull:0.07},
   {tx:0.8,ty:0.3,r:0.5,h:210,s:90,l:18,pull:0.10},
 ];
-const drifts=points.map(()=>({ox:Math.random()*Math.PI*2,oy:Math.random()*Math.PI*2,sx:0.00008+Math.random()*0.00006,sy:0.00007+Math.random()*0.00007,amp:0.06+Math.random()*0.08}));
+const drifts=pts.map(()=>({ox:Math.random()*Math.PI*2,oy:Math.random()*Math.PI*2,sx:0.00008+Math.random()*0.00006,sy:0.00007+Math.random()*0.00007,amp:0.06+Math.random()*0.08}));
 function draw(){
-  ctx.clearRect(0,0,W,H);
-  ctx.fillStyle='#06060f';ctx.fillRect(0,0,W,H);
-  t+=0.004;
-  smoothX+=(mouseX-smoothX)*0.035;smoothY+=(mouseY-smoothY)*0.035;
-  points.forEach((p,i)=>{
+  ctx.clearRect(0,0,W,H);ctx.fillStyle='#06060f';ctx.fillRect(0,0,W,H);
+  t+=0.004;smoothX+=(mouseX-smoothX)*0.035;smoothY+=(mouseY-smoothY)*0.035;
+  pts.forEach((p,i)=>{
     const d=drifts[i];
-    const dx=Math.sin(t*d.sx*1000+d.ox)*d.amp;
-    const dy=Math.cos(t*d.sy*1000+d.oy)*d.amp;
+    const dx=Math.sin(t*d.sx*1000+d.ox)*d.amp,dy=Math.cos(t*d.sy*1000+d.oy)*d.amp;
     const mx=(smoothX-p.tx)*p.pull,my=(smoothY-p.ty)*p.pull;
     const bx=(p.tx+dx+mx)*W,by=(p.ty+dy+my)*H,br=p.r*Math.max(W,H);
     const pulse=0.75+0.15*Math.sin(t*1.2+i);
@@ -253,13 +278,13 @@ function draw(){
   });
   const cx=smoothX*W,cy=smoothY*H;
   const cg=ctx.createRadialGradient(cx,cy,0,cx,cy,200);
-  cg.addColorStop(0,'hsla(215,100%,70%,0.12)');
-  cg.addColorStop(0.5,'hsla(230,90%,60%,0.05)');
-  cg.addColorStop(1,'hsla(215,80%,50%,0)');
+  cg.addColorStop(0,'hsla(215,100%,70%,0.12)');cg.addColorStop(0.5,'hsla(230,90%,60%,0.05)');cg.addColorStop(1,'hsla(215,80%,50%,0)');
   ctx.fillStyle=cg;ctx.beginPath();ctx.arc(cx,cy,200,0,Math.PI*2);ctx.fill();
   requestAnimationFrame(draw);
 }
 draw();
+
+/* ---- HOMEPAGE ---- */
 const jokes=['why did the student fail taxes? school never taught him.','what\'s a W-2? not a question school ever asked.','fun fact: you spent 13 years in school and still googled "how to boil an egg"','the mitochondria will not help you negotiate rent.','your gpa won\'t call you back. just saying.'];
 let ji=0;
 function cycleJoke(){document.getElementById('navJoke').textContent=jokes[ji++%jokes.length];}
@@ -268,9 +293,9 @@ let fi=0;
 function rotateFace(){document.getElementById('heroFace').textContent=faces[++fi%faces.length];}
 function toggleReveal(b){b.classList.toggle('open');}
 const qData=[
-  {q:'What does FAFSA stand for?',opts:['Free Application for Federal Student Aid','Federal Application for Financial Student Assistance','Free Aid For Students Applying','Financial Assistance For Stressed Adults'],c:0,j:'Yep! The name is almost as confusing as filling it out.'},
+  {q:'What does FAFSA stand for?',opts:['Free Application for Federal Student Aid','Federal Application for Financial Student Assistance','Free Aid For Students Applying','Financial Assistance For Stressed Adults'],c:0,j:'Yep! Almost as confusing as filling it out.'},
   {q:'Your first paycheck is smaller than expected. Why?',opts:['Your employer made a mistake','Taxes, Social Security, and Medicare were withheld','The government just takes what they want','All of the above, emotionally speaking'],c:1,j:'Welcome to adulthood. It gets... the same, actually.'},
-  {q:'What should you do when asked "what\'s your biggest weakness?"',opts:['Say "I work too hard"','Be genuinely honest about a real weakness','Name a real weakness and explain how you\'re improving it','Stare into the middle distance'],c:2,j:'Option 3! And please stop saying "I\'m a perfectionist."'}
+  {q:'What should you do when asked "what\'s your biggest weakness?"',opts:['Say "I work too hard"','Be genuinely honest about a real weakness','Name a weakness and explain how you\'re improving it','Stare into the middle distance'],c:2,j:'Option 3! And please stop saying "I\'m a perfectionist."'}
 ];
 let qi=0;
 function loadQuiz(){
@@ -294,6 +319,147 @@ function loadQuiz(){
 loadQuiz();
 const obs=new IntersectionObserver(e=>e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});
 document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+/* ---- PATHFINDER CHAT ---- */
+const SYSTEM=`You are Pathfinder — a friendly, slightly sarcastic AI career advisor on a website called "This Wasn't On The Syllabus", built by a high school sophomore named Tyler.
+
+Your job: help students discover career paths that DON'T require a four-year college degree.
+
+RESPONSE RULES — follow strictly:
+- Keep responses SHORT. Max 3-4 sentences or 3 bullet points.
+- One idea at a time. Never dump everything at once.
+- Ask ONE follow-up question at the end to keep the conversation going.
+- Casual, funny, warm — like a cool older sibling.
+- When recommending a career: name, one sentence why it fits, salary range, one next step. That's it.
+- Never make college sound like the only path.
+- Never write more than 5 lines total.`;
+
+const pfWindow=document.getElementById('pfWindow');
+const pfBtn=document.getElementById('pfBtn');
+const pfClose=document.getElementById('pfClose');
+const pfFullscreenBtn=document.getElementById('pfFullscreenBtn');
+const pfMessages=document.getElementById('pfMessages');
+const pfInput=document.getElementById('pfInput');
+const pfSend=document.getElementById('pfSend');
+const pfSuggestions=document.getElementById('pfSuggestions');
+let pfOpen=false,pfLoading=false,pfStarted=false,pfIsFullscreen=false;
+let pfHistory=[];
+
+pfBtn.addEventListener('click',()=>{
+  pfOpen=!pfOpen;
+  pfWindow.classList.toggle('open',pfOpen);
+  if(pfOpen&&!pfStarted){pfStarted=true;setTimeout(pfOpeningMessage,400);}
+  if(pfOpen)setTimeout(()=>pfInput.focus(),300);
+});
+pfClose.addEventListener('click',()=>{pfOpen=false;pfWindow.classList.remove('open');});
+pfFullscreenBtn.addEventListener('click',()=>{
+  pfIsFullscreen=!pfIsFullscreen;
+  pfWindow.classList.toggle('fullscreen',pfIsFullscreen);
+  pfFullscreenBtn.textContent=pfIsFullscreen?'⊡':'⛶';
+  pfFullscreenBtn.title=pfIsFullscreen?'Exit fullscreen':'Fullscreen';
+});
+
+pfInput.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();pfSendMessage();}});
+pfInput.addEventListener('input',()=>{pfInput.style.height='auto';pfInput.style.height=Math.min(pfInput.scrollHeight,100)+'px';});
+pfSend.addEventListener('click',pfSendMessage);
+
+function pfOpeningMessage(){
+  const msg="Hey! I'm Pathfinder 🧭 — the career advisor school never gave you.\n\nI help students find paths that don't require a four-year degree. Spoiler: there are a lot of them.\n\nSo — what's something you actually enjoy doing, even if it seems totally random?";
+  pfTypeMessage(msg);
+}
+
+window.pfSuggest=function(text){
+  pfInput.value=text;
+  pfSuggestions.style.display='none';
+  pfSendMessage();
+};
+
+async function pfSendMessage(){
+  const text=pfInput.value.trim();
+  if(!text||pfLoading)return;
+  pfSuggestions.style.display='none';
+  pfAppend('user',text);
+  pfInput.value='';pfInput.style.height='auto';
+  pfHistory.push({role:'user',content:text});
+  pfLoading=true;pfSend.disabled=true;
+  const typing=pfShowTyping();
+  try{
+    const res=await fetch('/api/chat',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:400,system:SYSTEM,messages:pfHistory})
+    });
+    const data=await res.json();
+    const reply=data.content.filter(b=>b.type==='text').map(b=>b.text).join('\n');
+    pfRemoveTyping(typing);
+    pfHistory.push({role:'assistant',content:reply});
+    pfTypeMessage(reply);
+  }catch(e){
+    pfRemoveTyping(typing);
+    pfTypeMessage('Something went wrong — try again! 😅');
+  }
+  pfLoading=false;pfSend.disabled=false;
+}
+
+/* Typewriter effect */
+function pfTypeMessage(text){
+  const msg=document.createElement('div');
+  msg.className='pf-msg ai';
+  const av=document.createElement('div');
+  av.className='pf-avatar';av.textContent='🧭';
+  const bub=document.createElement('div');
+  bub.className='pf-bubble-inner typing';
+  msg.appendChild(av);msg.appendChild(bub);
+  pfMessages.appendChild(msg);
+  pfMessages.scrollTop=pfMessages.scrollHeight;
+
+  // Strip markdown for typewriter, then format at end
+  let i=0;
+  const speed=18; // ms per character — adjust for faster/slower
+  function type(){
+    if(i<text.length){
+      bub.textContent=text.slice(0,i+1);
+      i++;
+      pfMessages.scrollTop=pfMessages.scrollHeight;
+      setTimeout(type,speed);
+    } else {
+      // Done typing — apply formatting and remove cursor
+      bub.classList.remove('typing');
+      bub.innerHTML=pfFormat(text);
+      pfMessages.scrollTop=pfMessages.scrollHeight;
+      pfInput.focus();
+    }
+  }
+  type();
+}
+
+function pfAppend(role,text){
+  const msg=document.createElement('div');
+  msg.className=`pf-msg ${role}`;
+  const av=document.createElement('div');
+  av.className='pf-avatar';av.textContent=role==='ai'?'🧭':'👤';
+  const bub=document.createElement('div');
+  bub.className='pf-bubble-inner';
+  bub.innerHTML=pfFormat(text);
+  msg.appendChild(av);msg.appendChild(bub);
+  pfMessages.appendChild(msg);
+  pfMessages.scrollTop=pfMessages.scrollHeight;
+}
+
+function pfFormat(text){
+  return text
+    .replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')
+    .replace(/^[•\-] (.+)$/gm,'<li style="margin-left:1rem;margin-bottom:3px;">$1</li>')
+    .replace(/\n\n/g,'<br><br>').replace(/\n/g,'<br>');
+}
+
+function pfShowTyping(){
+  const t=document.createElement('div');
+  t.className='pf-typing';
+  t.innerHTML=`<div class="pf-avatar">🧭</div><div class="pf-typing-dots"><span></span><span></span><span></span></div>`;
+  pfMessages.appendChild(t);pfMessages.scrollTop=pfMessages.scrollHeight;return t;
+}
+function pfRemoveTyping(el){if(el&&el.parentNode)el.parentNode.removeChild(el);}
 </script>
 </body>
 </html>
