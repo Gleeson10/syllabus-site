@@ -61,6 +61,9 @@ RESPONSE RULES — follow strictly:
       <div class="pf-resize-handle" id="pfResizene" data-dir="ne" style="top:0;right:0;cursor:ne-resize;"></div>
       <div class="pf-resize-handle" id="pfResizesw" data-dir="sw" style="bottom:0;left:0;cursor:sw-resize;"></div>
       <div class="pf-resize-handle" id="pfResizese" data-dir="se" style="bottom:0;right:0;cursor:se-resize;"></div>
+      <div class="pf-resize-edge" data-dir="w" style="position:absolute;top:16px;bottom:16px;left:0;width:6px;cursor:w-resize;z-index:10;"></div>
+      <div class="pf-resize-edge" data-dir="e" style="position:absolute;top:16px;bottom:16px;right:0;width:6px;cursor:e-resize;z-index:10;"></div>
+      <div class="pf-resize-edge" data-dir="s" style="position:absolute;bottom:0;left:16px;right:16px;height:6px;cursor:s-resize;z-index:10;"></div>
     </div>
     <button class="pf-btn" id="pfBtn">🧭</button>
     <div class="pf-label">Pathfinder</div>
@@ -170,7 +173,7 @@ RESPONSE RULES — follow strictly:
     pfWindow.style.left=l+'px'; pfWindow.style.top=t+'px';
   }
   function endResize(){ resizing=false; resizeDir=''; pfWindow.classList.remove('dragging'); }
-  document.querySelectorAll('.pf-resize-handle').forEach(h=>{
+  document.querySelectorAll('.pf-resize-handle, .pf-resize-edge').forEach(h=>{
     h.addEventListener('mousedown',e=>{e.preventDefault();e.stopPropagation();startResize(h.dataset.dir,e.clientX,e.clientY);});
     h.addEventListener('touchstart',e=>{e.stopPropagation();startResize(h.dataset.dir,e.touches[0].clientX,e.touches[0].clientY);},{passive:true});
   });
