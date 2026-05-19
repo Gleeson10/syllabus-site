@@ -339,5 +339,18 @@ window.addEventListener('scroll',()=>{
   navItems.forEach(item=>{item.classList.remove('active');if(item.getAttribute('href')==='#'+current)item.classList.add('active');});
 });
 </script>
+<script>
+window.PATHFINDER_CONFIG={
+  context:"The user is reading the 'What College Is Actually Like' page about dorm life, freedom, and the reality of college. They may be deciding whether college is right for them. Help them think through whether college fits their goals, and surface alternatives if it doesn't.",
+  opening:"Hey! I'm Pathfinder 🧭 — reading up on college life?\n\nHere's the thing nobody says out loud: college is great for some people and a waste of money for others. Depends entirely on what you want.\n\nAre you set on going, still deciding, or secretly hoping there's another way?",
+  suggestions:[
+    {label:'Is college worth it?',text:'Is college actually worth the debt?'},
+    {label:'What if I skip college?',text:'What are my options if I skip college?'},
+    {label:'I want to go but scared',text:'I want to go to college but I\'m scared about the cost'},
+    {label:'Gap year ideas',text:'What can I do during a gap year that actually helps my future?'}
+  ]
+};
+</script>
+<script src="/pathfinder.js"></script>
 </body>
 </html>

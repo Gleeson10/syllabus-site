@@ -412,5 +412,18 @@ window.addEventListener('scroll',()=>{
   navItems.forEach(item=>{item.classList.remove('active');if(item.getAttribute('href')==='#'+current)item.classList.add('active');});
 });
 </script>
+<script>
+window.PATHFINDER_CONFIG={
+  context:"The user is reading the 'Nobody's Going to Hire You Like This' page about resumes, interviews, and job hunting. Give career advice that connects to the job search process — resume tips, interview prep, and realistic entry-level paths.",
+  opening:"Hey! I'm Pathfinder 🧭 — looks like you're getting serious about the job hunt.\n\nGood move. Most people wait too long to start thinking about this.\n\nWhat kind of work are you actually interested in — or are you still figuring that out?",
+  suggestions:[
+    {label:'Help me with my resume',text:'What should I put on my resume if I have no experience?'},
+    {label:'Interview nerves',text:'I get really nervous in interviews, what do I do?'},
+    {label:'What jobs are realistic?',text:'What jobs can I realistically get right out of high school?'},
+    {label:'I want to start my own thing',text:'I want to start my own business instead of working for someone'}
+  ]
+};
+</script>
+<script src="/pathfinder.js"></script>
 </body>
 </html>

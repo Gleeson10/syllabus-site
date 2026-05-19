@@ -389,5 +389,18 @@ window.addEventListener('scroll',()=>{
   navItems.forEach(item=>{item.classList.remove('active');if(item.getAttribute('href')==='#'+current)item.classList.add('active');});
 });
 </script>
+<script>
+window.PATHFINDER_CONFIG={
+  context:"The user is reading the 'Stuff Your Counselor Forgot' page about FAFSA, financial aid, and college applications. They're thinking about how to pay for education or training. Help them find paths that minimize debt — trade programs, apprenticeships, employer-sponsored training, etc.",
+  opening:"Hey! I'm Pathfinder 🧭 — glad you're thinking about the money side early.\n\nHere's what most counselors skip: there are paths that pay YOU to learn a skill instead of the other way around.\n\nAre you trying to figure out how to pay for college, or open to other training options too?",
+  suggestions:[
+    {label:'Apprenticeships?',text:'How do apprenticeships work and how do I find one?'},
+    {label:'Careers that pay for training',text:'What careers pay for your training or certification?'},
+    {label:'Too much debt, scared',text:'I\'m scared of student loan debt, what are my options?'},
+    {label:'Trade school vs college',text:'Should I go to trade school instead of college?'}
+  ]
+};
+</script>
+<script src="/pathfinder.js"></script>
 </body>
 </html>

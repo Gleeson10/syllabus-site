@@ -376,5 +376,18 @@ window.addEventListener('scroll',()=>{
   navItems.forEach(item=>{item.classList.remove('active');if(item.getAttribute('href')==='#'+current)item.classList.add('active');});
 });
 </script>
+<script>
+window.PATHFINDER_CONFIG={
+  context:"The user is reading the 'So You Have to Pay Taxes' page about taxes, W-2s, and personal finance. They're thinking about money. Tie career advice to earning potential and financial independence — highlight careers with strong salaries that don't require a degree.",
+  opening:"Hey! I'm Pathfinder 🧭 — learning about taxes means you're already ahead of most people your age.\n\nLet's talk about how to make money worth taxing in the first place.\n\nWhat's your relationship with money right now — trying to make more, save more, or just figure out how it all works?",
+  suggestions:[
+    {label:'I want to make six figures',text:'What careers can make six figures without a degree?'},
+    {label:'Finance or accounting jobs',text:'Are there finance or accounting jobs that don\'t need a degree?'},
+    {label:'I want to be my own boss',text:'I want to be self-employed and control my own income'},
+    {label:'Highest paying trade jobs',text:'What are the highest paying trade jobs right now?'}
+  ]
+};
+</script>
+<script src="/pathfinder.js"></script>
 </body>
 </html>

@@ -335,5 +335,18 @@ window.addEventListener('scroll',()=>{
   navItems.forEach(item=>{item.classList.remove('active');if(item.getAttribute('href')==='#'+current)item.classList.add('active');});
 });
 </script>
+<script>
+window.PATHFINDER_CONFIG={
+  context:"The user is reading the 'Your Brain Is Not Broken' page about mental health, anxiety, and burnout. Tie career advice to emotional wellbeing — suggest careers that offer autonomy, work-life balance, and low-stress environments when relevant.",
+  opening:"Hey! I'm Pathfinder 🧭 — glad you're here reading about mental health.\n\nYour wellbeing matters when picking a career too. Some paths are way less stressful than others.\n\nWhat kind of environment do you thrive in — busy and social, or calm and independent?",
+  suggestions:[
+    {label:'I get overwhelmed easily',text:'I get overwhelmed easily and need a calm job'},
+    {label:'I want to help people',text:'I want a career where I help people feel better'},
+    {label:'I need flexibility',text:'I need a flexible schedule for my mental health'},
+    {label:'What jobs have low stress?',text:'What careers have good work-life balance?'}
+  ]
+};
+</script>
+<script src="/pathfinder.js"></script>
 </body>
 </html>

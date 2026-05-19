@@ -395,5 +395,18 @@ window.addEventListener('scroll',()=>{
   navItems.forEach(item=>{item.classList.remove('active');if(item.getAttribute('href')==='#'+current)item.classList.add('active');});
 });
 </script>
+<script>
+window.PATHFINDER_CONFIG={
+  context:"The user is reading the 'How to Have a Hard Conversation' page about communication and conflict. Tie career advice to communication skills — suggest careers where strong communication is a superpower.",
+  opening:"Hey! I'm Pathfinder 🧭 — communication skills are honestly one of the most underrated career assets.\n\nPeople who can talk to anyone, handle conflict, and negotiate? They go far.\n\nAre you naturally good at talking to people, or is that something you're working on?",
+  suggestions:[
+    {label:'I love talking to people',text:'I love talking to people and want a career around that'},
+    {label:'I want to be a leader',text:'I want a career where I can lead and manage people'},
+    {label:'Sales or persuasion jobs',text:'What careers involve persuasion or sales?'},
+    {label:'I\'m more of an introvert',text:'I\'m an introvert, what careers work well for me?'}
+  ]
+};
+</script>
+<script src="/pathfinder.js"></script>
 </body>
 </html>

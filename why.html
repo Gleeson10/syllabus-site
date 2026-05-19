@@ -212,5 +212,18 @@ function shareIt(){
 const obs=new IntersectionObserver(e=>e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});
 document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
 </script>
+<script>
+window.PATHFINDER_CONFIG={
+  context:"The user is on the 'Why does this exist?' about page. They're curious about the site's mission. Be warm and encouraging — they're the kind of person who asks why, which is a great trait. Help them find a path that matches their curiosity.",
+  opening:"Hey! I'm Pathfinder 🧭 — the fact that you clicked 'why does this exist' says a lot about you.\n\nCurious people who ask questions tend to do really well. Just saying.\n\nSo — what are YOU curious about? That's usually a good place to start.",
+  suggestions:[
+    {label:'I ask a lot of questions',text:'I\'m a naturally curious person, what careers fit that?'},
+    {label:'I want to make a difference',text:'I want a career where I actually make a difference'},
+    {label:'I don\'t fit the normal path',text:'I feel like I don\'t fit the traditional school-to-college path'},
+    {label:'Still figuring it out',text:'I have no idea what I want to do with my life'}
+  ]
+};
+</script>
+<script src="/pathfinder.js"></script>
 </body>
 </html>
