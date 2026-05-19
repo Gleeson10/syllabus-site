@@ -390,6 +390,7 @@ async function pfSendMessage(){
       body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:400,system:SYSTEM,messages:pfHistory})
     });
     const data=await res.json();
+    if(!res.ok){pfRemoveTyping(typing);pfTypeMessage('API error: '+(data.error||JSON.stringify(data)));pfLoading=false;pfSend.disabled=false;return;}
     const reply=data.content.filter(b=>b.type==='text').map(b=>b.text).join('\n');
     pfRemoveTyping(typing);
     pfHistory.push({role:'assistant',content:reply});
