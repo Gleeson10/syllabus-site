@@ -75,6 +75,9 @@ RESPONSE RULES — follow strictly:
   let pfOpen=false, pfLoading=false, pfStarted=false, pfIsFullscreen=false;
   let pfHistory=[];
 
+  // Move window out of bubble so it can be dragged independently
+  document.body.appendChild(pfWindow);
+
   pfBtn.addEventListener('click',()=>{
     pfOpen=!pfOpen;
     pfWindow.classList.toggle('open',pfOpen);
@@ -88,6 +91,41 @@ RESPONSE RULES — follow strictly:
     pfFullscreenBtn.textContent=pfIsFullscreen?'⊡':'⛶';
     pfFullscreenBtn.title=pfIsFullscreen?'Exit fullscreen':'Fullscreen';
   });
+
+  // Drag to move
+  const pfHeader = pfWindow.querySelector('.pf-header');
+  pfHeader.style.cursor='grab';
+  let dragging=false, dragOffX=0, dragOffY=0, hasDragged=false;
+
+  function startDrag(clientX, clientY){
+    if(pfIsFullscreen) return;
+    if(!hasDragged){
+      const r=pfWindow.getBoundingClientRect();
+      pfWindow.style.bottom='auto'; pfWindow.style.right='auto';
+      pfWindow.style.top=r.top+'px'; pfWindow.style.left=r.left+'px';
+      hasDragged=true;
+    }
+    dragging=true;
+    const r=pfWindow.getBoundingClientRect();
+    dragOffX=clientX-r.left; dragOffY=clientY-r.top;
+    pfHeader.style.cursor='grabbing';
+    pfWindow.style.transition='opacity 0.25s ease,transform 0.25s ease';
+  }
+  function moveDrag(clientX, clientY){
+    if(!dragging) return;
+    let x=clientX-dragOffX, y=clientY-dragOffY;
+    x=Math.max(0,Math.min(x,window.innerWidth-pfWindow.offsetWidth));
+    y=Math.max(0,Math.min(y,window.innerHeight-pfWindow.offsetHeight));
+    pfWindow.style.left=x+'px'; pfWindow.style.top=y+'px';
+  }
+  function endDrag(){ dragging=false; pfHeader.style.cursor='grab'; }
+
+  pfHeader.addEventListener('mousedown',e=>{if(e.target.closest('.pf-icon-btn'))return; startDrag(e.clientX,e.clientY);});
+  document.addEventListener('mousemove',e=>{if(dragging)moveDrag(e.clientX,e.clientY);});
+  document.addEventListener('mouseup',endDrag);
+  pfHeader.addEventListener('touchstart',e=>{if(e.target.closest('.pf-icon-btn'))return; startDrag(e.touches[0].clientX,e.touches[0].clientY);},{passive:true});
+  document.addEventListener('touchmove',e=>{if(dragging)moveDrag(e.touches[0].clientX,e.touches[0].clientY);},{passive:true});
+  document.addEventListener('touchend',endDrag);
   pfInput.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();pfSendMessage();}});
   pfInput.addEventListener('input',()=>{pfInput.style.height='auto';pfInput.style.height=Math.min(pfInput.scrollHeight,100)+'px';});
   pfSend.addEventListener('click',pfSendMessage);
