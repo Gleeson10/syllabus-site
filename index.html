@@ -112,7 +112,7 @@
     .pf-msg.ai .pf-bubble-inner{background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.85);border-radius:4px 14px 14px 14px;border:1px solid rgba(255,255,255,0.07);}
     .pf-msg.user .pf-bubble-inner{background:linear-gradient(135deg,#1A6FFF,#7B6FFF);color:#fff;border-radius:14px 4px 14px 14px;}
     /* Blinking cursor while typing */
-    .pf-bubble-inner.typing::after{content:'▋';animation:blink 0.7s infinite;color:#7EB3FF;font-size:11px;margin-left:1px;}
+    .pf-cursor{color:#7EB3FF;font-size:11px;animation:blink 0.7s infinite;margin-left:1px;}
     @keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
     .pf-typing{display:flex;gap:8px;align-items:center;}
     .pf-typing-dots{display:flex;gap:4px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);padding:10px 14px;border-radius:4px 14px 14px 14px;}
@@ -414,17 +414,15 @@ function pfTypeMessage(text){
   pfMessages.appendChild(msg);
   pfMessages.scrollTop=pfMessages.scrollHeight;
 
-  // Strip markdown for typewriter, then format at end
   let i=0;
-  const speed=18; // ms per character — adjust for faster/slower
+  const speed=18;
   function type(){
     if(i<text.length){
-      bub.textContent=text.slice(0,i+1);
+      bub.innerHTML=pfFormat(text.slice(0,i+1))+'<span class="pf-cursor">▋</span>';
       i++;
       pfMessages.scrollTop=pfMessages.scrollHeight;
       setTimeout(type,speed);
     } else {
-      // Done typing — apply formatting and remove cursor
       bub.classList.remove('typing');
       bub.innerHTML=pfFormat(text);
       pfMessages.scrollTop=pfMessages.scrollHeight;
