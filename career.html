@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nobody's Going to Hire You Like This — This Wasn't On The Syllabus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{background:#06060f;font-family:'Inter',sans-serif;overflow-x:hidden;}
+    #chrome-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
+    .site{position:relative;z-index:1;}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:rgba(8,8,16,0.45);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.07);position:sticky;top:0;z-index:100;}
+    .nav-logo{font-family:'Archivo Black',sans-serif;font-size:13px;color:#fff;text-decoration:none;}
+    .nav-right{display:flex;align-items:center;gap:1.5rem;}
+    .nav-num{font-size:11px;color:rgba(255,255,255,0.2);font-weight:600;letter-spacing:1px;}
+    .nav-back{font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s;}
+    .nav-back:hover{color:#7EB3FF;}
+    .page-hero{padding:4rem 2.5rem 3rem;border-bottom:1px solid rgba(255,255,255,0.07);}
+    .page-tag{display:inline-block;background:rgba(26,111,255,0.12);color:#6fa8ff;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border:1px solid rgba(26,111,255,0.25);border-radius:2px;margin-bottom:1.5rem;}
+    .page-num{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:0.8rem;}
+    .page-title{font-family:'Archivo Black',sans-serif;font-size:56px;line-height:1;letter-spacing:-2px;color:#fff;margin-bottom:1rem;}
+    .page-title .blue{background:linear-gradient(135deg,#1A6FFF 0%,#a78bfa 50%,#22d3ee 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .page-intro{font-size:18px;color:rgba(255,255,255,0.55);line-height:1.7;max-width:600px;margin-bottom:1rem;}
+    .page-honest{font-size:13px;color:rgba(255,255,255,0.25);font-style:italic;}
+    .two-col{display:grid;grid-template-columns:1fr 260px;gap:0;align-items:stretch;}
+    .main-content{padding:0 2.5rem 6rem;border-right:1px solid rgba(255,255,255,0.06);}
+    .sidebar-outer{padding:2rem 1.5rem;position:relative;}
+    .sidebar{position:sticky;top:80px;background:rgba(18,18,30,0.88);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.09);border-radius:10px;padding:1.5rem;}
+    .sidebar-section{margin-bottom:1.2rem;}
+    .sidebar-section:last-child{margin-bottom:0;}
+    .sidebar-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:0.7rem;padding-left:4px;}
+    .sidebar-nav-item{display:block;font-size:12px;color:rgba(255,255,255,0.35);padding:5px 8px;border-left:2px solid transparent;text-decoration:none;transition:all 0.15s;margin-bottom:2px;border-radius:0 3px 3px 0;}
+    .sidebar-nav-item:hover{color:#7EB3FF;border-left-color:rgba(26,111,255,0.5);background:rgba(26,111,255,0.05);}
+    .sidebar-nav-item.active{color:#7EB3FF;border-left-color:#1A6FFF;background:rgba(26,111,255,0.08);}
+    .sidebar-divider{height:1px;background:rgba(255,255,255,0.07);margin:1rem 0;}
+    .sidebar-topic{display:flex;align-items:flex-start;gap:8px;padding:6px 8px;border-radius:4px;text-decoration:none;transition:background 0.15s;margin-bottom:2px;}
+    .sidebar-topic:hover{background:rgba(255,255,255,0.05);}
+    .sidebar-topic.current{background:rgba(26,111,255,0.1);border:1px solid rgba(26,111,255,0.2);}
+    .sidebar-topic-icon{font-size:12px;flex-shrink:0;margin-top:1px;}
+    .sidebar-topic-text{font-size:11px;color:rgba(255,255,255,0.35);line-height:1.4;}
+    .sidebar-topic:hover .sidebar-topic-text{color:rgba(255,255,255,0.65);}
+    .sidebar-topic.current .sidebar-topic-text{color:#7EB3FF;}
+    .prose-section{padding:3rem 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+    .prose-section:last-child{border-bottom:none;}
+    .prose-eyebrow{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:0.8rem;}
+    .prose-title{font-family:'Archivo Black',sans-serif;font-size:24px;color:#fff;margin-bottom:1rem;letter-spacing:-0.3px;}
+    .prose-body{font-size:16px;color:rgba(255,255,255,0.6);line-height:1.8;}
+    .prose-body p{margin-bottom:1rem;}
+    .prose-body p:last-child{margin-bottom:0;}
+    .prose-body strong{color:rgba(255,255,255,0.85);font-weight:600;}
+    .callout{background:rgba(26,111,255,0.07);border:1px solid rgba(26,111,255,0.2);border-left:3px solid #1A6FFF;padding:1.2rem 1.5rem;border-radius:2px;margin:1.5rem 0;}
+    .callout-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#7EB3FF;margin-bottom:0.5rem;}
+    .callout-text{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.6;}
+    .dodont{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:1.5rem;}
+    .dodont-col{border-radius:4px;overflow:hidden;}
+    .dodont-header{padding:10px 14px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+    .dodont-col.do .dodont-header{background:rgba(34,197,94,0.1);color:#86efac;border:1px solid rgba(34,197,94,0.15);border-bottom:none;}
+    .dodont-col.dont .dodont-header{background:rgba(239,68,68,0.08);color:#fca5a5;border:1px solid rgba(239,68,68,0.12);border-bottom:none;}
+    .dodont-item{font-size:13px;color:rgba(255,255,255,0.6);padding:10px 14px;line-height:1.5;border-left:1px solid;border-right:1px solid;border-bottom:1px solid;}
+    .dodont-col.do .dodont-item{border-color:rgba(34,197,94,0.12);}
+    .dodont-col.dont .dodont-item{border-color:rgba(239,68,68,0.1);}
+    .myths{display:flex;flex-direction:column;gap:10px;margin-top:1.5rem;}
+    .myth{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);padding:1.2rem 1.5rem;border-radius:2px;cursor:pointer;transition:background 0.15s;}
+    .myth:hover{background:rgba(255,255,255,0.04);}
+    .myth-q{font-size:14px;font-weight:600;color:rgba(255,255,255,0.75);display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+    .myth-q .icon{font-size:12px;color:rgba(255,255,255,0.25);transition:transform 0.2s;flex-shrink:0;}
+    .myth.open .icon{transform:rotate(45deg);color:#7EB3FF;}
+    .myth-a{display:none;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6;margin-top:0.8rem;padding-top:0.8rem;border-top:1px solid rgba(255,255,255,0.06);}
+    .myth.open .myth-a{display:block;}
+    .myth.open{background:rgba(26,111,255,0.05);border-color:rgba(26,111,255,0.2);}
+    .interview-wrap{margin-top:1.5rem;}
+    .interview-tabs{display:flex;gap:8px;margin-bottom:1.2rem;flex-wrap:wrap;}
+    .itab{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);padding:8px 16px;font-size:12px;color:rgba(255,255,255,0.5);border-radius:2px;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;}
+    .itab:hover{border-color:rgba(26,111,255,0.4);color:#fff;}
+    .itab.active{background:rgba(26,111,255,0.1);border-color:#1A6FFF;color:#7EB3FF;}
+    .interview-panel{display:none;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:4px;padding:1.5rem;}
+    .interview-panel.show{display:block;}
+    .interview-q{font-size:15px;font-weight:600;color:#fff;margin-bottom:0.8rem;}
+    .interview-why{font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:1rem;font-style:italic;}
+    .interview-answer{background:rgba(26,111,255,0.06);border-left:3px solid #1A6FFF;padding:1rem 1.2rem;border-radius:2px;}
+    .interview-answer-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#7EB3FF;margin-bottom:0.5rem;}
+    .interview-answer-text{font-size:13px;color:rgba(255,255,255,0.7);line-height:1.7;}
+    .checklist{display:flex;flex-direction:column;gap:10px;margin-top:1.5rem;}
+    .check-item{display:flex;align-items:flex-start;gap:12px;padding:1rem 1.2rem;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:2px;cursor:pointer;transition:all 0.15s;}
+    .check-item:hover{background:rgba(255,255,255,0.04);}
+    .check-item.checked{background:rgba(34,197,94,0.05);border-color:rgba(34,197,94,0.2);}
+    .check-box{width:18px;height:18px;border:1.5px solid rgba(255,255,255,0.2);border-radius:2px;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:all 0.15s;font-size:11px;color:#fff;}
+    .check-item.checked .check-box{background:#22c55e;border-color:#22c55e;}
+    .check-text{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.5;}
+    .check-item.checked .check-text{color:rgba(255,255,255,0.3);text-decoration:line-through;}
+    .finish-banner{margin:0 2.5rem 3rem;padding:2.5rem;background:rgba(26,111,255,0.07);border:1px solid rgba(26,111,255,0.2);border-radius:4px;text-align:center;}
+    .finish-emoji{font-size:40px;margin-bottom:1rem;display:block;}
+    .finish-title{font-family:'Archivo Black',sans-serif;font-size:22px;color:#fff;margin-bottom:0.5rem;letter-spacing:-0.3px;}
+    .finish-sub{font-size:14px;color:rgba(255,255,255,0.45);margin-bottom:1.5rem;line-height:1.6;}
+    .finish-btn{display:inline-block;background:linear-gradient(135deg,#1A6FFF,#7B6FFF);color:#fff;font-size:13px;font-weight:600;padding:12px 28px;border-radius:2px;text-decoration:none;}
+  </style>
+</head>
+<body>
+<canvas id="chrome-canvas"></canvas>
+<div class="site">
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">This Wasn't On The Syllabus</a>
+    <div class="nav-right">
+      <span class="nav-num">06 / 06</span>
+      <a href="index.html" class="nav-back">← All topics</a>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-tag">Jobs & Careers</div>
+    <div class="page-num">Topic 06</div>
+    <h1 class="page-title">Nobody's going<br><span class="blue">to hire you like this.</span></h1>
+    <p class="page-intro">Resumes, cover letters, interviews, and the things hiring managers actually look for — which is not your GPA. Here's the honest version.</p>
+    <p class="page-honest">*(yes you need a LinkedIn. no it doesn't have to be painful.)*</p>
+  </div>
+
+  <div class="two-col">
+    <div class="main-content">
+
+      <div class="prose-section" id="s1">
+        <div class="prose-eyebrow">The reality</div>
+        <div class="prose-title">What hiring actually looks like from the other side.</div>
+        <div class="prose-body">
+          <p>A hiring manager for an entry-level role might receive 200+ applications. They spend an average of about 6–7 seconds scanning each resume before deciding whether to keep reading or move on. That's not a lot of time to make an impression.</p>
+          <p>Here's what that means for you: the goal of a resume is not to get you the job. It's to get you the interview. Everything else happens in person. Your resume just has to clear the bar of "this person looks competent and worth 30 minutes of my time."</p>
+          <p><strong>What they're actually looking for:</strong> Can this person do the job? Will they be easy to work with? Do they seem like they actually want this specific role, or did they just spray applications everywhere?</p>
+          <p>Most applications fail not because the candidate was unqualified, but because the resume was generic, confusing, or hard to read. The good news is that's completely fixable.</p>
+        </div>
+        <div class="callout">
+          <div class="callout-label">The thing school got wrong</div>
+          <div class="callout-text">School taught you to list achievements. Hiring managers want to know what you can do for them. Those are different things. Reframe everything on your resume as a contribution, not a credential.</div>
+        </div>
+      </div>
+
+      <div class="prose-section" id="s2">
+        <div class="prose-eyebrow">The resume</div>
+        <div class="prose-title">What to do. What to never do.</div>
+        <div class="prose-body">
+          <p>Most resume advice is either too vague ("be professional!") or completely outdated. Here's what actually works for entry-level roles right now.</p>
+        </div>
+        <div class="dodont">
+          <div class="dodont-col do">
+            <div class="dodont-header">✓ Do this</div>
+            <div class="dodont-item">One page. Always one page.</div>
+            <div class="dodont-item">Use bullet points that start with action verbs</div>
+            <div class="dodont-item">Quantify where possible ("managed 3 social accounts, grew followers 40%")</div>
+            <div class="dodont-item">Tailor it slightly for each job — match their keywords</div>
+            <div class="dodont-item">Clean, readable font. Lots of white space.</div>
+            <div class="dodont-item">Include a link to LinkedIn or a portfolio if relevant</div>
+          </div>
+          <div class="dodont-col dont">
+            <div class="dodont-header">✗ Not that</div>
+            <div class="dodont-item">An "objective statement" at the top (nobody reads these)</div>
+            <div class="dodont-item">Your GPA unless it's above 3.7 and the job asks for it</div>
+            <div class="dodont-item">A photo (in the US — it creates bias issues)</div>
+            <div class="dodont-item">References available upon request (implied, skip it)</div>
+            <div class="dodont-item">Fancy colors, graphics, or columns that confuse ATS software</div>
+            <div class="dodont-item">Responsibilities without results ("responsible for social media")</div>
+          </div>
+        </div>
+        <div class="callout" style="margin-top:1.5rem;">
+          <div class="callout-label">The ATS thing</div>
+          <div class="callout-text">Many companies use Applicant Tracking System software that scans resumes for keywords before a human ever sees them. Using the exact words from the job description (skills, tools, titles) helps you pass this filter. This is why a fancy formatted resume with columns can actually hurt you — the software can't parse it.</div>
+        </div>
+      </div>
+
+      <div class="prose-section" id="s3">
+        <div class="prose-eyebrow">The cover letter</div>
+        <div class="prose-title">Most cover letters are useless. Here's how to write one that isn't.</div>
+        <div class="prose-body">
+          <p>A cover letter that summarizes your resume is worthless — they already have your resume. A cover letter has one job: explain why you want this specific role at this specific company, and why you're the right fit in a way your resume can't show.</p>
+          <p><strong>The formula that works:</strong></p>
+          <p>Opening line that isn't "I am writing to apply for…" — start with something specific about why this role caught your attention. Middle paragraph: connect one or two things from your background directly to what they need. Closing: confident, not desperate. One sentence on why you're excited, and ask for the conversation.</p>
+          <p>Keep it to three short paragraphs. Nobody wants to read more. The goal is to sound like a human being who actually read the job posting — because most applicants clearly didn't.</p>
+        </div>
+      </div>
+
+      <div class="prose-section" id="s4">
+        <div class="prose-eyebrow">The interview</div>
+        <div class="prose-title">Common questions — and what they're actually asking.</div>
+        <div class="prose-body">
+          <p>Every interview question is really one of three questions: Can you do this job? Will you do this job? Will working with you be pleasant? Pick a question below to see what they actually want to hear.</p>
+        </div>
+        <div class="interview-wrap">
+          <div class="interview-tabs">
+            <button class="itab active" onclick="showInterview(this,'q1')">Tell me about yourself</button>
+            <button class="itab" onclick="showInterview(this,'q2')">Biggest weakness</button>
+            <button class="itab" onclick="showInterview(this,'q3')">Why do you want this job?</button>
+            <button class="itab" onclick="showInterview(this,'q4')">Where do you see yourself in 5 years?</button>
+            <button class="itab" onclick="showInterview(this,'q5')">Do you have any questions for us?</button>
+          </div>
+          <div class="interview-panel show" id="q1">
+            <div class="interview-q">"Tell me about yourself."</div>
+            <div class="interview-why">What they're actually asking: Give me a 90-second version of your professional story so I can figure out if you're a fit and if you can communicate clearly.</div>
+            <div class="interview-answer">
+              <div class="interview-answer-label">How to answer it</div>
+              <div class="interview-answer-text">Don't recap your whole life. Do this: where you are now → what you've done that's relevant → why you're here talking to them. Keep it to about 90 seconds. Practice it out loud until it doesn't sound rehearsed. This is the one answer you should genuinely prepare.</div>
+            </div>
+          </div>
+          <div class="interview-panel" id="q2">
+            <div class="interview-q">"What's your biggest weakness?"</div>
+            <div class="interview-why">What they're actually asking: Are you self-aware? Can you be honest without imploding? Have you actually thought about this?</div>
+            <div class="interview-answer">
+              <div class="interview-answer-label">How to answer it</div>
+              <div class="interview-answer-text">Pick something real — not "I work too hard." Something you've genuinely struggled with. Then explain what you're actively doing about it. "I used to struggle with prioritizing tasks under pressure, so I started using a specific system to manage my workload — it's made a real difference." Real + improving = good answer.</div>
+            </div>
+          </div>
+          <div class="interview-panel" id="q3">
+            <div class="interview-q">"Why do you want this job?"</div>
+            <div class="interview-why">What they're actually asking: Did you actually research us, or are we just one of 50 applications you sent out this week?</div>
+            <div class="interview-answer">
+              <div class="interview-answer-label">How to answer it</div>
+              <div class="interview-answer-text">Be specific. Mention something real about the company or the role — not just "great company culture" (that tells them nothing). Connect it to something genuine about what you want to do or learn. "I've been following how your team approaches X, and I want to be in an environment where that's how work actually gets done" is infinitely better than "I'm looking for growth opportunities."</div>
+            </div>
+          </div>
+          <div class="interview-panel" id="q4">
+            <div class="interview-q">"Where do you see yourself in 5 years?"</div>
+            <div class="interview-why">What they're actually asking: Are you going to leave in 6 months? Do you have any direction? Will this role actually make sense for you?</div>
+            <div class="interview-answer">
+              <div class="interview-answer-label">How to answer it</div>
+              <div class="interview-answer-text">You don't need a detailed 5-year plan. You need to sound like someone with direction who sees this role as a genuine step toward something. "I want to develop real expertise in X, and I see this role as the right place to build that foundation" works well. Don't say "I want your job" — classic advice, still bad advice.</div>
+            </div>
+          </div>
+          <div class="interview-panel" id="q5">
+            <div class="interview-q">"Do you have any questions for us?"</div>
+            <div class="interview-why">What they're actually asking: Are you curious? Do you actually care about this role? Are you treating this like a real conversation?</div>
+            <div class="interview-answer">
+              <div class="interview-answer-label">How to answer it</div>
+              <div class="interview-answer-text">Always have 2–3 questions ready. Good ones: "What does success look like in this role in the first 90 days?" / "What do people who thrive here have in common?" / "What's the biggest challenge the team is working through right now?" Avoid: "How much PTO do I get?" (save that for the offer stage).</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prose-section" id="s5">
+        <div class="prose-eyebrow">The stuff that matters more than you think</div>
+        <div class="prose-title">Things hiring managers actually notice.</div>
+        <div class="prose-body">
+          <p>Beyond the resume and interview, there are a handful of things that quietly make or break how you come across. Most of them are surprisingly simple.</p>
+        </div>
+        <div class="myths">
+          <div class="myth" onclick="toggleMyth(this)">
+            <div class="myth-q">Being on time (and what "on time" actually means) <span class="icon">+</span></div>
+            <div class="myth-a">For an interview: arrive 5–10 minutes early. Not 20. Not exactly on time. For virtual interviews: be logged in 2 minutes before, camera on, background decent, audio tested. Being late — or scrambling to connect — is noticed immediately and sets a tone that's hard to undo.</div>
+          </div>
+          <div class="myth" onclick="toggleMyth(this)">
+            <div class="myth-q">Following up after the interview <span class="icon">+</span></div>
+            <div class="myth-a">Send a brief thank-you email within 24 hours. Not a generic "thanks for your time" — reference something specific from the conversation. It takes 5 minutes and most candidates don't do it. It's a low-effort, high-signal move that hiring managers genuinely notice.</div>
+          </div>
+          <div class="myth" onclick="toggleMyth(this)">
+            <div class="myth-q">Your online presence <span class="icon">+</span></div>
+            <div class="myth-a">Most hiring managers Google candidates. They'll find your LinkedIn (have one, keep it current), and sometimes your social media. You don't need to sanitize everything — but if the first result is something you'd be embarrassed by in a job context, deal with it before you start applying.</div>
+          </div>
+          <div class="myth" onclick="toggleMyth(this)">
+            <div class="myth-q">How you communicate over email <span class="icon">+</span></div>
+            <div class="myth-a">Professional emails are shorter than you think they need to be. Clear subject line, get to the point in the first sentence, no typos, sign off with your name. "Hey, just wanted to follow up on..." is fine. No "Hey!!" with multiple exclamation points. Read it once before you send it.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prose-section" id="s6">
+        <div class="prose-eyebrow">Before you apply</div>
+        <div class="prose-title">Your job search checklist.</div>
+        <div class="prose-body">
+          <p>Run through this before you send your first application.</p>
+        </div>
+        <div class="checklist">
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box"></div>
+            <div class="check-text">Resume is one page, uses action verbs, and has at least one quantified result</div>
+          </div>
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box"></div>
+            <div class="check-text">Resume is in a clean single-column format that ATS software can read</div>
+          </div>
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box"></div>
+            <div class="check-text">LinkedIn profile is complete and matches your resume</div>
+          </div>
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box"></div>
+            <div class="check-text">Cover letter is specific to the company — not a template blast</div>
+          </div>
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box"></div>
+            <div class="check-text">Practiced "tell me about yourself" out loud at least three times</div>
+          </div>
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box"></div>
+            <div class="check-text">Have 2–3 genuine questions ready to ask at the end of interviews</div>
+          </div>
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box"></div>
+            <div class="check-text">Googled yourself and dealt with anything you wouldn't want a hiring manager to see</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sidebar-outer">
+      <div class="sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-label">On this page</div>
+          <a href="#s1" class="sidebar-nav-item active">How hiring works</a>
+          <a href="#s2" class="sidebar-nav-item">Resume do's and don'ts</a>
+          <a href="#s3" class="sidebar-nav-item">Cover letters</a>
+          <a href="#s4" class="sidebar-nav-item">Interview questions</a>
+          <a href="#s5" class="sidebar-nav-item">What they notice</a>
+          <a href="#s6" class="sidebar-nav-item">Job search checklist</a>
+        </div>
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-section">
+          <div class="sidebar-label">All six topics</div>
+          <a href="brain.html" class="sidebar-topic">
+            <span class="sidebar-topic-icon">🧠</span>
+            <span class="sidebar-topic-text">Your brain is not broken</span>
+          </a>
+          <a href="conversations.html" class="sidebar-topic">
+            <span class="sidebar-topic-icon">💬</span>
+            <span class="sidebar-topic-text">How to have a hard conversation</span>
+          </a>
+          <a href="counselor.html" class="sidebar-topic">
+            <span class="sidebar-topic-icon">🎓</span>
+            <span class="sidebar-topic-text">The stuff your counselor forgot</span>
+          </a>
+          <a href="college.html" class="sidebar-topic">
+            <span class="sidebar-topic-icon">🏠</span>
+            <span class="sidebar-topic-text">What college is actually like</span>
+          </a>
+          <a href="taxes.html" class="sidebar-topic">
+            <span class="sidebar-topic-icon">💸</span>
+            <span class="sidebar-topic-text">So you have to pay taxes</span>
+          </a>
+          <a href="career.html" class="sidebar-topic current">
+            <span class="sidebar-topic-icon">💼</span>
+            <span class="sidebar-topic-text">Nobody's going to hire you like this</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="finish-banner">
+    <span class="finish-emoji">🎉</span>
+    <div class="finish-title">That's all six topics.</div>
+    <div class="finish-sub">You now know more about taxes, financial aid, hard conversations, and getting hired than most people figure out in their first year of adulting. You're ahead. Go do something with it.</div>
+    <a href="index.html" class="finish-btn">← Back to all topics</a>
+  </div>
+
+</div>
+
+<script>
+const canvas=document.getElementById('chrome-canvas');
+const ctx=canvas.getContext('2d');
+let W,H,t=0,mouseX=0.5,mouseY=0.5,smoothX=0.5,smoothY=0.5;
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+resize();window.addEventListener('resize',resize);
+window.addEventListener('mousemove',e=>{mouseX=e.clientX/W;mouseY=e.clientY/H;});
+const points=[
+  {tx:0.0,ty:0.0,r:0.7,h:230,s:80,l:20,pull:0.12},
+  {tx:1.0,ty:0.0,r:0.65,h:260,s:70,l:15,pull:0.08},
+  {tx:0.0,ty:1.0,r:0.7,h:240,s:75,l:12,pull:0.06},
+  {tx:1.0,ty:1.0,r:0.65,h:250,s:65,l:18,pull:0.09},
+  {tx:0.5,ty:0.5,r:0.55,h:220,s:85,l:22,pull:0.15},
+  {tx:0.2,ty:0.7,r:0.5,h:275,s:70,l:16,pull:0.07},
+  {tx:0.8,ty:0.3,r:0.5,h:210,s:90,l:18,pull:0.10},
+];
+const drifts=points.map(()=>({ox:Math.random()*Math.PI*2,oy:Math.random()*Math.PI*2,sx:0.00008+Math.random()*0.00006,sy:0.00007+Math.random()*0.00007,amp:0.06+Math.random()*0.08}));
+function draw(){
+  ctx.clearRect(0,0,W,H);ctx.fillStyle='#06060f';ctx.fillRect(0,0,W,H);
+  t+=0.004;smoothX+=(mouseX-smoothX)*0.035;smoothY+=(mouseY-smoothY)*0.035;
+  points.forEach((p,i)=>{
+    const d=drifts[i];
+    const dx=Math.sin(t*d.sx*1000+d.ox)*d.amp,dy=Math.cos(t*d.sy*1000+d.oy)*d.amp;
+    const mx=(smoothX-p.tx)*p.pull,my=(smoothY-p.ty)*p.pull;
+    const bx=(p.tx+dx+mx)*W,by=(p.ty+dy+my)*H,br=p.r*Math.max(W,H);
+    const pulse=0.75+0.15*Math.sin(t*1.2+i);
+    const g=ctx.createRadialGradient(bx,by,0,bx,by,br);
+    g.addColorStop(0,`hsla(${p.h},${p.s}%,${p.l+8}%,${pulse*0.9})`);
+    g.addColorStop(0.25,`hsla(${p.h+5},${p.s-5}%,${p.l+4}%,${pulse*0.6})`);
+    g.addColorStop(0.55,`hsla(${p.h-5},${p.s-10}%,${p.l}%,${pulse*0.25})`);
+    g.addColorStop(1,`hsla(${p.h},${p.s}%,${p.l-5}%,0)`);
+    ctx.fillStyle=g;ctx.beginPath();ctx.arc(bx,by,br,0,Math.PI*2);ctx.fill();
+  });
+  const cx=smoothX*W,cy=smoothY*H;
+  const cg=ctx.createRadialGradient(cx,cy,0,cx,cy,200);
+  cg.addColorStop(0,'hsla(215,100%,70%,0.12)');
+  cg.addColorStop(0.5,'hsla(230,90%,60%,0.05)');
+  cg.addColorStop(1,'hsla(215,80%,50%,0)');
+  ctx.fillStyle=cg;ctx.beginPath();ctx.arc(cx,cy,200,0,Math.PI*2);ctx.fill();
+  requestAnimationFrame(draw);
+}
+draw();
+function toggleMyth(el){el.classList.toggle('open');}
+function toggleCheck(el){
+  el.classList.toggle('checked');
+  el.querySelector('.check-box').textContent=el.classList.contains('checked')?'✓':'';
+}
+function showInterview(tab, panelId){
+  document.querySelectorAll('.itab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.interview-panel').forEach(p=>p.classList.remove('show'));
+  tab.classList.add('active');
+  document.getElementById(panelId).classList.add('show');
+}
+const sections=document.querySelectorAll('.prose-section[id]');
+const navItems=document.querySelectorAll('.sidebar-nav-item');
+window.addEventListener('scroll',()=>{
+  let current='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-140)current=s.id;});
+  navItems.forEach(item=>{item.classList.remove('active');if(item.getAttribute('href')==='#'+current)item.classList.add('active');});
+});
+</script>
+</body>
+</html>

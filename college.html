@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>What College Is Actually Like — This Wasn't On The Syllabus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{background:#06060f;font-family:'Inter',sans-serif;overflow-x:hidden;}
+    #chrome-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
+    .site{position:relative;z-index:1;}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:rgba(8,8,16,0.45);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.07);position:sticky;top:0;z-index:100;}
+    .nav-logo{font-family:'Archivo Black',sans-serif;font-size:13px;color:#fff;text-decoration:none;}
+    .nav-right{display:flex;align-items:center;gap:1.5rem;}
+    .nav-num{font-size:11px;color:rgba(255,255,255,0.2);font-weight:600;letter-spacing:1px;}
+    .nav-back{font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s;}
+    .nav-back:hover{color:#7EB3FF;}
+    .page-hero{padding:4rem 2.5rem 3rem;border-bottom:1px solid rgba(255,255,255,0.07);}
+    .page-tag{display:inline-block;background:rgba(26,111,255,0.12);color:#6fa8ff;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border:1px solid rgba(26,111,255,0.25);border-radius:2px;margin-bottom:1.5rem;}
+    .page-num{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:0.8rem;}
+    .page-title{font-family:'Archivo Black',sans-serif;font-size:56px;line-height:1;letter-spacing:-2px;color:#fff;margin-bottom:1rem;}
+    .page-title .blue{background:linear-gradient(135deg,#1A6FFF 0%,#a78bfa 50%,#22d3ee 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .page-intro{font-size:18px;color:rgba(255,255,255,0.55);line-height:1.7;max-width:600px;margin-bottom:1rem;}
+    .page-honest{font-size:13px;color:rgba(255,255,255,0.25);font-style:italic;}
+    .two-col{display:grid;grid-template-columns:1fr 260px;gap:0;align-items:stretch;}
+    .main-content{padding:0 2.5rem 6rem;border-right:1px solid rgba(255,255,255,0.06);}
+    .sidebar-outer{padding:2rem 1.5rem;position:relative;}
+    .sidebar{position:sticky;top:80px;background:rgba(18,18,30,0.88);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.09);border-radius:10px;padding:1.5rem;}
+    .sidebar-section{margin-bottom:1.2rem;}
+    .sidebar-section:last-child{margin-bottom:0;}
+    .sidebar-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:0.7rem;padding-left:4px;}
+    .sidebar-nav-item{display:block;font-size:12px;color:rgba(255,255,255,0.35);padding:5px 8px;border-left:2px solid transparent;text-decoration:none;transition:all 0.15s;margin-bottom:2px;border-radius:0 3px 3px 0;}
+    .sidebar-nav-item:hover{color:#7EB3FF;border-left-color:rgba(26,111,255,0.5);background:rgba(26,111,255,0.05);}
+    .sidebar-nav-item.active{color:#7EB3FF;border-left-color:#1A6FFF;background:rgba(26,111,255,0.08);}
+    .sidebar-divider{height:1px;background:rgba(255,255,255,0.07);margin:1rem 0;}
+    .sidebar-topic{display:flex;align-items:flex-start;gap:8px;padding:6px 8px;border-radius:4px;text-decoration:none;transition:background 0.15s;margin-bottom:2px;}
+    .sidebar-topic:hover{background:rgba(255,255,255,0.05);}
+    .sidebar-topic.current{background:rgba(26,111,255,0.1);border:1px solid rgba(26,111,255,0.2);}
+    .sidebar-topic-icon{font-size:12px;flex-shrink:0;margin-top:1px;}
+    .sidebar-topic-text{font-size:11px;color:rgba(255,255,255,0.35);line-height:1.4;}
+    .sidebar-topic:hover .sidebar-topic-text{color:rgba(255,255,255,0.65);}
+    .sidebar-topic.current .sidebar-topic-text{color:#7EB3FF;}
+    .prose-section{padding:3rem 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+    .prose-section:last-child{border-bottom:none;}
+    .prose-eyebrow{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:0.8rem;}
+    .prose-title{font-family:'Archivo Black',sans-serif;font-size:24px;color:#fff;margin-bottom:1rem;letter-spacing:-0.3px;}
+    .prose-body{font-size:16px;color:rgba(255,255,255,0.6);line-height:1.8;}
+    .prose-body p{margin-bottom:1rem;}
+    .prose-body p:last-child{margin-bottom:0;}
+    .prose-body strong{color:rgba(255,255,255,0.85);font-weight:600;}
+    .callout{background:rgba(26,111,255,0.07);border:1px solid rgba(26,111,255,0.2);border-left:3px solid #1A6FFF;padding:1.2rem 1.5rem;border-radius:2px;margin:1.5rem 0;}
+    .callout-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#7EB3FF;margin-bottom:0.5rem;}
+    .callout-text{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.6;}
+    .realities{display:flex;flex-direction:column;gap:10px;margin-top:1.5rem;}
+    .reality{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);padding:1.2rem 1.5rem;border-radius:2px;cursor:pointer;transition:background 0.15s;}
+    .reality:hover{background:rgba(255,255,255,0.04);}
+    .reality-q{font-size:14px;font-weight:600;color:rgba(255,255,255,0.75);display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+    .reality-q .icon{font-size:12px;color:rgba(255,255,255,0.25);transition:transform 0.2s;flex-shrink:0;}
+    .reality.open .icon{transform:rotate(45deg);color:#7EB3FF;}
+    .reality-a{display:none;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6;margin-top:0.8rem;padding-top:0.8rem;border-top:1px solid rgba(255,255,255,0.06);}
+    .reality.open .reality-a{display:block;}
+    .reality.open{background:rgba(26,111,255,0.05);border-color:rgba(26,111,255,0.2);}
+    .compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:1.5rem;}
+    .compare-col{border-radius:4px;overflow:hidden;}
+    .compare-header{padding:10px 14px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+    .compare-col.myth .compare-header{background:rgba(239,68,68,0.08);color:#fca5a5;border:1px solid rgba(239,68,68,0.12);border-bottom:none;}
+    .compare-col.real .compare-header{background:rgba(34,197,94,0.1);color:#86efac;border:1px solid rgba(34,197,94,0.15);border-bottom:none;}
+    .compare-item{font-size:13px;color:rgba(255,255,255,0.6);padding:10px 14px;line-height:1.5;border-left:1px solid;border-right:1px solid;border-bottom:1px solid;}
+    .compare-col.myth .compare-item{border-color:rgba(239,68,68,0.1);}
+    .compare-col.real .compare-item{border-color:rgba(34,197,94,0.12);}
+    .checklist{display:flex;flex-direction:column;gap:10px;margin-top:1.5rem;}
+    .check-item{display:flex;align-items:flex-start;gap:12px;padding:1rem 1.2rem;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:2px;cursor:pointer;transition:all 0.15s;}
+    .check-item:hover{background:rgba(255,255,255,0.04);}
+    .check-item.checked{background:rgba(34,197,94,0.05);border-color:rgba(34,197,94,0.2);}
+    .check-box{width:18px;height:18px;border:1.5px solid rgba(255,255,255,0.2);border-radius:2px;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:all 0.15s;font-size:11px;color:#fff;}
+    .check-item.checked .check-box{background:#22c55e;border-color:#22c55e;}
+    .check-text{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.5;}
+    .check-item.checked .check-text{color:rgba(255,255,255,0.3);text-decoration:line-through;}
+    .next-page{margin:0 2.5rem 3rem;padding:2rem;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:4px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+    .next-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:0.4rem;}
+    .next-title{font-family:'Archivo Black',sans-serif;font-size:18px;color:#fff;letter-spacing:-0.3px;}
+    .next-btn{background:linear-gradient(135deg,#1A6FFF,#7B6FFF);color:#fff;font-size:13px;font-weight:600;padding:11px 22px;border-radius:2px;cursor:pointer;white-space:nowrap;text-decoration:none;}
+  </style>
+</head>
+<body>
+<canvas id="chrome-canvas"></canvas>
+<div class="site">
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">This Wasn't On The Syllabus</a>
+    <div class="nav-right">
+      <span class="nav-num">04 / 06</span>
+      <a href="index.html" class="nav-back">← All topics</a>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-tag">College Life</div>
+    <div class="page-num">Topic 04</div>
+    <h1 class="page-title">What college is<br><span class="blue">actually like.</span></h1>
+    <p class="page-intro">Roommates, freedom, social pressure, and the adjustment nobody warned you about. Here's the honest version — not the brochure version.</p>
+    <p class="page-honest">*(the dining hall photos are a lie. the rest of this isn't.)*</p>
+  </div>
+
+  <div class="two-col">
+    <div class="main-content">
+
+      <div class="prose-section" id="s1">
+        <div class="prose-eyebrow">First things first</div>
+        <div class="prose-title">The first semester is weird for almost everyone.</div>
+        <div class="prose-body">
+          <p>Here's what they don't say at orientation: the first semester of college is disorienting for the vast majority of students. Even the ones who look like they have it together. Especially those ones, actually.</p>
+          <p>You go from a place where your whole life was structured — classes at the same time, people you've known for years, a bed in a room that's yours — to somewhere completely new, where you're responsible for every decision, surrounded by strangers, and expected to function like an adult immediately.</p>
+          <p>The adjustment is real. Feeling lonely, overwhelmed, or like you made the wrong choice doesn't mean you did. It means you're a human being going through a genuinely hard transition. Give it a semester before you make any big decisions.</p>
+        </div>
+        <div class="callout">
+          <div class="callout-label">The thing everyone thinks is only them</div>
+          <div class="callout-text">A huge percentage of first-year students feel homesick, overwhelmed, or like they don't fit in. Almost none of them say it out loud, so everyone thinks they're the only one. You're not the only one.</div>
+        </div>
+      </div>
+
+      <div class="prose-section" id="s2">
+        <div class="prose-eyebrow">The reality check</div>
+        <div class="prose-title">What they told you vs. what's true.</div>
+        <div class="prose-body">
+          <p>College tours and brochures are marketing. Here's the side-by-side.</p>
+        </div>
+        <div class="compare">
+          <div class="compare-col myth">
+            <div class="compare-header">What they said</div>
+            <div class="compare-item">"You'll find your people immediately."</div>
+            <div class="compare-item">"Best four years of your life."</div>
+            <div class="compare-item">"Freedom is amazing."</div>
+            <div class="compare-item">"Classes are so engaging."</div>
+            <div class="compare-item">"Everyone's friendly and welcoming."</div>
+          </div>
+          <div class="compare-col real">
+            <div class="compare-header">What's actually true</div>
+            <div class="compare-item">It usually takes a full year to find real friends. That's normal.</div>
+            <div class="compare-item">Some years are great. Some are hard. It's not linear.</div>
+            <div class="compare-item">Freedom with no structure is surprisingly difficult to manage.</div>
+            <div class="compare-item">Some are. Some are a professor reading slides. Both exist.</div>
+            <div class="compare-item">Some are. Some are just as cliquey as high school. Give it time.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prose-section" id="s3">
+        <div class="prose-eyebrow">The roommate situation</div>
+        <div class="prose-title">Living with a stranger is a skill nobody taught you.</div>
+        <div class="prose-body">
+          <p>Your roommate doesn't have to be your best friend. That's a pressure that makes everything worse. The goal is to <strong>coexist respectfully</strong> — which is actually a useful life skill you'll use forever.</p>
+          <p>Most roommate problems come from one thing: not saying something when it starts to bother you, waiting until it becomes a big thing, and then either exploding or suffering in silence. Neither works.</p>
+          <p>Have the small conversation early. "Hey, I have an 8am — can we keep it quiet after midnight?" is a fine thing to say in week one. It's a much harder conversation in week eight after you've been silently furious for a month.</p>
+        </div>
+        <div class="realities">
+          <div class="reality" onclick="toggleReality(this)">
+            <div class="reality-q">What if we're just completely incompatible? <span class="icon">+</span></div>
+            <div class="reality-a">It happens. Most schools allow room changes after the first few weeks if things are genuinely unworkable. Document specific issues (not just "we don't vibe"), talk to your RA first, and then contact housing if it doesn't improve. You're not stuck forever.</div>
+          </div>
+          <div class="reality" onclick="toggleReality(this)">
+            <div class="reality-q">My roommate has totally different sleep schedules / habits. <span class="icon">+</span></div>
+            <div class="reality-a">This is the most common friction. Sleep masks, earplugs, and a direct early conversation solve about 80% of it. The other 20% requires negotiation. Figure out the two or three things that matter most to you and ask for those specifically — don't ask them to change everything.</div>
+          </div>
+          <div class="reality" onclick="toggleReality(this)">
+            <div class="reality-q">They have friends over constantly and I need quiet. <span class="icon">+</span></div>
+            <div class="reality-a">This is a boundary conversation (see Topic 02). Something like: "I don't mind people over, but I need the room to be quiet for studying between X and Y. Can we figure out something that works for both of us?" Most people are reasonable when you're specific and not accusatory.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="prose-section" id="s4">
+        <div class="prose-eyebrow">The academics</div>
+        <div class="prose-title">College classes are different. Here's how.</div>
+        <div class="prose-body">
+          <p>In high school, there was someone whose job was to make sure you did the work. A teacher who reminded you, a parent who checked, a system that caught you when you slipped. College removes all of that.</p>
+          <p><strong>Professors don't chase you.</strong> If you miss class, many won't notice. If you don't do the reading, nobody will call home. The responsibility lands entirely on you — which sounds great until week four when you realize you haven't started the paper due Friday.</p>
+          <p><strong>Office hours are underused and genuinely useful.</strong> Professors hold them because they're required to, and almost no one shows up. If you go — even just to introduce yourself or ask one question — you are immediately memorable in a way that can matter when grades are borderline or you need a recommendation.</p>
+          <p><strong>The curve and the "vibe" of each class varies wildly.</strong> Some professors grade hard and curve later. Some have easy exams. Some give half the grade on participation. Read reviews, talk to older students, and know what you're getting into before you decide how much to prioritize each class.</p>
+        </div>
+        <div class="callout">
+          <div class="callout-label">The study habit reset</div>
+          <div class="callout-text">Many students who did well in high school without trying hard hit a wall in college. The material is harder and there's no one reminding you. Building actual study habits — not cramming the night before — is one of the highest-leverage things you can do freshman year.</div>
+        </div>
+      </div>
+
+      <div class="prose-section" id="s5">
+        <div class="prose-eyebrow">The social stuff</div>
+        <div class="prose-title">On friendships, FOMO, and figuring out who you are.</div>
+        <div class="prose-body">
+          <p>College is a rare window where you're surrounded by people your age, all going through the same upheaval, all looking for connection. That's actually an advantage — but it doesn't always feel like one at first.</p>
+          <p><strong>FOMO is real and mostly a lie.</strong> Social media makes it look like everyone else is having the time of their life every weekend. They're not. They're curating. The people at the party are also sometimes lonely. The people who stayed in are sometimes having a better night.</p>
+          <p><strong>Clubs and organizations are where real friendships actually form.</strong> Not dorms, not random parties — shared interests and repeated contact over time. Join one thing you actually care about in your first month and show up consistently. That's the formula.</p>
+          <p><strong>It's okay if you change.</strong> College is one of the few places where you can genuinely reinvent how you show up — your interests, your friend group, even your name if you want. The person you were in high school doesn't have to follow you.</p>
+        </div>
+      </div>
+
+      <div class="prose-section" id="s6">
+        <div class="prose-eyebrow">Before you go</div>
+        <div class="prose-title">Things worth doing in your first month.</div>
+        <div class="prose-body">
+          <p>You won't do all of these. Pick three.</p>
+        </div>
+        <div class="checklist">
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box"></div>
+            <div class="check-text">Have a real conversation with your roommate about expectations before problems start</div>
+          </div>
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box"></div>
+            <div class="check-text">Go to at least one club or org fair and sign up for something you're actually interested in</div>
+          </div>
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box"></div>
+            <div class="check-text">Go to office hours for at least one class — even just to say hi and ask a small question</div>
+          </div>
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box"></div>
+            <div class="check-text">Build a weekly schedule that includes sleep, meals, and studying — before you need it</div>
+          </div>
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box"></div>
+            <div class="check-text">Find out where the campus mental health / counseling center is before you ever need it</div>
+          </div>
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box"></div>
+            <div class="check-text">Call someone from home — not to vent, just to stay connected on your own terms</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sidebar-outer">
+      <div class="sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-label">On this page</div>
+          <a href="#s1" class="sidebar-nav-item active">The adjustment</a>
+          <a href="#s2" class="sidebar-nav-item">Reality check</a>
+          <a href="#s3" class="sidebar-nav-item">Roommates</a>
+          <a href="#s4" class="sidebar-nav-item">Academics</a>
+          <a href="#s5" class="sidebar-nav-item">Social life</a>
+          <a href="#s6" class="sidebar-nav-item">First month list</a>
+        </div>
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-section">
+          <div class="sidebar-label">All six topics</div>
+          <a href="brain.html" class="sidebar-topic">
+            <span class="sidebar-topic-icon">🧠</span>
+            <span class="sidebar-topic-text">Your brain is not broken</span>
+          </a>
+          <a href="conversations.html" class="sidebar-topic">
+            <span class="sidebar-topic-icon">💬</span>
+            <span class="sidebar-topic-text">How to have a hard conversation</span>
+          </a>
+          <a href="counselor.html" class="sidebar-topic">
+            <span class="sidebar-topic-icon">🎓</span>
+            <span class="sidebar-topic-text">The stuff your counselor forgot</span>
+          </a>
+          <a href="college.html" class="sidebar-topic current">
+            <span class="sidebar-topic-icon">🏠</span>
+            <span class="sidebar-topic-text">What college is actually like</span>
+          </a>
+          <a href="taxes.html" class="sidebar-topic">
+            <span class="sidebar-topic-icon">💸</span>
+            <span class="sidebar-topic-text">So you have to pay taxes</span>
+          </a>
+          <a href="career.html" class="sidebar-topic">
+            <span class="sidebar-topic-icon">💼</span>
+            <span class="sidebar-topic-text">Nobody's going to hire you like this</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="next-page">
+    <div>
+      <div class="next-label">Up next — Topic 05</div>
+      <div class="next-title">So You Have to Pay Taxes</div>
+    </div>
+    <a href="taxes.html" class="next-btn">Read next →</a>
+  </div>
+
+</div>
+
+<script>
+const canvas=document.getElementById('chrome-canvas');
+const ctx=canvas.getContext('2d');
+let W,H,t=0,mouseX=0.5,mouseY=0.5,smoothX=0.5,smoothY=0.5;
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+resize();window.addEventListener('resize',resize);
+window.addEventListener('mousemove',e=>{mouseX=e.clientX/W;mouseY=e.clientY/H;});
+const points=[
+  {tx:0.0,ty:0.0,r:0.7,h:230,s:80,l:20,pull:0.12},
+  {tx:1.0,ty:0.0,r:0.65,h:260,s:70,l:15,pull:0.08},
+  {tx:0.0,ty:1.0,r:0.7,h:240,s:75,l:12,pull:0.06},
+  {tx:1.0,ty:1.0,r:0.65,h:250,s:65,l:18,pull:0.09},
+  {tx:0.5,ty:0.5,r:0.55,h:220,s:85,l:22,pull:0.15},
+  {tx:0.2,ty:0.7,r:0.5,h:275,s:70,l:16,pull:0.07},
+  {tx:0.8,ty:0.3,r:0.5,h:210,s:90,l:18,pull:0.10},
+];
+const drifts=points.map(()=>({ox:Math.random()*Math.PI*2,oy:Math.random()*Math.PI*2,sx:0.00008+Math.random()*0.00006,sy:0.00007+Math.random()*0.00007,amp:0.06+Math.random()*0.08}));
+function draw(){
+  ctx.clearRect(0,0,W,H);ctx.fillStyle='#06060f';ctx.fillRect(0,0,W,H);
+  t+=0.004;smoothX+=(mouseX-smoothX)*0.035;smoothY+=(mouseY-smoothY)*0.035;
+  points.forEach((p,i)=>{
+    const d=drifts[i];
+    const dx=Math.sin(t*d.sx*1000+d.ox)*d.amp,dy=Math.cos(t*d.sy*1000+d.oy)*d.amp;
+    const mx=(smoothX-p.tx)*p.pull,my=(smoothY-p.ty)*p.pull;
+    const bx=(p.tx+dx+mx)*W,by=(p.ty+dy+my)*H,br=p.r*Math.max(W,H);
+    const pulse=0.75+0.15*Math.sin(t*1.2+i);
+    const g=ctx.createRadialGradient(bx,by,0,bx,by,br);
+    g.addColorStop(0,`hsla(${p.h},${p.s}%,${p.l+8}%,${pulse*0.9})`);
+    g.addColorStop(0.25,`hsla(${p.h+5},${p.s-5}%,${p.l+4}%,${pulse*0.6})`);
+    g.addColorStop(0.55,`hsla(${p.h-5},${p.s-10}%,${p.l}%,${pulse*0.25})`);
+    g.addColorStop(1,`hsla(${p.h},${p.s}%,${p.l-5}%,0)`);
+    ctx.fillStyle=g;ctx.beginPath();ctx.arc(bx,by,br,0,Math.PI*2);ctx.fill();
+  });
+  const cx=smoothX*W,cy=smoothY*H;
+  const cg=ctx.createRadialGradient(cx,cy,0,cx,cy,200);
+  cg.addColorStop(0,'hsla(215,100%,70%,0.12)');
+  cg.addColorStop(0.5,'hsla(230,90%,60%,0.05)');
+  cg.addColorStop(1,'hsla(215,80%,50%,0)');
+  ctx.fillStyle=cg;ctx.beginPath();ctx.arc(cx,cy,200,0,Math.PI*2);ctx.fill();
+  requestAnimationFrame(draw);
+}
+draw();
+function toggleReality(el){el.classList.toggle('open');}
+function toggleCheck(el){
+  el.classList.toggle('checked');
+  el.querySelector('.check-box').textContent=el.classList.contains('checked')?'✓':'';
+}
+const sections=document.querySelectorAll('.prose-section[id]');
+const navItems=document.querySelectorAll('.sidebar-nav-item');
+window.addEventListener('scroll',()=>{
+  let current='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-140)current=s.id;});
+  navItems.forEach(item=>{item.classList.remove('active');if(item.getAttribute('href')==='#'+current)item.classList.add('active');});
+});
+</script>
+</body>
+</html>
