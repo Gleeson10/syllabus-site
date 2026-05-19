@@ -18,6 +18,7 @@ module.exports = async function handler(req, res) {
   }
 
   const apiKey = process.env.ANTHROPIC_API_KEY;
+  console.log("API key present:", !!apiKey);
   if (!apiKey) {
     return res.status(500).json({ error: "ANTHROPIC_API_KEY is not configured" });
   }
@@ -42,6 +43,7 @@ module.exports = async function handler(req, res) {
   }
 
   if (!response.ok) {
+    console.log("Anthropic error:", JSON.stringify(data));
     return res.status(response.status).json({ error: data.error?.message ?? "Anthropic API error" });
   }
 
