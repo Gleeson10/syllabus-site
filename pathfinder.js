@@ -57,6 +57,9 @@ RESPONSE RULES — follow strictly:
         <textarea class="pf-input" id="pfInput" placeholder="What are you into? Tell Pathfinder..." rows="1"></textarea>
         <button class="pf-send" id="pfSend">➤</button>
       </div>
+      <div id="pfResizeHandle" style="position:absolute;bottom:0;right:0;width:18px;height:18px;cursor:se-resize;z-index:10;display:flex;align-items:flex-end;justify-content:flex-end;padding:3px;opacity:0.3;transition:opacity 0.15s;" title="Resize">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="white"><path d="M9 1L1 9M9 5L5 9M9 9L9 9"/><line x1="9" y1="1" x2="1" y2="9" stroke="white" stroke-width="1.5"/><line x1="9" y1="5" x2="5" y2="9" stroke="white" stroke-width="1.5"/></svg>
+      </div>
     </div>
     <button class="pf-btn" id="pfBtn">🧭</button>
     <div class="pf-label">Pathfinder</div>
@@ -121,11 +124,32 @@ RESPONSE RULES — follow strictly:
   function endDrag(){ dragging=false; pfHeader.style.cursor='grab'; }
 
   pfHeader.addEventListener('mousedown',e=>{if(e.target.closest('.pf-icon-btn'))return; startDrag(e.clientX,e.clientY);});
-  document.addEventListener('mousemove',e=>{if(dragging)moveDrag(e.clientX,e.clientY);});
-  document.addEventListener('mouseup',endDrag);
+  document.addEventListener('mousemove',e=>{if(dragging)moveDrag(e.clientX,e.clientY); if(resizing)doResize(e.clientX,e.clientY);});
+  document.addEventListener('mouseup',()=>{endDrag();endResize();});
   pfHeader.addEventListener('touchstart',e=>{if(e.target.closest('.pf-icon-btn'))return; startDrag(e.touches[0].clientX,e.touches[0].clientY);},{passive:true});
-  document.addEventListener('touchmove',e=>{if(dragging)moveDrag(e.touches[0].clientX,e.touches[0].clientY);},{passive:true});
-  document.addEventListener('touchend',endDrag);
+  document.addEventListener('touchmove',e=>{if(dragging)moveDrag(e.touches[0].clientX,e.touches[0].clientY); if(resizing)doResize(e.touches[0].clientX,e.touches[0].clientY);},{passive:true});
+  document.addEventListener('touchend',()=>{endDrag();endResize();});
+
+  // Resize
+  const pfResizeHandle = document.getElementById('pfResizeHandle');
+  pfResizeHandle.addEventListener('mouseenter',()=>{pfResizeHandle.style.opacity='0.7';});
+  pfResizeHandle.addEventListener('mouseleave',()=>{if(!resizing)pfResizeHandle.style.opacity='0.3';});
+  let resizing=false, resizeStartX=0, resizeStartY=0, resizeStartW=0, resizeStartH=0;
+  function startResize(clientX,clientY){
+    if(pfIsFullscreen) return;
+    resizing=true;
+    resizeStartX=clientX; resizeStartY=clientY;
+    resizeStartW=pfWindow.offsetWidth; resizeStartH=pfWindow.offsetHeight;
+    pfWindow.style.transition='opacity 0.25s ease,transform 0.25s ease';
+  }
+  function doResize(clientX,clientY){
+    const w=Math.max(280,Math.min(resizeStartW+(clientX-resizeStartX),window.innerWidth-pfWindow.getBoundingClientRect().left-8));
+    const h=Math.max(320,Math.min(resizeStartH+(clientY-resizeStartY),window.innerHeight-pfWindow.getBoundingClientRect().top-8));
+    pfWindow.style.width=w+'px'; pfWindow.style.height=h+'px';
+  }
+  function endResize(){ resizing=false; pfResizeHandle.style.opacity='0.3'; }
+  pfResizeHandle.addEventListener('mousedown',e=>{e.preventDefault();e.stopPropagation();startResize(e.clientX,e.clientY);});
+  pfResizeHandle.addEventListener('touchstart',e=>{e.stopPropagation();startResize(e.touches[0].clientX,e.touches[0].clientY);},{passive:true});
   pfInput.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();pfSendMessage();}});
   pfInput.addEventListener('input',()=>{pfInput.style.height='auto';pfInput.style.height=Math.min(pfInput.scrollHeight,100)+'px';});
   pfSend.addEventListener('click',pfSendMessage);
