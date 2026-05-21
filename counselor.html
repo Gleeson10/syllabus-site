@@ -10,88 +10,83 @@
     body{background:#06060f;font-family:'Inter',sans-serif;overflow-x:hidden;}
     #chrome-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
     .site{position:relative;z-index:1;}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:rgba(8,8,16,0.45);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.07);position:sticky;top:0;z-index:100;}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;background:rgba(8,8,16,0.45);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.07);position:sticky;top:0;z-index:100;}
     .nav-logo{font-family:'Archivo Black',sans-serif;font-size:13px;color:#fff;text-decoration:none;}
     .nav-right{display:flex;align-items:center;gap:1.5rem;}
     .nav-num{font-size:11px;color:rgba(255,255,255,0.2);font-weight:600;letter-spacing:1px;}
     .nav-back{font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s;}
     .nav-back:hover{color:#7EB3FF;}
-    .page-hero{padding:4rem 2.5rem 3rem;border-bottom:1px solid rgba(255,255,255,0.07);}
-    .page-tag{display:inline-block;background:rgba(26,111,255,0.12);color:#6fa8ff;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border:1px solid rgba(26,111,255,0.25);border-radius:2px;margin-bottom:1.5rem;}
-    .page-num{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:0.8rem;}
-    .page-title{font-family:'Archivo Black',sans-serif;font-size:56px;line-height:1;letter-spacing:-2px;color:#fff;margin-bottom:1rem;}
+    .page-hero{padding:3rem 2.5rem 2.5rem;border-bottom:1px solid rgba(255,255,255,0.07);}
+    .page-tag{display:inline-block;background:rgba(26,111,255,0.12);color:#6fa8ff;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border:1px solid rgba(26,111,255,0.25);border-radius:2px;margin-bottom:1rem;}
+    .page-hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:0.8rem;}
+    .page-num{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.2);}
+    .counter-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(26,111,255,0.08);border:1px solid rgba(26,111,255,0.2);border-radius:999px;padding:4px 10px;font-size:11px;color:rgba(255,255,255,0.5);}
+    .counter-dot{width:5px;height:5px;border-radius:50%;background:#22c55e;animation:counterPulse 2s infinite;flex-shrink:0;}
+    @keyframes counterPulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.8);}}
+    .counter-num{font-weight:700;color:#7EB3FF;}
+    .counter-label{color:rgba(255,255,255,0.3);}
+    .page-title{font-family:'Archivo Black',sans-serif;font-size:clamp(36px,7vw,56px);line-height:1;letter-spacing:-2px;color:#fff;margin-bottom:1rem;}
     .page-title .blue{background:linear-gradient(135deg,#1A6FFF 0%,#a78bfa 50%,#22d3ee 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-    .page-intro{font-size:18px;color:rgba(255,255,255,0.55);line-height:1.7;max-width:600px;margin-bottom:1rem;}
+    .page-intro{font-size:17px;color:rgba(255,255,255,0.55);line-height:1.7;max-width:600px;margin-bottom:0.8rem;}
     .page-honest{font-size:13px;color:rgba(255,255,255,0.25);font-style:italic;}
-    .two-col{display:grid;grid-template-columns:1fr 260px;gap:0;align-items:stretch;}
-    .main-content{padding:0 2.5rem 6rem;border-right:1px solid rgba(255,255,255,0.06);}
-    .sidebar-outer{padding:2rem 1.5rem;position:relative;}
+    .two-col{display:grid;grid-template-columns:1fr 260px;gap:0;}
+    .main-content{padding:0 2.5rem 4rem;border-right:1px solid rgba(255,255,255,0.06);}
+    .sidebar-outer{padding:2rem 1.5rem;}
     .sidebar{position:sticky;top:80px;background:rgba(18,18,30,0.88);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.09);border-radius:10px;padding:1.5rem;}
-    .sidebar-section{margin-bottom:1.2rem;}
-    .sidebar-section:last-child{margin-bottom:0;}
-    .sidebar-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:0.7rem;padding-left:4px;}
+    .sidebar-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:0.7rem;padding-left:4px;}
     .sidebar-nav-item{display:block;font-size:12px;color:rgba(255,255,255,0.35);padding:5px 8px;border-left:2px solid transparent;text-decoration:none;transition:all 0.15s;margin-bottom:2px;border-radius:0 3px 3px 0;}
-    .sidebar-nav-item:hover{color:#7EB3FF;border-left-color:rgba(26,111,255,0.5);background:rgba(26,111,255,0.05);}
-    .sidebar-nav-item.active{color:#7EB3FF;border-left-color:#1A6FFF;background:rgba(26,111,255,0.08);}
+    .sidebar-nav-item:hover,.sidebar-nav-item.active{color:#7EB3FF;border-left-color:#1A6FFF;background:rgba(26,111,255,0.08);}
     .sidebar-divider{height:1px;background:rgba(255,255,255,0.07);margin:1rem 0;}
     .sidebar-topic{display:flex;align-items:flex-start;gap:8px;padding:6px 8px;border-radius:4px;text-decoration:none;transition:background 0.15s;margin-bottom:2px;}
     .sidebar-topic:hover{background:rgba(255,255,255,0.05);}
     .sidebar-topic.current{background:rgba(26,111,255,0.1);border:1px solid rgba(26,111,255,0.2);}
     .sidebar-topic-icon{font-size:12px;flex-shrink:0;margin-top:1px;}
     .sidebar-topic-text{font-size:11px;color:rgba(255,255,255,0.35);line-height:1.4;}
-    .sidebar-topic:hover .sidebar-topic-text{color:rgba(255,255,255,0.65);}
     .sidebar-topic.current .sidebar-topic-text{color:#7EB3FF;}
-    .prose-section{padding:3rem 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+    .prose-section{padding:2.5rem 0;border-bottom:1px solid rgba(255,255,255,0.06);}
     .prose-section:last-child{border-bottom:none;}
     .prose-eyebrow{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:0.8rem;}
     .prose-title{font-family:'Archivo Black',sans-serif;font-size:24px;color:#fff;margin-bottom:1rem;letter-spacing:-0.3px;}
     .prose-body{font-size:16px;color:rgba(255,255,255,0.6);line-height:1.8;}
     .prose-body p{margin-bottom:1rem;}
-    .prose-body p:last-child{margin-bottom:0;}
     .prose-body strong{color:rgba(255,255,255,0.85);font-weight:600;}
     .callout{background:rgba(26,111,255,0.07);border:1px solid rgba(26,111,255,0.2);border-left:3px solid #1A6FFF;padding:1.2rem 1.5rem;border-radius:2px;margin:1.5rem 0;}
     .callout-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#7EB3FF;margin-bottom:0.5rem;}
     .callout-text{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.6;}
-    .callout.warn{background:rgba(251,191,36,0.06);border-color:rgba(251,191,36,0.25);border-left-color:#fbbf24;}
-    .callout.warn .callout-label{color:#fbbf24;}
-    .myths{display:flex;flex-direction:column;gap:10px;margin-top:1.5rem;}
-    .myth{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);padding:1.2rem 1.5rem;border-radius:2px;cursor:pointer;transition:background 0.15s;}
-    .myth:hover{background:rgba(255,255,255,0.04);}
+    .timeline{display:flex;flex-direction:column;gap:0;margin-top:1.5rem;}
+    .tl-item{display:flex;gap:1.2rem;padding:1.2rem 0;border-bottom:1px solid rgba(255,255,255,0.05);}
+    .tl-item:last-child{border-bottom:none;}
+    .tl-grade{font-family:'Archivo Black',sans-serif;font-size:13px;color:#1A6FFF;flex-shrink:0;width:60px;padding-top:2px;}
+    .tl-content{}
+    .tl-title{font-size:14px;font-weight:600;color:#fff;margin-bottom:0.3rem;}
+    .tl-text{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6;}
+    .fafsa-steps{display:flex;flex-direction:column;gap:10px;margin-top:1.5rem;}
+    .fafsa-step{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);padding:1.2rem 1.5rem;border-radius:4px;display:flex;gap:1rem;align-items:flex-start;}
+    .fafsa-num{font-family:'Archivo Black',sans-serif;font-size:20px;color:rgba(26,111,255,0.5);flex-shrink:0;line-height:1;}
+    .fafsa-title{font-size:14px;font-weight:600;color:#fff;margin-bottom:0.3rem;}
+    .fafsa-text{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.5;}
+    .myth-grid{display:flex;flex-direction:column;gap:10px;margin-top:1.5rem;}
+    .myth{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);padding:1.2rem 1.5rem;border-radius:2px;cursor:pointer;}
     .myth-q{font-size:14px;font-weight:600;color:rgba(255,255,255,0.75);display:flex;align-items:center;justify-content:space-between;gap:1rem;}
-    .myth-q .icon{font-size:12px;color:rgba(255,255,255,0.25);transition:transform 0.2s;flex-shrink:0;}
+    .myth-q .icon{font-size:12px;color:rgba(255,255,255,0.25);transition:transform 0.2s;}
     .myth.open .icon{transform:rotate(45deg);color:#7EB3FF;}
     .myth-a{display:none;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6;margin-top:0.8rem;padding-top:0.8rem;border-top:1px solid rgba(255,255,255,0.06);}
     .myth.open .myth-a{display:block;}
     .myth.open{background:rgba(26,111,255,0.05);border-color:rgba(26,111,255,0.2);}
-    .timeline{display:flex;flex-direction:column;gap:0;margin-top:1.5rem;}
-    .tl-item{display:flex;gap:1.2rem;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,0.05);}
-    .tl-item:last-child{border-bottom:none;}
-    .tl-dot{width:10px;height:10px;border-radius:50%;background:#1A6FFF;flex-shrink:0;margin-top:5px;}
-    .tl-dot.warn{background:#fbbf24;}
-    .tl-dot.danger{background:#ef4444;}
-    .tl-content{}
-    .tl-date{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#7EB3FF;margin-bottom:0.3rem;}
-    .tl-dot.warn ~ .tl-content .tl-date{color:#fbbf24;}
-    .tl-dot.danger ~ .tl-content .tl-date{color:#f87171;}
-    .tl-title{font-size:14px;font-weight:600;color:#fff;margin-bottom:0.2rem;}
-    .tl-text{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.5;}
-    .glossary{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:1.5rem;}
-    .gloss-item{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);padding:1rem 1.2rem;border-radius:2px;cursor:pointer;transition:all 0.15s;}
-    .gloss-item:hover{border-color:rgba(26,111,255,0.35);background:rgba(26,111,255,0.05);}
-    .gloss-term{font-size:13px;font-weight:700;color:#7EB3FF;margin-bottom:0.4rem;}
-    .gloss-def{font-size:12px;color:rgba(255,255,255,0.5);line-height:1.5;}
-    .checklist{display:flex;flex-direction:column;gap:10px;margin-top:1.5rem;}
-    .check-item{display:flex;align-items:flex-start;gap:12px;padding:1rem 1.2rem;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:2px;cursor:pointer;transition:all 0.15s;}
-    .check-item:hover{background:rgba(255,255,255,0.04);}
-    .check-item.checked{background:rgba(34,197,94,0.05);border-color:rgba(34,197,94,0.2);}
-    .check-box{width:18px;height:18px;border:1.5px solid rgba(255,255,255,0.2);border-radius:2px;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:all 0.15s;font-size:11px;color:#fff;}
-    .check-item.checked .check-box{background:#22c55e;border-color:#22c55e;}
-    .check-text{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.5;}
-    .check-item.checked .check-text{color:rgba(255,255,255,0.3);text-decoration:line-through;}
+    .share-bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:1.5rem 2.5rem;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);}
+    .share-text{font-size:14px;color:rgba(255,255,255,0.45);}
+    .share-text strong{color:#fff;}
+    .share-btn{display:flex;align-items:center;gap:8px;background:rgba(26,111,255,0.1);border:1px solid rgba(26,111,255,0.25);color:#7EB3FF;font-size:13px;font-weight:600;padding:10px 20px;border-radius:8px;cursor:pointer;font-family:'Inter',sans-serif;}
+    .share-btn:hover{background:rgba(26,111,255,0.18);}
+    .share-btn.copied{background:rgba(34,197,94,0.1);border-color:rgba(34,197,94,0.3);color:#86efac;}
     .next-page{margin:0 2.5rem 3rem;padding:2rem;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:4px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
     .next-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:0.4rem;}
-    .next-title{font-family:'Archivo Black',sans-serif;font-size:18px;color:#fff;letter-spacing:-0.3px;}
-    .next-btn{background:linear-gradient(135deg,#1A6FFF,#7B6FFF);color:#fff;font-size:13px;font-weight:600;padding:11px 22px;border-radius:2px;cursor:pointer;white-space:nowrap;text-decoration:none;}
+    .next-title{font-family:'Archivo Black',sans-serif;font-size:18px;color:#fff;}
+    .next-btn{background:linear-gradient(135deg,#1A6FFF,#7B6FFF);color:#fff;font-size:13px;font-weight:600;padding:11px 22px;border-radius:2px;text-decoration:none;}
+    .fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
+    .fade-in.visible{opacity:1;transform:translateY(0);}
+    @media(max-width:768px){.two-col{grid-template-columns:1fr;}.sidebar-outer{display:none;}.main-content{padding:0 1.2rem 3rem;border-right:none;}.page-hero{padding:2rem 1.2rem;}.nav{padding:0.9rem 1.2rem;}.share-bar{padding:1.2rem;}.next-page{margin:0 1.2rem 2rem;}}
+    .pf-bubble{position:fixed;bottom:2rem;right:2rem;z-index:999;}.pf-btn{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#1A6FFF,#7B6FFF);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 4px 24px rgba(26,111,255,0.45);transition:transform 0.2s;}.pf-btn:hover{transform:scale(1.08);}.pf-label{position:absolute;right:64px;top:50%;transform:translateY(-50%);background:rgba(18,18,30,0.95);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.1);color:#fff;font-size:12px;font-weight:700;padding:6px 12px;border-radius:6px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity 0.2s;font-family:'Archivo Black',sans-serif;}.pf-bubble:hover .pf-label{opacity:1;}.pf-window{position:fixed;bottom:5.5rem;right:2rem;width:390px;height:560px;background:rgba(10,10,20,0.97);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.1);border-radius:18px;box-shadow:0 24px 64px rgba(0,0,0,0.6);z-index:998;display:flex;flex-direction:column;overflow:hidden;transform:scale(0.9) translateY(20px);opacity:0;pointer-events:none;transition:transform 0.25s ease,opacity 0.25s ease;}.pf-window.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all;}.pf-window.fullscreen{width:calc(100vw - 4rem);height:calc(100vh - 4rem);}.pf-header{padding:1rem 1.2rem;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;gap:10px;flex-shrink:0;background:rgba(18,18,30,0.5);}.pf-header-icon{width:36px;height:36px;background:linear-gradient(135deg,#1A6FFF,#7B6FFF);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}.pf-header-name{font-family:'Archivo Black',sans-serif;font-size:14px;color:#fff;}.pf-header-status{font-size:11px;color:rgba(255,255,255,0.35);display:flex;align-items:center;gap:4px;margin-top:1px;}.pf-header-status::before{content:'';width:6px;height:6px;border-radius:50%;background:#22c55e;display:inline-block;}.pf-header-actions{margin-left:auto;display:flex;gap:6px;}.pf-icon-btn{background:none;border:none;color:rgba(255,255,255,0.3);font-size:15px;cursor:pointer;padding:5px;line-height:1;border-radius:4px;}.pf-icon-btn:hover{color:#fff;}.pf-messages{flex:1;overflow-y:auto;padding:1.2rem;display:flex;flex-direction:column;gap:14px;scrollbar-width:thin;}.pf-msg{display:flex;gap:8px;align-items:flex-start;max-width:85%;}.pf-msg.user{align-self:flex-end;flex-direction:row-reverse;max-width:80%;}.pf-avatar{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;background:linear-gradient(135deg,#1A6FFF,#7B6FFF);margin-top:2px;}.pf-msg.user .pf-avatar{background:rgba(255,255,255,0.1);}.pf-bubble-inner{font-size:13px;line-height:1.65;padding:10px 14px;border-radius:14px;font-family:'Inter',sans-serif;}.pf-msg.ai .pf-bubble-inner{background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.85);border-radius:4px 14px 14px 14px;border:1px solid rgba(255,255,255,0.07);}.pf-msg.user .pf-bubble-inner{background:linear-gradient(135deg,#1A6FFF,#7B6FFF);color:#fff;border-radius:14px 4px 14px 14px;}.pf-bubble-inner.typing::after{content:'▋';animation:blink 0.7s infinite;color:#7EB3FF;font-size:11px;margin-left:1px;}@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}.pf-typing{display:flex;gap:8px;align-items:center;}.pf-typing-dots{display:flex;gap:4px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);padding:10px 14px;border-radius:4px 14px 14px 14px;}.pf-typing-dots span{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.3);animation:pfDot 1.2s infinite;}.pf-typing-dots span:nth-child(2){animation-delay:0.2s;}.pf-typing-dots span:nth-child(3){animation-delay:0.4s;}@keyframes pfDot{0%,60%,100%{opacity:0.3;transform:translateY(0);}30%{opacity:1;transform:translateY(-3px);}}.pf-suggestions{display:flex;flex-wrap:wrap;gap:6px;padding:0 1rem 0.8rem;flex-shrink:0;}.pf-suggestion{background:rgba(26,111,255,0.08);border:1px solid rgba(26,111,255,0.2);color:#7EB3FF;font-size:11px;font-weight:500;padding:5px 11px;border-radius:999px;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;}.pf-suggestion:hover{background:rgba(26,111,255,0.18);}.pf-input-area{padding:0.8rem 1rem;border-top:1px solid rgba(255,255,255,0.07);display:flex;gap:8px;align-items:flex-end;flex-shrink:0;}.pf-input{flex:1;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:9px 13px;font-size:13px;color:#fff;font-family:'Inter',sans-serif;resize:none;outline:none;line-height:1.5;max-height:100px;}.pf-input::placeholder{color:rgba(255,255,255,0.22);}.pf-input:focus{border-color:rgba(26,111,255,0.5);}.pf-send{width:36px;height:36px;background:linear-gradient(135deg,#1A6FFF,#7B6FFF);border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;color:#fff;}.pf-send:disabled{opacity:0.35;cursor:not-allowed;}
   </style>
 </head>
 <body>
@@ -99,308 +94,122 @@
 <div class="site">
   <nav class="nav">
     <a href="index.html" class="nav-logo">This Wasn't On The Syllabus</a>
-    <div class="nav-right">
-      <span class="nav-num">03 / 06</span>
-      <a href="index.html" class="nav-back">← All topics</a>
-    </div>
+    <div class="nav-right"><span class="nav-num">03 / 06</span><a href="index.html" class="nav-back">← All topics</a></div>
   </nav>
-
   <div class="page-hero">
-    <div class="page-tag">College & Financial Aid</div>
-    <div class="page-num">Topic 03</div>
+    <div class="page-tag">College Prep</div>
+    <div class="page-hero-top">
+      <div class="page-num">Topic 03</div>
+      <div class="counter-badge"><span class="counter-dot"></span><span class="counter-num" id="visitorCount">—</span><span class="counter-label">people have read this</span></div>
+    </div>
     <h1 class="page-title">The stuff your<br><span class="blue">counselor forgot.</span></h1>
-    <p class="page-intro">FAFSA, financial aid, deadlines, and the conversations nobody had with you before you were already behind. Here's the actual rundown.</p>
-    <p class="page-honest">*(your counselor probably meant well. they just had 400 other students.)*</p>
+    <p class="page-intro">FAFSA, deadlines, financial aid gaps, and the real college prep timeline nobody gave you. Here's what you actually need to know.</p>
+    <p class="page-honest">*(your counselor meant well. they were just really busy.)*</p>
   </div>
-
   <div class="two-col">
     <div class="main-content">
-
       <div class="prose-section" id="s1">
-        <div class="prose-eyebrow">The honest version</div>
-        <div class="prose-title">The college application process is not designed to explain itself.</div>
+        <div class="prose-eyebrow">The big picture</div>
+        <div class="prose-title">What school actually prepares you for vs. what you need.</div>
         <div class="prose-body">
-          <p>There is an enormous amount of money available to help students pay for college. A lot of it goes unclaimed every year — not because students don't need it, but because they didn't know it existed, missed the deadline, or filled out the wrong form at the wrong time.</p>
-          <p>High school counselors are stretched thin. They're doing their best with a student-to-counselor ratio that, in many public schools, is somewhere around 400 to 1. That means the deep, personalized financial aid conversations mostly don't happen.</p>
-          <p>So here's what you should have been told — in plain English, without the brochure.</p>
+          <p>High school college prep is almost entirely focused on getting you into college — GPA, SAT scores, extracurriculars, essays. Almost nothing is focused on what happens after you get in, how to pay for it, or whether it's even the right move for you.</p>
+          <p>The result is a lot of students who get accepted to colleges they can't afford, take out loans they don't understand, and figure out the rest as they go. <strong>This page is about filling in the gaps before you get there.</strong></p>
         </div>
         <div class="callout">
-          <div class="callout-label">The number that matters</div>
-          <div class="callout-text">Over $2 billion in federal Pell Grant money goes unclaimed every year because students either didn't apply or filed too late. That's not a typo. Apply anyway.</div>
+          <div class="callout-label">The number that matters most</div>
+          <div class="callout-text">The sticker price of a college is almost never what you actually pay. Always look at the "net price" — tuition minus grants and scholarships. That's the real number. You can find it on any college's website or at nces.ed.gov.</div>
         </div>
       </div>
-
       <div class="prose-section" id="s2">
-        <div class="prose-eyebrow">Start here</div>
-        <div class="prose-title">What FAFSA actually is (and why you have to do it).</div>
-        <div class="prose-body">
-          <p>FAFSA stands for Free Application for Federal Student Aid. It's a form the government uses to figure out how much financial help you qualify for — grants, subsidized loans, and work-study programs.</p>
-          <p><strong>Here's the thing everyone misses:</strong> most colleges also use your FAFSA to calculate their own institutional aid. That means even private scholarships and merit awards often require a completed FAFSA on file. If you don't fill it out, you're automatically disqualified from a huge chunk of money before anyone even looks at your application.</p>
-          <p>It's also free to file. There's no downside to submitting it. The worst outcome is finding out you don't qualify for need-based aid — which is still useful information.</p>
-        </div>
-        <div class="myths">
-          <div class="myth" onclick="toggleMyth(this)">
-            <div class="myth-q">"My parents make too much — we won't qualify." <span class="icon">+</span></div>
-            <div class="myth-a">This is the most common reason students skip FAFSA, and it's often wrong. The income cutoffs for aid are higher than most people think. Plus, many colleges use FAFSA data for merit-based awards that have nothing to do with income. File it anyway — it costs nothing and takes about 30 minutes.</div>
-          </div>
-          <div class="myth" onclick="toggleMyth(this)">
-            <div class="myth-q">"I'll do it after I get accepted." <span class="icon">+</span></div>
-            <div class="myth-a">This is a deadline-missing trap. Most schools award financial aid on a first-come, first-served basis. By the time you get your acceptance letter and then file FAFSA, the money may already be allocated. File it as early as possible — ideally in October when the form opens for the following school year.</div>
-          </div>
-          <div class="myth" onclick="toggleMyth(this)">
-            <div class="myth-q">"Loans are just part of college, you have to take them." <span class="icon">+</span></div>
-            <div class="myth-a">Federal loans are in your financial aid package, but you don't have to accept all of them — or any of them. You can accept grants (free money), decline loans, or accept only part of what's offered. Read the award letter carefully before you click accept on everything.</div>
-          </div>
-          <div class="myth" onclick="toggleMyth(this)">
-            <div class="myth-q">"Scholarship money is only for straight-A students." <span class="icon">+</span></div>
-            <div class="myth-a">There are scholarships for almost every interest, background, identity, and life circumstance you can imagine. Thousands go unclaimed every year not because no one qualifies but because no one applied. Search databases like Fastweb, Bold.org, or your state's education agency — you will find ones you qualify for.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="prose-section" id="s3">
-        <div class="prose-eyebrow">Don't miss these</div>
-        <div class="prose-title">The deadlines nobody puts on your calendar.</div>
-        <div class="prose-body">
-          <p>These aren't exact because they vary by state and school — but this is the general timeline that catches people off guard.</p>
-        </div>
+        <div class="prose-eyebrow">The timeline</div>
+        <div class="prose-title">What to do and when — by grade.</div>
         <div class="timeline">
-          <div class="tl-item">
-            <div class="tl-dot"></div>
-            <div class="tl-content">
-              <div class="tl-date">October (Junior year)</div>
-              <div class="tl-title">FAFSA opens — file immediately</div>
-              <div class="tl-text">The form opens October 1st for the following school year. Filing early maximizes your shot at first-come aid. You'll use prior-prior year tax info so your parents' returns don't need to be done yet.</div>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot"></div>
-            <div class="tl-content">
-              <div class="tl-date">November–December (Senior year)</div>
-              <div class="tl-title">Early Decision / Early Action deadlines</div>
-              <div class="tl-text">Most early application deadlines are Nov 1 or Nov 15. Some schools significantly favor early applicants for both admission and merit aid.</div>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot warn"></div>
-            <div class="tl-content">
-              <div class="tl-date">February–March (Senior year)</div>
-              <div class="tl-title">State grant deadlines — easy to miss</div>
-              <div class="tl-text">State-level aid programs often have deadlines in February or March that are completely separate from your school's deadline. Look up your state's grant deadline specifically — it's often earlier than you'd expect.</div>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot warn"></div>
-            <div class="tl-content">
-              <div class="tl-date">April 1 (Senior year)</div>
-              <div class="tl-title">Financial aid award letters start arriving</div>
-              <div class="tl-text">You don't have to accept the first offer. You can negotiate, compare packages between schools, and ask for more — especially if your financial situation has changed.</div>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot danger"></div>
-            <div class="tl-content">
-              <div class="tl-date">May 1 (Senior year)</div>
-              <div class="tl-title">National Decision Day — commit or lose your spot</div>
-              <div class="tl-text">This is the hard deadline for most schools. After this, you can still get off waitlists but it gets complicated fast.</div>
-            </div>
-          </div>
+          <div class="tl-item"><div class="tl-grade">9th</div><div><div class="tl-title">Start building your record — but don't stress yet</div><div class="tl-text">Grades matter, but 9th grade isn't make or break. Focus on trying things — clubs, sports, jobs, hobbies — to figure out what you actually care about. That'll inform everything later.</div></div></div>
+          <div class="tl-item"><div class="tl-grade">10th</div><div><div class="tl-title">Take the PSAT — it's free practice and it matters</div><div class="tl-text">The PSAT in 10th grade qualifies you for National Merit Scholarships in 11th grade. Even if you're not aiming for that, it's a useful benchmark for how you'd do on the SAT/ACT.</div></div></div>
+          <div class="tl-item"><div class="tl-grade">11th</div><div><div class="tl-title">This is the most important year. Do not sleep on it.</div><div class="tl-text">Take the SAT/ACT (at least once — you can retake it). Start building your college list. Visit campuses if you can. Research financial aid deadlines — they vary wildly by school. Start your application essays in the summer.</div></div></div>
+          <div class="tl-item"><div class="tl-grade">12th</div><div><div class="tl-title">Apply early, file FAFSA on October 1st, decide by May 1st</div><div class="tl-text">Early decision/action deadlines are usually November 1-15. Regular decision is January 1-15. FAFSA opens October 1 — file it as soon as possible. The earlier you file, the more aid you may get. Decision deadline for most schools is May 1.</div></div></div>
         </div>
       </div>
-
+      <div class="prose-section" id="s3">
+        <div class="prose-eyebrow">The most important form you'll fill out</div>
+        <div class="prose-title">FAFSA — what it is and why you have to do it.</div>
+        <div class="prose-body"><p>FAFSA stands for Free Application for Federal Student Aid. It's how the government and most colleges determine how much financial aid you qualify for. If you don't file it, you don't get aid. Period. Even if you think you won't qualify — file it anyway. Many students are surprised.</p></div>
+        <div class="fafsa-steps">
+          <div class="fafsa-step"><div class="fafsa-num">1</div><div><div class="fafsa-title">Create your FSA ID at studentaid.gov</div><div class="fafsa-text">You AND a parent each need one. Do this before October 1st of your senior year.</div></div></div>
+          <div class="fafsa-step"><div class="fafsa-num">2</div><div><div class="fafsa-title">Gather your tax info</div><div class="fafsa-text">You'll need your family's most recent tax return. The FAFSA uses the IRS Data Retrieval Tool to pull this automatically if you allow it.</div></div></div>
+          <div class="fafsa-step"><div class="fafsa-num">3</div><div><div class="fafsa-title">File as early as possible after October 1st</div><div class="fafsa-text">Some aid is first-come, first-served. The earlier you file, the better your chances of getting the most aid possible.</div></div></div>
+          <div class="fafsa-step"><div class="fafsa-num">4</div><div><div class="fafsa-title">Compare your financial aid offers</div><div class="fafsa-text">Every college that accepts you will send a financial aid award letter. Compare them carefully — not all aid is equal. Grants are free money. Loans are not.</div></div></div>
+        </div>
+      </div>
       <div class="prose-section" id="s4">
-        <div class="prose-eyebrow">Know the words</div>
-        <div class="prose-title">Terms your award letter will use — translated.</div>
-        <div class="prose-body">
-          <p>Financial aid letters are written in a language designed to look generous while being confusing. Here's the translation.</p>
-        </div>
-        <div class="glossary">
-          <div class="gloss-item">
-            <div class="gloss-term">Pell Grant</div>
-            <div class="gloss-def">Free money from the federal government. You never pay this back. Only available to students with demonstrated financial need.</div>
-          </div>
-          <div class="gloss-item">
-            <div class="gloss-term">Subsidized Loan</div>
-            <div class="gloss-def">A federal loan where the government pays the interest while you're in school. Better than unsubsidized — but it's still a loan you repay.</div>
-          </div>
-          <div class="gloss-item">
-            <div class="gloss-term">Unsubsidized Loan</div>
-            <div class="gloss-def">Interest starts building the day you borrow it, even while you're in school. Most students don't realize how much they owe until they graduate.</div>
-          </div>
-          <div class="gloss-item">
-            <div class="gloss-term">Work-Study</div>
-            <div class="gloss-def">A part-time job program offered through your school. The money is earned, not given — you work on campus and get paid. It doesn't appear in your bank account automatically.</div>
-          </div>
-          <div class="gloss-item">
-            <div class="gloss-term">Merit Aid</div>
-            <div class="gloss-def">Scholarships based on academics, talent, or other qualities — not financial need. This can often be negotiated if another school offers you more.</div>
-          </div>
-          <div class="gloss-item">
-            <div class="gloss-term">EFC / SAI</div>
-            <div class="gloss-def">Expected Family Contribution (now called Student Aid Index). The amount the government calculates your family can pay. It's often unrealistically high. You can appeal it.</div>
-          </div>
+        <div class="prose-eyebrow">Things nobody told you</div>
+        <div class="prose-title">College myths — busted.</div>
+        <div class="myth-grid">
+          <div class="myth" onclick="this.classList.toggle('open')"><div class="myth-q">"You have to go to a prestigious school to succeed." <span class="icon">+</span></div><div class="myth-a">Research consistently shows that what you do in college matters far more than where you go. Networking, internships, GPA in your major, and real-world skills beat school name every time — except in a handful of very specific fields.</div></div>
+          <div class="myth" onclick="this.classList.toggle('open')"><div class="myth-q">"Student loans are just part of it." <span class="icon">+</span></div><div class="myth-a">Student loans are real debt with real interest. Before you sign anything, make sure you understand: how much you're borrowing total, what the monthly payment will be after graduation, and whether your expected salary in your field can realistically cover it.</div></div>
+          <div class="myth" onclick="this.classList.toggle('open')"><div class="myth-q">"Community college is a lesser option." <span class="icon">+</span></div><div class="myth-a">Community college followed by transfer to a four-year school is one of the smartest financial moves you can make. Same degree, far less debt. Many states have guaranteed transfer agreements. It's not a backup plan — it's a strategy.</div></div>
+          <div class="myth" onclick="this.classList.toggle('open')"><div class="myth-q">"Gap years are a waste of time." <span class="icon">+</span></div><div class="myth-a">Students who take structured gap years often perform better academically and report higher satisfaction with their college choice. Going to college before you know why you're there is a much more expensive waste of time.</div></div>
         </div>
       </div>
-
-      <div class="prose-section" id="s5">
-        <div class="prose-eyebrow">Before you go</div>
-        <div class="prose-title">Your financial aid action list.</div>
-        <div class="prose-body">
-          <p>These are the things that actually move the needle. Check them off.</p>
-        </div>
-        <div class="checklist">
-          <div class="check-item" onclick="toggleCheck(this)">
-            <div class="check-box"></div>
-            <div class="check-text">File FAFSA as soon as it opens — don't wait until you're accepted anywhere</div>
-          </div>
-          <div class="check-item" onclick="toggleCheck(this)">
-            <div class="check-box"></div>
-            <div class="check-text">Look up your state's specific grant deadline (it's often earlier than you think)</div>
-          </div>
-          <div class="check-item" onclick="toggleCheck(this)">
-            <div class="check-box"></div>
-            <div class="check-text">Read your award letter line by line — know what's a grant vs. a loan before accepting</div>
-          </div>
-          <div class="check-item" onclick="toggleCheck(this)">
-            <div class="check-box"></div>
-            <div class="check-text">Search at least one scholarship database (Fastweb, Bold.org) and apply to 3+ you qualify for</div>
-          </div>
-          <div class="check-item" onclick="toggleCheck(this)">
-            <div class="check-box"></div>
-            <div class="check-text">If your financial situation changed, call the financial aid office and ask about an appeal</div>
-          </div>
-          <div class="check-item" onclick="toggleCheck(this)">
-            <div class="check-box"></div>
-            <div class="check-text">Compare aid packages between schools before committing — you're allowed to negotiate</div>
-          </div>
-        </div>
-        <div class="callout warn" style="margin-top:1.5rem;">
-          <div class="callout-label">The thing worth knowing</div>
-          <div class="callout-text">Financial aid offices are staffed by actual humans who can sometimes do more than the standard letter suggests. If you got a better offer somewhere else, call and tell them. Politely. The worst they can say is no.</div>
-        </div>
-      </div>
-
     </div>
-
     <div class="sidebar-outer">
       <div class="sidebar">
-        <div class="sidebar-section">
+        <div style="margin-bottom:1.2rem;">
           <div class="sidebar-label">On this page</div>
-          <a href="#s1" class="sidebar-nav-item active">The honest version</a>
-          <a href="#s2" class="sidebar-nav-item">What FAFSA is</a>
-          <a href="#s3" class="sidebar-nav-item">Key deadlines</a>
-          <a href="#s4" class="sidebar-nav-item">Terms translated</a>
-          <a href="#s5" class="sidebar-nav-item">Action list</a>
+          <a href="#s1" class="sidebar-nav-item active">The big picture</a>
+          <a href="#s2" class="sidebar-nav-item">Timeline by grade</a>
+          <a href="#s3" class="sidebar-nav-item">FAFSA explained</a>
+          <a href="#s4" class="sidebar-nav-item">College myths</a>
         </div>
         <div class="sidebar-divider"></div>
-        <div class="sidebar-section">
+        <div>
           <div class="sidebar-label">All six topics</div>
-          <a href="brain.html" class="sidebar-topic">
-            <span class="sidebar-topic-icon">🧠</span>
-            <span class="sidebar-topic-text">Your brain is not broken</span>
-          </a>
-          <a href="conversations.html" class="sidebar-topic">
-            <span class="sidebar-topic-icon">💬</span>
-            <span class="sidebar-topic-text">How to have a hard conversation</span>
-          </a>
-          <a href="counselor.html" class="sidebar-topic current">
-            <span class="sidebar-topic-icon">🎓</span>
-            <span class="sidebar-topic-text">The stuff your counselor forgot</span>
-          </a>
-          <a href="college.html" class="sidebar-topic">
-            <span class="sidebar-topic-icon">🏠</span>
-            <span class="sidebar-topic-text">What college is actually like</span>
-          </a>
-          <a href="taxes.html" class="sidebar-topic">
-            <span class="sidebar-topic-icon">💸</span>
-            <span class="sidebar-topic-text">So you have to pay taxes</span>
-          </a>
-          <a href="career.html" class="sidebar-topic">
-            <span class="sidebar-topic-icon">💼</span>
-            <span class="sidebar-topic-text">Nobody's going to hire you like this</span>
-          </a>
+          <a href="brain.html" class="sidebar-topic"><span class="sidebar-topic-icon">🧠</span><span class="sidebar-topic-text">Your brain is not broken</span></a>
+          <a href="conversations.html" class="sidebar-topic"><span class="sidebar-topic-icon">💬</span><span class="sidebar-topic-text">How to have a hard conversation</span></a>
+          <a href="counselor.html" class="sidebar-topic current"><span class="sidebar-topic-icon">🎓</span><span class="sidebar-topic-text">The stuff your counselor forgot</span></a>
+          <a href="college.html" class="sidebar-topic"><span class="sidebar-topic-icon">🏠</span><span class="sidebar-topic-text">What college is actually like</span></a>
+          <a href="taxes.html" class="sidebar-topic"><span class="sidebar-topic-icon">💸</span><span class="sidebar-topic-text">So you have to pay taxes</span></a>
+          <a href="career.html" class="sidebar-topic"><span class="sidebar-topic-icon">💼</span><span class="sidebar-topic-text">Nobody's going to hire you like this</span></a>
         </div>
       </div>
     </div>
   </div>
-
+  <div class="share-bar">
+    <div class="share-text">Found this helpful? <strong>Share it with someone who needs it.</strong></div>
+    <button class="share-btn" id="shareBtn" onclick="handleShare()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg><span id="shareBtnText">Share this page</span></button>
+  </div>
   <div class="next-page">
-    <div>
-      <div class="next-label">Up next — Topic 04</div>
-      <div class="next-title">What College Is Actually Like</div>
-    </div>
+    <div><div class="next-label">Up next — Topic 04</div><div class="next-title">What College Is Actually Like</div></div>
     <a href="college.html" class="next-btn">Read next →</a>
   </div>
-
 </div>
-
+<div class="pf-bubble" id="pfBubble">
+  <div class="pf-window" id="pfWindow">
+    <div class="pf-header"><div class="pf-header-icon">🧭</div><div><div class="pf-header-name">Pathfinder</div><div class="pf-header-status">AI Career Advisor</div></div><div class="pf-header-actions"><button class="pf-icon-btn" id="pfFullscreenBtn">⛶</button><button class="pf-icon-btn" id="pfClose">✕</button></div></div>
+    <div class="pf-messages" id="pfMessages"></div>
+    <div class="pf-suggestions" id="pfSuggestions"><button class="pf-suggestion" onclick="pfSuggest('I have no idea what I want to do')">No idea what I want</button><button class="pf-suggestion" onclick="pfSuggest('I like working with my hands')">I like working with my hands</button><button class="pf-suggestion" onclick="pfSuggest('I want to make good money fast')">Good money, fast</button><button class="pf-suggestion" onclick="pfSuggest('I love tech and computers')">I love tech</button></div>
+    <div class="pf-input-area"><textarea class="pf-input" id="pfInput" placeholder="What are you into? Tell Pathfinder..." rows="1"></textarea><button class="pf-send" id="pfSend">➤</button></div>
+  </div>
+  <button class="pf-btn" id="pfBtn">🧭</button>
+  <div class="pf-label">Pathfinder</div>
+</div>
 <script>
-const canvas=document.getElementById('chrome-canvas');
-const ctx=canvas.getContext('2d');
-let W,H,t=0,mouseX=0.5,mouseY=0.5,smoothX=0.5,smoothY=0.5;
-function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
-resize();window.addEventListener('resize',resize);
-window.addEventListener('mousemove',e=>{mouseX=e.clientX/W;mouseY=e.clientY/H;});
-const points=[
-  {tx:0.0,ty:0.0,r:0.7,h:230,s:80,l:20,pull:0.12},
-  {tx:1.0,ty:0.0,r:0.65,h:260,s:70,l:15,pull:0.08},
-  {tx:0.0,ty:1.0,r:0.7,h:240,s:75,l:12,pull:0.06},
-  {tx:1.0,ty:1.0,r:0.65,h:250,s:65,l:18,pull:0.09},
-  {tx:0.5,ty:0.5,r:0.55,h:220,s:85,l:22,pull:0.15},
-  {tx:0.2,ty:0.7,r:0.5,h:275,s:70,l:16,pull:0.07},
-  {tx:0.8,ty:0.3,r:0.5,h:210,s:90,l:18,pull:0.10},
-];
-const drifts=points.map(()=>({ox:Math.random()*Math.PI*2,oy:Math.random()*Math.PI*2,sx:0.00008+Math.random()*0.00006,sy:0.00007+Math.random()*0.00007,amp:0.06+Math.random()*0.08}));
-function draw(){
-  ctx.clearRect(0,0,W,H);ctx.fillStyle='#06060f';ctx.fillRect(0,0,W,H);
-  t+=0.004;smoothX+=(mouseX-smoothX)*0.035;smoothY+=(mouseY-smoothY)*0.035;
-  points.forEach((p,i)=>{
-    const d=drifts[i];
-    const dx=Math.sin(t*d.sx*1000+d.ox)*d.amp,dy=Math.cos(t*d.sy*1000+d.oy)*d.amp;
-    const mx=(smoothX-p.tx)*p.pull,my=(smoothY-p.ty)*p.pull;
-    const bx=(p.tx+dx+mx)*W,by=(p.ty+dy+my)*H,br=p.r*Math.max(W,H);
-    const pulse=0.75+0.15*Math.sin(t*1.2+i);
-    const g=ctx.createRadialGradient(bx,by,0,bx,by,br);
-    g.addColorStop(0,`hsla(${p.h},${p.s}%,${p.l+8}%,${pulse*0.9})`);
-    g.addColorStop(0.25,`hsla(${p.h+5},${p.s-5}%,${p.l+4}%,${pulse*0.6})`);
-    g.addColorStop(0.55,`hsla(${p.h-5},${p.s-10}%,${p.l}%,${pulse*0.25})`);
-    g.addColorStop(1,`hsla(${p.h},${p.s}%,${p.l-5}%,0)`);
-    ctx.fillStyle=g;ctx.beginPath();ctx.arc(bx,by,br,0,Math.PI*2);ctx.fill();
-  });
-  const cx=smoothX*W,cy=smoothY*H;
-  const cg=ctx.createRadialGradient(cx,cy,0,cx,cy,200);
-  cg.addColorStop(0,'hsla(215,100%,70%,0.12)');
-  cg.addColorStop(0.5,'hsla(230,90%,60%,0.05)');
-  cg.addColorStop(1,'hsla(215,80%,50%,0)');
-  ctx.fillStyle=cg;ctx.beginPath();ctx.arc(cx,cy,200,0,Math.PI*2);ctx.fill();
-  requestAnimationFrame(draw);
-}
-draw();
-function toggleMyth(el){el.classList.toggle('open');}
-function toggleCheck(el){
-  el.classList.toggle('checked');
-  el.querySelector('.check-box').textContent=el.classList.contains('checked')?'✓':'';
-}
-const sections=document.querySelectorAll('.prose-section[id]');
-const navItems=document.querySelectorAll('.sidebar-nav-item');
-window.addEventListener('scroll',()=>{
-  let current='';
-  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-140)current=s.id;});
-  navItems.forEach(item=>{item.classList.remove('active');if(item.getAttribute('href')==='#'+current)item.classList.add('active');});
-});
+const canvas=document.getElementById('chrome-canvas');const ctx=canvas.getContext('2d');let W,H,t=0,mouseX=0.5,mouseY=0.5,smoothX=0.5,smoothY=0.5;function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}resize();window.addEventListener('resize',resize);window.addEventListener('mousemove',e=>{mouseX=e.clientX/W;mouseY=e.clientY/H;});const pts=[{tx:0.0,ty:0.0,r:0.7,h:230,s:80,l:20,pull:0.12},{tx:1.0,ty:0.0,r:0.65,h:260,s:70,l:15,pull:0.08},{tx:0.0,ty:1.0,r:0.7,h:240,s:75,l:12,pull:0.06},{tx:1.0,ty:1.0,r:0.65,h:250,s:65,l:18,pull:0.09},{tx:0.5,ty:0.5,r:0.55,h:220,s:85,l:22,pull:0.15},{tx:0.2,ty:0.7,r:0.5,h:275,s:70,l:16,pull:0.07},{tx:0.8,ty:0.3,r:0.5,h:210,s:90,l:18,pull:0.10}];const drifts=pts.map(()=>({ox:Math.random()*Math.PI*2,oy:Math.random()*Math.PI*2,sx:0.00008+Math.random()*0.00006,sy:0.00007+Math.random()*0.00007,amp:0.06+Math.random()*0.08}));function draw(){ctx.clearRect(0,0,W,H);ctx.fillStyle='#06060f';ctx.fillRect(0,0,W,H);t+=0.004;smoothX+=(mouseX-smoothX)*0.035;smoothY+=(mouseY-smoothY)*0.035;pts.forEach((p,i)=>{const d=drifts[i];const dx=Math.sin(t*d.sx*1000+d.ox)*d.amp,dy=Math.cos(t*d.sy*1000+d.oy)*d.amp;const mx=(smoothX-p.tx)*p.pull,my=(smoothY-p.ty)*p.pull;const bx=(p.tx+dx+mx)*W,by=(p.ty+dy+my)*H,br=p.r*Math.max(W,H);const pulse=0.75+0.15*Math.sin(t*1.2+i);const g=ctx.createRadialGradient(bx,by,0,bx,by,br);g.addColorStop(0,`hsla(${p.h},${p.s}%,${p.l+8}%,${pulse*0.9})`);g.addColorStop(0.25,`hsla(${p.h+5},${p.s-5}%,${p.l+4}%,${pulse*0.6})`);g.addColorStop(0.55,`hsla(${p.h-5},${p.s-10}%,${p.l}%,${pulse*0.25})`);g.addColorStop(1,`hsla(${p.h},${p.s}%,${p.l-5}%,0)`);ctx.fillStyle=g;ctx.beginPath();ctx.arc(bx,by,br,0,Math.PI*2);ctx.fill();});const cx=smoothX*W,cy=smoothY*H;const cg=ctx.createRadialGradient(cx,cy,0,cx,cy,200);cg.addColorStop(0,'hsla(215,100%,70%,0.12)');cg.addColorStop(0.5,'hsla(230,90%,60%,0.05)');cg.addColorStop(1,'hsla(215,80%,50%,0)');ctx.fillStyle=cg;ctx.beginPath();ctx.arc(cx,cy,200,0,Math.PI*2);ctx.fill();requestAnimationFrame(draw);}draw();
+const sections=document.querySelectorAll('.prose-section[id]');const navItems=document.querySelectorAll('.sidebar-nav-item');window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-140)c=s.id;});navItems.forEach(i=>{i.classList.remove('active');if(i.getAttribute('href')==='#'+c)i.classList.add('active');});});
+const obs=new IntersectionObserver(e=>e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+(async function(){try{const res=await fetch('/api/counter?page=counselor',{method:'POST',headers:{'Content-Type':'application/json'}});const data=await res.json();const el=document.getElementById('visitorCount');if(el&&data.count){const target=data.count,start=Math.max(0,target-10),startTime=performance.now();function animate(now){const p=Math.min((now-startTime)/1000,1),ease=1-Math.pow(1-p,3);el.textContent=Math.round(start+(target-start)*ease).toLocaleString();if(p<1)requestAnimationFrame(animate);else el.textContent=target.toLocaleString();}requestAnimationFrame(animate);}}catch(e){const el=document.getElementById('visitorCount');if(el)el.textContent='—';}})();
+async function handleShare(){const btn=document.getElementById('shareBtn'),txt=document.getElementById('shareBtnText');try{if(navigator.share){await navigator.share({title:document.title,text:'Check this out — actually useful stuff school never taught us.',url:window.location.href});}else{await navigator.clipboard.writeText(window.location.href);txt.textContent='Link copied!';btn.classList.add('copied');setTimeout(()=>{txt.textContent='Share this page';btn.classList.remove('copied');},2500);}}catch(e){try{await navigator.clipboard.writeText(window.location.href);txt.textContent='Link copied!';btn.classList.add('copied');setTimeout(()=>{txt.textContent='Share this page';btn.classList.remove('copied');},2500);}catch(e2){}}}
+const SYSTEM=`You are Pathfinder — a friendly, slightly sarcastic AI career advisor. Help students find career paths that don't require a four-year degree. Keep responses SHORT — max 3-4 sentences. Ask ONE follow-up question. Be casual and funny like a cool older sibling.`;
+const pfWindow=document.getElementById('pfWindow'),pfBtn=document.getElementById('pfBtn'),pfClose=document.getElementById('pfClose'),pfFullscreenBtn=document.getElementById('pfFullscreenBtn'),pfMessages=document.getElementById('pfMessages'),pfInput=document.getElementById('pfInput'),pfSend=document.getElementById('pfSend'),pfSuggestions=document.getElementById('pfSuggestions');let pfOpen=false,pfLoading=false,pfStarted=false,pfIsFullscreen=false,pfHistory=[];
+pfBtn.addEventListener('click',()=>{pfOpen=!pfOpen;pfWindow.classList.toggle('open',pfOpen);if(pfOpen&&!pfStarted){pfStarted=true;setTimeout(pfOpeningMessage,400);}if(pfOpen)setTimeout(()=>pfInput.focus(),300);});pfClose.addEventListener('click',()=>{pfOpen=false;pfWindow.classList.remove('open');});pfFullscreenBtn.addEventListener('click',()=>{pfIsFullscreen=!pfIsFullscreen;pfWindow.classList.toggle('fullscreen',pfIsFullscreen);pfFullscreenBtn.textContent=pfIsFullscreen?'⊡':'⛶';});pfInput.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();pfSendMessage();}});pfInput.addEventListener('input',()=>{pfInput.style.height='auto';pfInput.style.height=Math.min(pfInput.scrollHeight,100)+'px';});pfSend.addEventListener('click',pfSendMessage);
+function pfOpeningMessage(){pfTypeMessage("Hey! I'm Pathfinder 🧭 — the career advisor school never gave you.\n\nI help students find paths that don't require a four-year degree.\n\nSo — what's something you actually enjoy doing, even if it seems totally random?");}
+window.pfSuggest=function(text){pfInput.value=text;pfSuggestions.style.display='none';pfSendMessage();};
+async function pfSendMessage(){const text=pfInput.value.trim();if(!text||pfLoading)return;pfSuggestions.style.display='none';pfAppend('user',text);pfInput.value='';pfInput.style.height='auto';pfHistory.push({role:'user',content:text});pfLoading=true;pfSend.disabled=true;const typing=pfShowTyping();try{const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:SYSTEM,messages:pfHistory})});const data=await res.json();const reply=data.content.filter(b=>b.type==='text').map(b=>b.text).join('\n');pfRemoveTyping(typing);pfHistory.push({role:'assistant',content:reply});pfTypeMessage(reply);}catch(e){pfRemoveTyping(typing);pfTypeMessage('Something went wrong — try again! 😅');}pfLoading=false;pfSend.disabled=false;}
+function pfTypeMessage(text){const msg=document.createElement('div');msg.className='pf-msg ai';const av=document.createElement('div');av.className='pf-avatar';av.textContent='🧭';const bub=document.createElement('div');bub.className='pf-bubble-inner typing';msg.appendChild(av);msg.appendChild(bub);pfMessages.appendChild(msg);pfMessages.scrollTop=pfMessages.scrollHeight;let i=0;function type(){if(i<text.length){bub.textContent=text.slice(0,i+1);i++;pfMessages.scrollTop=pfMessages.scrollHeight;setTimeout(type,16);}else{bub.classList.remove('typing');bub.innerHTML=pfFormat(text);pfMessages.scrollTop=pfMessages.scrollHeight;pfInput.focus();}}type();}
+function pfAppend(role,text){const msg=document.createElement('div');msg.className=`pf-msg ${role}`;const av=document.createElement('div');av.className='pf-avatar';av.textContent=role==='ai'?'🧭':'👤';const bub=document.createElement('div');bub.className='pf-bubble-inner';bub.innerHTML=pfFormat(text);msg.appendChild(av);msg.appendChild(bub);pfMessages.appendChild(msg);pfMessages.scrollTop=pfMessages.scrollHeight;}
+function pfFormat(t){return t.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/^[•\-] (.+)$/gm,'<li style="margin-left:1rem;margin-bottom:3px;">$1</li>').replace(/\n\n/g,'<br><br>').replace(/\n/g,'<br>');}
+function pfShowTyping(){const t=document.createElement('div');t.className='pf-typing';t.innerHTML=`<div class="pf-avatar">🧭</div><div class="pf-typing-dots"><span></span><span></span><span></span></div>`;pfMessages.appendChild(t);pfMessages.scrollTop=pfMessages.scrollHeight;return t;}
+function pfRemoveTyping(el){if(el&&el.parentNode)el.parentNode.removeChild(el);}
 </script>
-<script>
-window.PATHFINDER_CONFIG={
-  context:"The user is reading the 'Stuff Your Counselor Forgot' page about FAFSA, financial aid, and college applications. They're thinking about how to pay for education or training. Help them find paths that minimize debt — trade programs, apprenticeships, employer-sponsored training, etc.",
-  opening:"Hey! I'm Pathfinder 🧭 — glad you're thinking about the money side early.\n\nHere's what most counselors skip: there are paths that pay YOU to learn a skill instead of the other way around.\n\nAre you trying to figure out how to pay for college, or open to other training options too?",
-  suggestions:[
-    {label:'Apprenticeships?',text:'How do apprenticeships work and how do I find one?'},
-    {label:'Careers that pay for training',text:'What careers pay for your training or certification?'},
-    {label:'Too much debt, scared',text:'I\'m scared of student loan debt, what are my options?'},
-    {label:'Trade school vs college',text:'Should I go to trade school instead of college?'}
-  ]
-};
-</script>
-<script src="/pathfinder.js"></script>
 </body>
 </html>
