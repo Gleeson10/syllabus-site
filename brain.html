@@ -10,26 +10,32 @@
     body{background:#06060f;font-family:'Inter',sans-serif;overflow-x:hidden;}
     #chrome-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
     .site{position:relative;z-index:1;}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:rgba(8,8,16,0.45);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.07);position:sticky;top:0;z-index:100;}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;background:rgba(8,8,16,0.45);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.07);position:sticky;top:0;z-index:100;}
     .nav-logo{font-family:'Archivo Black',sans-serif;font-size:13px;color:#fff;text-decoration:none;}
     .nav-right{display:flex;align-items:center;gap:1.5rem;}
     .nav-num{font-size:11px;color:rgba(255,255,255,0.2);font-weight:600;letter-spacing:1px;}
     .nav-back{font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s;}
     .nav-back:hover{color:#7EB3FF;}
-    .page-hero{padding:4rem 2.5rem 3rem;border-bottom:1px solid rgba(255,255,255,0.07);}
-    .page-tag{display:inline-block;background:rgba(26,111,255,0.12);color:#6fa8ff;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border:1px solid rgba(26,111,255,0.25);border-radius:2px;margin-bottom:1.5rem;}
-    .page-num{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:0.8rem;}
-    .page-title{font-family:'Archivo Black',sans-serif;font-size:56px;line-height:1;letter-spacing:-2px;color:#fff;margin-bottom:1rem;}
+    .page-hero{padding:3rem 2.5rem 2.5rem;border-bottom:1px solid rgba(255,255,255,0.07);}
+    .page-tag{display:inline-block;background:rgba(26,111,255,0.12);color:#6fa8ff;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border:1px solid rgba(26,111,255,0.25);border-radius:2px;margin-bottom:1rem;}
+    .page-hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:0.8rem;}
+    .page-num{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.2);}
+    .counter-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(26,111,255,0.08);border:1px solid rgba(26,111,255,0.2);border-radius:999px;padding:4px 10px;font-size:11px;color:rgba(255,255,255,0.5);}
+    .counter-dot{width:5px;height:5px;border-radius:50%;background:#22c55e;animation:counterPulse 2s infinite;flex-shrink:0;}
+    @keyframes counterPulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.8);}}
+    .counter-num{font-weight:700;color:#7EB3FF;}
+    .counter-label{color:rgba(255,255,255,0.3);}
+    .page-title{font-family:'Archivo Black',sans-serif;font-size:clamp(36px,7vw,56px);line-height:1;letter-spacing:-2px;color:#fff;margin-bottom:1rem;}
     .page-title .blue{background:linear-gradient(135deg,#1A6FFF 0%,#a78bfa 50%,#22d3ee 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-    .page-intro{font-size:18px;color:rgba(255,255,255,0.55);line-height:1.7;max-width:600px;margin-bottom:1rem;}
+    .page-intro{font-size:17px;color:rgba(255,255,255,0.55);line-height:1.7;max-width:600px;margin-bottom:0.8rem;}
     .page-honest{font-size:13px;color:rgba(255,255,255,0.25);font-style:italic;}
     .two-col{display:grid;grid-template-columns:1fr 260px;gap:0;align-items:stretch;}
-    .main-content{padding:0 2.5rem 6rem;border-right:1px solid rgba(255,255,255,0.06);}
-    .sidebar-outer{padding:2rem 1.5rem;position:relative;}
+    .main-content{padding:0 2.5rem 4rem;border-right:1px solid rgba(255,255,255,0.06);}
+    .sidebar-outer{padding:2rem 1.5rem;}
     .sidebar{position:sticky;top:80px;background:rgba(18,18,30,0.88);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.09);border-radius:10px;padding:1.5rem;}
     .sidebar-section{margin-bottom:1.2rem;}
     .sidebar-section:last-child{margin-bottom:0;}
-    .sidebar-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:0.7rem;padding-left:4px;}
+    .sidebar-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:0.7rem;padding-left:4px;}
     .sidebar-nav-item{display:block;font-size:12px;color:rgba(255,255,255,0.35);padding:5px 8px;border-left:2px solid transparent;text-decoration:none;transition:all 0.15s;margin-bottom:2px;border-radius:0 3px 3px 0;}
     .sidebar-nav-item:hover{color:#7EB3FF;border-left-color:rgba(26,111,255,0.5);background:rgba(26,111,255,0.05);}
     .sidebar-nav-item.active{color:#7EB3FF;border-left-color:#1A6FFF;background:rgba(26,111,255,0.08);}
@@ -41,7 +47,7 @@
     .sidebar-topic-text{font-size:11px;color:rgba(255,255,255,0.35);line-height:1.4;}
     .sidebar-topic:hover .sidebar-topic-text{color:rgba(255,255,255,0.65);}
     .sidebar-topic.current .sidebar-topic-text{color:#7EB3FF;}
-    .prose-section{padding:3rem 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+    .prose-section{padding:2.5rem 0;border-bottom:1px solid rgba(255,255,255,0.06);}
     .prose-section:last-child{border-bottom:none;}
     .prose-eyebrow{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:0.8rem;}
     .prose-title{font-family:'Archivo Black',sans-serif;font-size:24px;color:#fff;margin-bottom:1rem;letter-spacing:-0.3px;}
@@ -78,10 +84,69 @@
     .check-item.checked .check-box{background:#22c55e;border-color:#22c55e;}
     .check-text{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.5;}
     .check-item.checked .check-text{color:rgba(255,255,255,0.3);text-decoration:line-through;}
+    .share-bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:1.5rem 2.5rem;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);}
+    .share-text{font-size:14px;color:rgba(255,255,255,0.45);}
+    .share-text strong{color:#fff;font-weight:600;}
+    .share-btn{display:flex;align-items:center;gap:8px;background:rgba(26,111,255,0.1);border:1px solid rgba(26,111,255,0.25);color:#7EB3FF;font-size:13px;font-weight:600;padding:10px 20px;border-radius:8px;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;}
+    .share-btn:hover{background:rgba(26,111,255,0.18);border-color:rgba(26,111,255,0.45);}
+    .share-btn.copied{background:rgba(34,197,94,0.1);border-color:rgba(34,197,94,0.3);color:#86efac;}
     .next-page{margin:0 2.5rem 3rem;padding:2rem;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:4px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
     .next-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:0.4rem;}
     .next-title{font-family:'Archivo Black',sans-serif;font-size:18px;color:#fff;letter-spacing:-0.3px;}
     .next-btn{background:linear-gradient(135deg,#1A6FFF,#7B6FFF);color:#fff;font-size:13px;font-weight:600;padding:11px 22px;border-radius:2px;cursor:pointer;white-space:nowrap;text-decoration:none;}
+    .fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
+    .fade-in.visible{opacity:1;transform:translateY(0);}
+    @media(max-width:768px){
+      .two-col{grid-template-columns:1fr;}
+      .sidebar-outer{display:none;}
+      .main-content{padding:0 1.2rem 3rem;border-right:none;}
+      .page-hero{padding:2rem 1.2rem 2rem;}
+      .nav{padding:0.9rem 1.2rem;}
+      .share-bar{padding:1.2rem 1.2rem;}
+      .next-page{margin:0 1.2rem 2rem;}
+    }
+    /* PATHFINDER */
+    .pf-bubble{position:fixed;bottom:2rem;right:2rem;z-index:999;}
+    .pf-btn{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#1A6FFF,#7B6FFF);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 4px 24px rgba(26,111,255,0.45);transition:transform 0.2s;}
+    .pf-btn:hover{transform:scale(1.08);}
+    .pf-label{position:absolute;right:64px;top:50%;transform:translateY(-50%);background:rgba(18,18,30,0.95);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.1);color:#fff;font-size:12px;font-weight:700;padding:6px 12px;border-radius:6px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity 0.2s;font-family:'Archivo Black',sans-serif;}
+    .pf-bubble:hover .pf-label{opacity:1;}
+    .pf-window{position:fixed;bottom:5.5rem;right:2rem;width:390px;height:560px;background:rgba(10,10,20,0.97);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.1);border-radius:18px;box-shadow:0 24px 64px rgba(0,0,0,0.6);z-index:998;display:flex;flex-direction:column;overflow:hidden;transform:scale(0.9) translateY(20px);opacity:0;pointer-events:none;transition:transform 0.25s ease,opacity 0.25s ease,width 0.3s,height 0.3s,border-radius 0.3s;}
+    .pf-window.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all;}
+    .pf-window.fullscreen{width:calc(100vw - 4rem);height:calc(100vh - 4rem);}
+    .pf-header{padding:1rem 1.2rem;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;gap:10px;flex-shrink:0;background:rgba(18,18,30,0.5);}
+    .pf-header-icon{width:36px;height:36px;background:linear-gradient(135deg,#1A6FFF,#7B6FFF);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
+    .pf-header-name{font-family:'Archivo Black',sans-serif;font-size:14px;color:#fff;}
+    .pf-header-status{font-size:11px;color:rgba(255,255,255,0.35);display:flex;align-items:center;gap:4px;margin-top:1px;}
+    .pf-header-status::before{content:'';width:6px;height:6px;border-radius:50%;background:#22c55e;display:inline-block;}
+    .pf-header-actions{margin-left:auto;display:flex;gap:6px;}
+    .pf-icon-btn{background:none;border:none;color:rgba(255,255,255,0.3);font-size:15px;cursor:pointer;padding:5px;line-height:1;transition:color 0.15s;border-radius:4px;}
+    .pf-icon-btn:hover{color:#fff;}
+    .pf-messages{flex:1;overflow-y:auto;padding:1.2rem;display:flex;flex-direction:column;gap:14px;scrollbar-width:thin;}
+    .pf-msg{display:flex;gap:8px;align-items:flex-start;max-width:85%;}
+    .pf-msg.user{align-self:flex-end;flex-direction:row-reverse;max-width:80%;}
+    .pf-avatar{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;background:linear-gradient(135deg,#1A6FFF,#7B6FFF);margin-top:2px;}
+    .pf-msg.user .pf-avatar{background:rgba(255,255,255,0.1);}
+    .pf-bubble-inner{font-size:13px;line-height:1.65;padding:10px 14px;border-radius:14px;font-family:'Inter',sans-serif;}
+    .pf-msg.ai .pf-bubble-inner{background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.85);border-radius:4px 14px 14px 14px;border:1px solid rgba(255,255,255,0.07);}
+    .pf-msg.user .pf-bubble-inner{background:linear-gradient(135deg,#1A6FFF,#7B6FFF);color:#fff;border-radius:14px 4px 14px 14px;}
+    .pf-bubble-inner.typing::after{content:'▋';animation:blink 0.7s infinite;color:#7EB3FF;font-size:11px;margin-left:1px;}
+    @keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+    .pf-typing{display:flex;gap:8px;align-items:center;}
+    .pf-typing-dots{display:flex;gap:4px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);padding:10px 14px;border-radius:4px 14px 14px 14px;}
+    .pf-typing-dots span{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.3);animation:pfDot 1.2s infinite;}
+    .pf-typing-dots span:nth-child(2){animation-delay:0.2s;}
+    .pf-typing-dots span:nth-child(3){animation-delay:0.4s;}
+    @keyframes pfDot{0%,60%,100%{opacity:0.3;transform:translateY(0);}30%{opacity:1;transform:translateY(-3px);}}
+    .pf-suggestions{display:flex;flex-wrap:wrap;gap:6px;padding:0 1rem 0.8rem;flex-shrink:0;}
+    .pf-suggestion{background:rgba(26,111,255,0.08);border:1px solid rgba(26,111,255,0.2);color:#7EB3FF;font-size:11px;font-weight:500;padding:5px 11px;border-radius:999px;cursor:pointer;font-family:'Inter',sans-serif;transition:background 0.15s;white-space:nowrap;}
+    .pf-suggestion:hover{background:rgba(26,111,255,0.18);}
+    .pf-input-area{padding:0.8rem 1rem;border-top:1px solid rgba(255,255,255,0.07);display:flex;gap:8px;align-items:flex-end;flex-shrink:0;}
+    .pf-input{flex:1;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:9px 13px;font-size:13px;color:#fff;font-family:'Inter',sans-serif;resize:none;outline:none;line-height:1.5;max-height:100px;transition:border-color 0.15s;}
+    .pf-input::placeholder{color:rgba(255,255,255,0.22);}
+    .pf-input:focus{border-color:rgba(26,111,255,0.5);}
+    .pf-send{width:36px;height:36px;background:linear-gradient(135deg,#1A6FFF,#7B6FFF);border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;color:#fff;transition:opacity 0.15s;}
+    .pf-send:disabled{opacity:0.35;cursor:not-allowed;}
   </style>
 </head>
 <body>
@@ -97,7 +162,14 @@
 
   <div class="page-hero">
     <div class="page-tag">Mental Health</div>
-    <div class="page-num">Topic 01</div>
+    <div class="page-hero-top">
+      <div class="page-num">Topic 01</div>
+      <div class="counter-badge">
+        <span class="counter-dot"></span>
+        <span class="counter-num" id="visitorCount">—</span>
+        <span class="counter-label">people have read this</span>
+      </div>
+    </div>
     <h1 class="page-title">Your brain is<br><span class="blue">not broken.</span></h1>
     <p class="page-intro">Anxiety, burnout, stress spirals — school acted like these didn't exist. Here's what's actually happening in your head, and what to do about it.</p>
     <p class="page-honest">*(this is not a therapy replacement. but it's a start.)*</p>
@@ -105,7 +177,6 @@
 
   <div class="two-col">
     <div class="main-content">
-
       <div class="prose-section" id="s1">
         <div class="prose-eyebrow">First things first</div>
         <div class="prose-title">Everyone is struggling. Nobody says it.</div>
@@ -123,35 +194,19 @@
       <div class="prose-section" id="s2">
         <div class="prose-eyebrow">Let's clear some things up</div>
         <div class="prose-title">Things people get wrong about anxiety.</div>
-        <div class="prose-body">
-          <p>There's a lot of bad advice floating around. Click each one to get the actual truth.</p>
-        </div>
+        <div class="prose-body"><p>There's a lot of bad advice floating around. Click each one to get the actual truth.</p></div>
         <div class="myths">
-          <div class="myth" onclick="toggleMyth(this)">
-            <div class="myth-q">"Just calm down." <span class="icon">+</span></div>
-            <div class="myth-a">Your nervous system doesn't have an off switch. When anxiety kicks in, your brain is genuinely convinced something is wrong — it's flooding your body with adrenaline. You can't logic your way out of a biological response. What you CAN do is slow your breathing, which actually signals your nervous system to stand down. Try 4 counts in, hold 4, out 6. It works.</div>
-          </div>
-          <div class="myth" onclick="toggleMyth(this)">
-            <div class="myth-q">"Anxiety means you're weak." <span class="icon">+</span></div>
-            <div class="myth-a">Anxiety is your brain being overprotective. It evolved to keep you alive. The problem isn't that you have it — it's that your brain can't tell the difference between a deadline and a tiger. Some of the most high-functioning people you know deal with anxiety every single day.</div>
-          </div>
-          <div class="myth" onclick="toggleMyth(this)">
-            <div class="myth-q">"If you're really struggling, you'd know." <span class="icon">+</span></div>
-            <div class="myth-a">Burnout and anxiety often sneak up slowly. You might just feel tired all the time, lose interest in things you used to enjoy, get irritated easily, or have trouble concentrating. None of that screams "mental health issue" — but that's often exactly what it is.</div>
-          </div>
-          <div class="myth" onclick="toggleMyth(this)">
-            <div class="myth-q">"Therapy is for people with serious problems." <span class="icon">+</span></div>
-            <div class="myth-a">Therapy is just talking to someone trained to help you understand your own brain. You don't need to be in crisis to benefit from it. Think of it like going to the gym — you don't wait until you can't walk to start exercising. Most schools offer free or low-cost counseling. It's worth trying.</div>
-          </div>
+          <div class="myth" onclick="toggleMyth(this)"><div class="myth-q">"Just calm down." <span class="icon">+</span></div><div class="myth-a">Your nervous system doesn't have an off switch. When anxiety kicks in, your brain is genuinely convinced something is wrong. You can't logic your way out of a biological response. What you CAN do is slow your breathing — try 4 counts in, hold 4, out 6. It actually works.</div></div>
+          <div class="myth" onclick="toggleMyth(this)"><div class="myth-q">"Anxiety means you're weak." <span class="icon">+</span></div><div class="myth-a">Anxiety is your brain being overprotective. It evolved to keep you alive. The problem isn't that you have it — it's that your brain can't tell the difference between a deadline and a tiger. Some of the most high-functioning people you know deal with anxiety every single day.</div></div>
+          <div class="myth" onclick="toggleMyth(this)"><div class="myth-q">"If you're really struggling, you'd know." <span class="icon">+</span></div><div class="myth-a">Burnout and anxiety often sneak up slowly. You might just feel tired all the time, lose interest in things you used to enjoy, or have trouble concentrating. None of that screams "mental health issue" — but that's often exactly what it is.</div></div>
+          <div class="myth" onclick="toggleMyth(this)"><div class="myth-q">"Therapy is for people with serious problems." <span class="icon">+</span></div><div class="myth-a">Therapy is just talking to someone trained to help you understand your own brain. You don't need to be in crisis to benefit from it. Most schools offer free or low-cost counseling. It's worth trying.</div></div>
         </div>
       </div>
 
       <div class="prose-section" id="s3">
         <div class="prose-eyebrow">Check yourself</div>
         <div class="prose-title">Where are you at right now?</div>
-        <div class="prose-body">
-          <p>Burnout exists on a spectrum. Click where you're at today — no judgment, no wrong answer.</p>
-        </div>
+        <div class="prose-body"><p>Burnout exists on a spectrum. Click where you're at today — no judgment.</p></div>
         <div class="scale-wrap">
           <div class="scale-label">How mentally drained do you feel on a scale of 1–5?</div>
           <div class="scale">
@@ -169,50 +224,32 @@
         <div class="prose-eyebrow">What actually helps</div>
         <div class="prose-title">Real strategies. Not "just breathe."</div>
         <div class="prose-body">
-          <p>Most mental health advice sounds like it was written by someone who has never actually been anxious. Here's what the research actually says works — and why.</p>
-          <p><strong>Name what you're feeling.</strong> This sounds ridiculous but it genuinely works. When you label an emotion — "I'm feeling anxious right now" — it activates a different part of your brain and reduces the intensity of the feeling. You can just call it being honest with yourself.</p>
-          <p><strong>Move your body.</strong> Not to lose weight. Not to be healthy. Just to discharge the nervous energy that anxiety builds up. A 10-minute walk outside is one of the most evidence-backed anxiety reducers there is. It sounds too simple to work. It works.</p>
-          <p><strong>Stop catastrophizing by asking one question:</strong> "What's the actual worst realistic outcome here?" Not the spiral version — the real version. Most of the time, the real worst case is survivable. Your brain will thank you for the reality check.</p>
-          <p><strong>Sleep.</strong> This one is boring but it's not optional. Sleep deprivation and anxiety feed each other in a loop. If you're chronically anxious, look at your sleep first before anything else.</p>
+          <p><strong>Name what you're feeling.</strong> When you label an emotion — "I'm feeling anxious right now" — it activates a different part of your brain and reduces the intensity. Psychologists call it "affect labeling." You can just call it being honest with yourself.</p>
+          <p><strong>Move your body.</strong> Not to lose weight. Just to discharge the nervous energy anxiety builds up. A 10-minute walk outside is one of the most evidence-backed anxiety reducers there is.</p>
+          <p><strong>Stop catastrophizing.</strong> Ask yourself: "What's the actual worst realistic outcome here?" Not the spiral version — the real version. Most of the time, the real worst case is survivable.</p>
+          <p><strong>Sleep.</strong> Sleep deprivation and anxiety feed each other in a loop. If you're chronically anxious, look at your sleep first.</p>
         </div>
         <div class="callout">
           <div class="callout-label">The thing nobody wants to hear</div>
-          <div class="callout-text">If your anxiety or burnout is significantly affecting your daily life — school, relationships, getting out of bed — please talk to someone. Your school counselor, a therapist, a trusted adult, or a crisis line. This page is a starting point, not a substitute for real support.</div>
+          <div class="callout-text">If your anxiety is significantly affecting your daily life, please talk to someone. Your school counselor, a therapist, a trusted adult, or a crisis line. This page is a starting point, not a substitute for real support.</div>
         </div>
       </div>
 
       <div class="prose-section" id="s5">
         <div class="prose-eyebrow">Before you go</div>
         <div class="prose-title">A small starter kit. Check off what you'll try.</div>
-        <div class="prose-body">
-          <p>You don't have to do all of this. Pick one thing and actually do it this week.</p>
-        </div>
+        <div class="prose-body"><p>Pick one thing and actually do it this week.</p></div>
         <div class="checklist">
-          <div class="check-item" onclick="toggleCheck(this)">
-            <div class="check-box"></div>
-            <div class="check-text">Try the 4-4-6 breathing technique next time you feel anxious (4 in, hold 4, 6 out)</div>
-          </div>
-          <div class="check-item" onclick="toggleCheck(this)">
-            <div class="check-box"></div>
-            <div class="check-text">Go for a 10-minute walk outside — no phone, no music, just outside</div>
-          </div>
-          <div class="check-item" onclick="toggleCheck(this)">
-            <div class="check-box"></div>
-            <div class="check-text">Write down one thing that's stressing you out and ask "what's the realistic worst case?"</div>
-          </div>
-          <div class="check-item" onclick="toggleCheck(this)">
-            <div class="check-box"></div>
-            <div class="check-text">Look up whether your school offers free counseling (most do, almost nobody uses it)</div>
-          </div>
-          <div class="check-item" onclick="toggleCheck(this)">
-            <div class="check-box"></div>
-            <div class="check-text">Tell one person how you're actually doing — not "fine," actually doing</div>
-          </div>
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-text">Try the 4-4-6 breathing technique next time you feel anxious</div></div>
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-text">Go for a 10-minute walk outside — no phone, no music</div></div>
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-text">Write down one stressor and ask "what's the realistic worst case?"</div></div>
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-text">Look up whether your school offers free counseling</div></div>
+          <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><div class="check-text">Tell one person how you're actually doing — not "fine," actually doing</div></div>
         </div>
       </div>
-
     </div>
 
+    <!-- SIDEBAR -->
     <div class="sidebar-outer">
       <div class="sidebar">
         <div class="sidebar-section">
@@ -226,35 +263,27 @@
         <div class="sidebar-divider"></div>
         <div class="sidebar-section">
           <div class="sidebar-label">All six topics</div>
-          <a href="brain.html" class="sidebar-topic current">
-            <span class="sidebar-topic-icon">🧠</span>
-            <span class="sidebar-topic-text">Your brain is not broken</span>
-          </a>
-          <a href="conversations.html" class="sidebar-topic">
-            <span class="sidebar-topic-icon">💬</span>
-            <span class="sidebar-topic-text">How to have a hard conversation</span>
-          </a>
-          <a href="counselor.html" class="sidebar-topic">
-            <span class="sidebar-topic-icon">🎓</span>
-            <span class="sidebar-topic-text">The stuff your counselor forgot</span>
-          </a>
-          <a href="college.html" class="sidebar-topic">
-            <span class="sidebar-topic-icon">🏠</span>
-            <span class="sidebar-topic-text">What college is actually like</span>
-          </a>
-          <a href="taxes.html" class="sidebar-topic">
-            <span class="sidebar-topic-icon">💸</span>
-            <span class="sidebar-topic-text">So you have to pay taxes</span>
-          </a>
-          <a href="career.html" class="sidebar-topic">
-            <span class="sidebar-topic-icon">💼</span>
-            <span class="sidebar-topic-text">Nobody's going to hire you like this</span>
-          </a>
+          <a href="brain.html" class="sidebar-topic current"><span class="sidebar-topic-icon">🧠</span><span class="sidebar-topic-text">Your brain is not broken</span></a>
+          <a href="conversations.html" class="sidebar-topic"><span class="sidebar-topic-icon">💬</span><span class="sidebar-topic-text">How to have a hard conversation</span></a>
+          <a href="counselor.html" class="sidebar-topic"><span class="sidebar-topic-icon">🎓</span><span class="sidebar-topic-text">The stuff your counselor forgot</span></a>
+          <a href="college.html" class="sidebar-topic"><span class="sidebar-topic-icon">🏠</span><span class="sidebar-topic-text">What college is actually like</span></a>
+          <a href="taxes.html" class="sidebar-topic"><span class="sidebar-topic-icon">💸</span><span class="sidebar-topic-text">So you have to pay taxes</span></a>
+          <a href="career.html" class="sidebar-topic"><span class="sidebar-topic-icon">💼</span><span class="sidebar-topic-text">Nobody's going to hire you like this</span></a>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- SHARE BAR -->
+  <div class="share-bar">
+    <div class="share-text">Found this helpful? <strong>Share it with someone who needs it.</strong></div>
+    <button class="share-btn" id="shareBtn" onclick="handleShare()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      <span id="shareBtnText">Share this page</span>
+    </button>
+  </div>
+
+  <!-- NEXT PAGE -->
   <div class="next-page">
     <div>
       <div class="next-label">Up next — Topic 02</div>
@@ -262,7 +291,33 @@
     </div>
     <a href="conversations.html" class="next-btn">Read next →</a>
   </div>
+</div>
 
+<!-- PATHFINDER -->
+<div class="pf-bubble" id="pfBubble">
+  <div class="pf-window" id="pfWindow">
+    <div class="pf-header">
+      <div class="pf-header-icon">🧭</div>
+      <div><div class="pf-header-name">Pathfinder</div><div class="pf-header-status">AI Career Advisor</div></div>
+      <div class="pf-header-actions">
+        <button class="pf-icon-btn" id="pfFullscreenBtn" title="Fullscreen">⛶</button>
+        <button class="pf-icon-btn" id="pfClose" title="Close">✕</button>
+      </div>
+    </div>
+    <div class="pf-messages" id="pfMessages"></div>
+    <div class="pf-suggestions" id="pfSuggestions">
+      <button class="pf-suggestion" onclick="pfSuggest('I have no idea what I want to do')">No idea what I want</button>
+      <button class="pf-suggestion" onclick="pfSuggest('I like working with my hands')">I like working with my hands</button>
+      <button class="pf-suggestion" onclick="pfSuggest('I want to make good money fast')">Good money, fast</button>
+      <button class="pf-suggestion" onclick="pfSuggest('I love tech and computers')">I love tech</button>
+    </div>
+    <div class="pf-input-area">
+      <textarea class="pf-input" id="pfInput" placeholder="What are you into? Tell Pathfinder..." rows="1"></textarea>
+      <button class="pf-send" id="pfSend">➤</button>
+    </div>
+  </div>
+  <button class="pf-btn" id="pfBtn">🧭</button>
+  <div class="pf-label">Pathfinder</div>
 </div>
 
 <script>
@@ -270,23 +325,19 @@ const canvas=document.getElementById('chrome-canvas');
 const ctx=canvas.getContext('2d');
 let W,H,t=0,mouseX=0.5,mouseY=0.5,smoothX=0.5,smoothY=0.5;
 function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
-resize();
-window.addEventListener('resize',resize);
+resize();window.addEventListener('resize',resize);
 window.addEventListener('mousemove',e=>{mouseX=e.clientX/W;mouseY=e.clientY/H;});
-const points=[
-  {tx:0.0,ty:0.0,r:0.7,h:230,s:80,l:20,pull:0.12},
-  {tx:1.0,ty:0.0,r:0.65,h:260,s:70,l:15,pull:0.08},
-  {tx:0.0,ty:1.0,r:0.7,h:240,s:75,l:12,pull:0.06},
-  {tx:1.0,ty:1.0,r:0.65,h:250,s:65,l:18,pull:0.09},
-  {tx:0.5,ty:0.5,r:0.55,h:220,s:85,l:22,pull:0.15},
-  {tx:0.2,ty:0.7,r:0.5,h:275,s:70,l:16,pull:0.07},
+const pts=[
+  {tx:0.0,ty:0.0,r:0.7,h:230,s:80,l:20,pull:0.12},{tx:1.0,ty:0.0,r:0.65,h:260,s:70,l:15,pull:0.08},
+  {tx:0.0,ty:1.0,r:0.7,h:240,s:75,l:12,pull:0.06},{tx:1.0,ty:1.0,r:0.65,h:250,s:65,l:18,pull:0.09},
+  {tx:0.5,ty:0.5,r:0.55,h:220,s:85,l:22,pull:0.15},{tx:0.2,ty:0.7,r:0.5,h:275,s:70,l:16,pull:0.07},
   {tx:0.8,ty:0.3,r:0.5,h:210,s:90,l:18,pull:0.10},
 ];
-const drifts=points.map(()=>({ox:Math.random()*Math.PI*2,oy:Math.random()*Math.PI*2,sx:0.00008+Math.random()*0.00006,sy:0.00007+Math.random()*0.00007,amp:0.06+Math.random()*0.08}));
+const drifts=pts.map(()=>({ox:Math.random()*Math.PI*2,oy:Math.random()*Math.PI*2,sx:0.00008+Math.random()*0.00006,sy:0.00007+Math.random()*0.00007,amp:0.06+Math.random()*0.08}));
 function draw(){
   ctx.clearRect(0,0,W,H);ctx.fillStyle='#06060f';ctx.fillRect(0,0,W,H);
   t+=0.004;smoothX+=(mouseX-smoothX)*0.035;smoothY+=(mouseY-smoothY)*0.035;
-  points.forEach((p,i)=>{
+  pts.forEach((p,i)=>{
     const d=drifts[i];
     const dx=Math.sin(t*d.sx*1000+d.ox)*d.amp,dy=Math.cos(t*d.sy*1000+d.oy)*d.amp;
     const mx=(smoothX-p.tx)*p.pull,my=(smoothY-p.ty)*p.pull;
@@ -301,16 +352,15 @@ function draw(){
   });
   const cx=smoothX*W,cy=smoothY*H;
   const cg=ctx.createRadialGradient(cx,cy,0,cx,cy,200);
-  cg.addColorStop(0,'hsla(215,100%,70%,0.12)');
-  cg.addColorStop(0.5,'hsla(230,90%,60%,0.05)');
-  cg.addColorStop(1,'hsla(215,80%,50%,0)');
+  cg.addColorStop(0,'hsla(215,100%,70%,0.12)');cg.addColorStop(0.5,'hsla(230,90%,60%,0.05)');cg.addColorStop(1,'hsla(215,80%,50%,0)');
   ctx.fillStyle=cg;ctx.beginPath();ctx.arc(cx,cy,200,0,Math.PI*2);ctx.fill();
   requestAnimationFrame(draw);
 }
 draw();
+
 function toggleMyth(el){el.classList.toggle('open');}
 const scaleResponses={
-  1:{text:"You're doing great. Seriously. Keep whatever you're doing going.",color:'#86efac'},
+  1:{text:"You're doing great. Keep whatever you're doing going.",color:'#86efac'},
   2:{text:"Totally normal. A good night's sleep and some fresh air can go a long way.",color:'#86efac'},
   3:{text:"Time to pay attention. Pick one thing from the list below and actually do it.",color:'#fbbf24'},
   4:{text:"You're running on fumes. Please take this seriously — rest is not laziness.",color:'#fb923c'},
@@ -320,8 +370,7 @@ function selectScale(el,n){
   document.querySelectorAll('.scale-item').forEach(i=>i.classList.remove('active'));
   el.classList.add('active');
   const r=document.getElementById('scaleResult');
-  r.textContent=scaleResponses[n].text;
-  r.style.color=scaleResponses[n].color;
+  r.textContent=scaleResponses[n].text;r.style.color=scaleResponses[n].color;
 }
 function toggleCheck(el){
   el.classList.toggle('checked');
@@ -334,19 +383,77 @@ window.addEventListener('scroll',()=>{
   sections.forEach(s=>{if(window.scrollY>=s.offsetTop-140)current=s.id;});
   navItems.forEach(item=>{item.classList.remove('active');if(item.getAttribute('href')==='#'+current)item.classList.add('active');});
 });
+const obs=new IntersectionObserver(e=>e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+/* VISITOR COUNTER */
+(async function(){
+  try{
+    const res=await fetch('/api/counter?page=brain',{method:'POST',headers:{'Content-Type':'application/json'}});
+    const data=await res.json();
+    const el=document.getElementById('visitorCount');
+    if(el&&data.count){
+      const target=data.count,start=Math.max(0,target-10),startTime=performance.now();
+      function animate(now){const p=Math.min((now-startTime)/1000,1),ease=1-Math.pow(1-p,3);el.textContent=Math.round(start+(target-start)*ease).toLocaleString();if(p<1)requestAnimationFrame(animate);else el.textContent=target.toLocaleString();}
+      requestAnimationFrame(animate);
+    }
+  }catch(e){const el=document.getElementById('visitorCount');if(el)el.textContent='—';}
+})();
+
+/* SHARE */
+async function handleShare(){
+  const btn=document.getElementById('shareBtn'),txt=document.getElementById('shareBtnText');
+  try{
+    if(navigator.share){await navigator.share({title:document.title,text:'Check this out — actually useful stuff school never taught us.',url:window.location.href});}
+    else{await navigator.clipboard.writeText(window.location.href);txt.textContent='Link copied!';btn.classList.add('copied');setTimeout(()=>{txt.textContent='Share this page';btn.classList.remove('copied');},2500);}
+  }catch(e){
+    try{await navigator.clipboard.writeText(window.location.href);txt.textContent='Link copied!';btn.classList.add('copied');setTimeout(()=>{txt.textContent='Share this page';btn.classList.remove('copied');},2500);}catch(e2){}
+  }
+}
+
+/* PATHFINDER */
+const SYSTEM=`You are Pathfinder — a friendly, slightly sarcastic AI career advisor on a website called "This Wasn't On The Syllabus". Help students find career paths that don't require a four-year degree. Keep responses SHORT — max 3-4 sentences. Ask ONE follow-up question. Be casual and funny like a cool older sibling.`;
+const pfWindow=document.getElementById('pfWindow'),pfBtn=document.getElementById('pfBtn'),pfClose=document.getElementById('pfClose'),pfFullscreenBtn=document.getElementById('pfFullscreenBtn'),pfMessages=document.getElementById('pfMessages'),pfInput=document.getElementById('pfInput'),pfSend=document.getElementById('pfSend'),pfSuggestions=document.getElementById('pfSuggestions');
+let pfOpen=false,pfLoading=false,pfStarted=false,pfIsFullscreen=false,pfHistory=[];
+pfBtn.addEventListener('click',()=>{pfOpen=!pfOpen;pfWindow.classList.toggle('open',pfOpen);if(pfOpen&&!pfStarted){pfStarted=true;setTimeout(pfOpeningMessage,400);}if(pfOpen)setTimeout(()=>pfInput.focus(),300);});
+pfClose.addEventListener('click',()=>{pfOpen=false;pfWindow.classList.remove('open');});
+pfFullscreenBtn.addEventListener('click',()=>{pfIsFullscreen=!pfIsFullscreen;pfWindow.classList.toggle('fullscreen',pfIsFullscreen);pfFullscreenBtn.textContent=pfIsFullscreen?'⊡':'⛶';});
+pfInput.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();pfSendMessage();}});
+pfInput.addEventListener('input',()=>{pfInput.style.height='auto';pfInput.style.height=Math.min(pfInput.scrollHeight,100)+'px';});
+pfSend.addEventListener('click',pfSendMessage);
+function pfOpeningMessage(){pfTypeMessage("Hey! I'm Pathfinder 🧭 — the career advisor school never gave you.\n\nI help students find paths that don't require a four-year degree.\n\nSo — what's something you actually enjoy doing, even if it seems totally random?");}
+window.pfSuggest=function(text){pfInput.value=text;pfSuggestions.style.display='none';pfSendMessage();};
+async function pfSendMessage(){
+  const text=pfInput.value.trim();if(!text||pfLoading)return;
+  pfSuggestions.style.display='none';pfAppend('user',text);pfInput.value='';pfInput.style.height='auto';
+  pfHistory.push({role:'user',content:text});pfLoading=true;pfSend.disabled=true;
+  const typing=pfShowTyping();
+  try{
+    const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:SYSTEM,messages:pfHistory})});
+    const data=await res.json();
+    const reply=data.content.filter(b=>b.type==='text').map(b=>b.text).join('\n');
+    pfRemoveTyping(typing);pfHistory.push({role:'assistant',content:reply});pfTypeMessage(reply);
+  }catch(e){pfRemoveTyping(typing);pfTypeMessage('Something went wrong — try again! 😅');}
+  pfLoading=false;pfSend.disabled=false;
+}
+function pfTypeMessage(text){
+  const msg=document.createElement('div');msg.className='pf-msg ai';
+  const av=document.createElement('div');av.className='pf-avatar';av.textContent='🧭';
+  const bub=document.createElement('div');bub.className='pf-bubble-inner typing';
+  msg.appendChild(av);msg.appendChild(bub);pfMessages.appendChild(msg);pfMessages.scrollTop=pfMessages.scrollHeight;
+  let i=0;
+  function type(){if(i<text.length){bub.textContent=text.slice(0,i+1);i++;pfMessages.scrollTop=pfMessages.scrollHeight;setTimeout(type,16);}else{bub.classList.remove('typing');bub.innerHTML=pfFormat(text);pfMessages.scrollTop=pfMessages.scrollHeight;pfInput.focus();}}
+  type();
+}
+function pfAppend(role,text){
+  const msg=document.createElement('div');msg.className=`pf-msg ${role}`;
+  const av=document.createElement('div');av.className='pf-avatar';av.textContent=role==='ai'?'🧭':'👤';
+  const bub=document.createElement('div');bub.className='pf-bubble-inner';bub.innerHTML=pfFormat(text);
+  msg.appendChild(av);msg.appendChild(bub);pfMessages.appendChild(msg);pfMessages.scrollTop=pfMessages.scrollHeight;
+}
+function pfFormat(t){return t.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/^[•\-] (.+)$/gm,'<li style="margin-left:1rem;margin-bottom:3px;">$1</li>').replace(/\n\n/g,'<br><br>').replace(/\n/g,'<br>');}
+function pfShowTyping(){const t=document.createElement('div');t.className='pf-typing';t.innerHTML=`<div class="pf-avatar">🧭</div><div class="pf-typing-dots"><span></span><span></span><span></span></div>`;pfMessages.appendChild(t);pfMessages.scrollTop=pfMessages.scrollHeight;return t;}
+function pfRemoveTyping(el){if(el&&el.parentNode)el.parentNode.removeChild(el);}
 </script>
-<script>
-window.PATHFINDER_CONFIG={
-  context:"The user is reading the 'Your Brain Is Not Broken' page about mental health, anxiety, and burnout. Tie career advice to emotional wellbeing — suggest careers that offer autonomy, work-life balance, and low-stress environments when relevant.",
-  opening:"Hey! I'm Pathfinder 🧭 — glad you're here reading about mental health.\n\nYour wellbeing matters when picking a career too. Some paths are way less stressful than others.\n\nWhat kind of environment do you thrive in — busy and social, or calm and independent?",
-  suggestions:[
-    {label:'I get overwhelmed easily',text:'I get overwhelmed easily and need a calm job'},
-    {label:'I want to help people',text:'I want a career where I help people feel better'},
-    {label:'I need flexibility',text:'I need a flexible schedule for my mental health'},
-    {label:'What jobs have low stress?',text:'What careers have good work-life balance?'}
-  ]
-};
-</script>
-<script src="/pathfinder.js"></script>
 </body>
 </html>
