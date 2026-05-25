@@ -10,77 +10,74 @@
     body{background:#06060f;font-family:'Inter',sans-serif;overflow-x:hidden;}
     #chrome-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
     .site{position:relative;z-index:1;}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:rgba(8,8,16,0.45);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.07);position:sticky;top:0;z-index:100;}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;background:rgba(8,8,16,0.45);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.07);position:sticky;top:0;z-index:100;}
     .nav-logo{font-family:'Archivo Black',sans-serif;font-size:13px;color:#fff;text-decoration:none;}
     .nav-right{display:flex;align-items:center;gap:1.5rem;}
-    .nav-num{font-size:11px;color:rgba(255,255,255,0.2);font-weight:600;letter-spacing:1px;}
+    .nav-num{font-size:11px;color:rgba(255,255,255,0.2);font-weight:600;}
     .nav-back{font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s;}
     .nav-back:hover{color:#7EB3FF;}
-    .page-hero{padding:4rem 2.5rem 3rem;border-bottom:1px solid rgba(255,255,255,0.07);}
-    .page-tag{display:inline-block;background:rgba(26,111,255,0.12);color:#6fa8ff;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border:1px solid rgba(26,111,255,0.25);border-radius:2px;margin-bottom:1.5rem;}
-    .page-num{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:0.8rem;}
-    .page-title{font-family:'Archivo Black',sans-serif;font-size:56px;line-height:1;letter-spacing:-2px;color:#fff;margin-bottom:1rem;}
+    .page-hero{padding:3rem 2.5rem 2.5rem;border-bottom:1px solid rgba(255,255,255,0.07);}
+    .page-tag{display:inline-block;background:rgba(26,111,255,0.12);color:#6fa8ff;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border:1px solid rgba(26,111,255,0.25);border-radius:2px;margin-bottom:1rem;}
+    .page-hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:0.8rem;}
+    .page-num{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.2);}
+    .counter-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(26,111,255,0.08);border:1px solid rgba(26,111,255,0.2);border-radius:999px;padding:4px 10px;font-size:11px;color:rgba(255,255,255,0.5);}
+    .counter-dot{width:5px;height:5px;border-radius:50%;background:#22c55e;animation:counterPulse 2s infinite;flex-shrink:0;}
+    @keyframes counterPulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.8);}}
+    .counter-num{font-weight:700;color:#7EB3FF;}
+    .counter-label{color:rgba(255,255,255,0.3);}
+    .page-title{font-family:'Archivo Black',sans-serif;font-size:clamp(36px,7vw,56px);line-height:1;letter-spacing:-2px;color:#fff;margin-bottom:1rem;}
     .page-title .blue{background:linear-gradient(135deg,#1A6FFF 0%,#a78bfa 50%,#22d3ee 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-    .page-intro{font-size:18px;color:rgba(255,255,255,0.55);line-height:1.7;max-width:600px;margin-bottom:1rem;}
+    .page-intro{font-size:17px;color:rgba(255,255,255,0.55);line-height:1.7;max-width:600px;margin-bottom:0.8rem;}
     .page-honest{font-size:13px;color:rgba(255,255,255,0.25);font-style:italic;}
-    .two-col{display:grid;grid-template-columns:1fr 260px;gap:0;align-items:stretch;}
-    .main-content{padding:0 2.5rem 6rem;border-right:1px solid rgba(255,255,255,0.06);}
-    .sidebar-outer{padding:2rem 1.5rem;position:relative;}
+    .two-col{display:grid;grid-template-columns:1fr 260px;}
+    .main-content{padding:0 2.5rem 4rem;border-right:1px solid rgba(255,255,255,0.06);}
+    .sidebar-outer{padding:2rem 1.5rem;}
     .sidebar{position:sticky;top:80px;background:rgba(18,18,30,0.88);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.09);border-radius:10px;padding:1.5rem;}
-    .sidebar-section{margin-bottom:1.2rem;}
-    .sidebar-section:last-child{margin-bottom:0;}
-    .sidebar-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:0.7rem;padding-left:4px;}
+    .sidebar-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-bottom:0.7rem;padding-left:4px;}
     .sidebar-nav-item{display:block;font-size:12px;color:rgba(255,255,255,0.35);padding:5px 8px;border-left:2px solid transparent;text-decoration:none;transition:all 0.15s;margin-bottom:2px;border-radius:0 3px 3px 0;}
-    .sidebar-nav-item:hover{color:#7EB3FF;border-left-color:rgba(26,111,255,0.5);background:rgba(26,111,255,0.05);}
-    .sidebar-nav-item.active{color:#7EB3FF;border-left-color:#1A6FFF;background:rgba(26,111,255,0.08);}
+    .sidebar-nav-item:hover,.sidebar-nav-item.active{color:#7EB3FF;border-left-color:#1A6FFF;background:rgba(26,111,255,0.08);}
     .sidebar-divider{height:1px;background:rgba(255,255,255,0.07);margin:1rem 0;}
     .sidebar-topic{display:flex;align-items:flex-start;gap:8px;padding:6px 8px;border-radius:4px;text-decoration:none;transition:background 0.15s;margin-bottom:2px;}
     .sidebar-topic:hover{background:rgba(255,255,255,0.05);}
     .sidebar-topic.current{background:rgba(26,111,255,0.1);border:1px solid rgba(26,111,255,0.2);}
     .sidebar-topic-icon{font-size:12px;flex-shrink:0;margin-top:1px;}
     .sidebar-topic-text{font-size:11px;color:rgba(255,255,255,0.35);line-height:1.4;}
-    .sidebar-topic:hover .sidebar-topic-text{color:rgba(255,255,255,0.65);}
     .sidebar-topic.current .sidebar-topic-text{color:#7EB3FF;}
-    .prose-section{padding:3rem 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+    .prose-section{padding:2.5rem 0;border-bottom:1px solid rgba(255,255,255,0.06);}
     .prose-section:last-child{border-bottom:none;}
     .prose-eyebrow{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:0.8rem;}
     .prose-title{font-family:'Archivo Black',sans-serif;font-size:24px;color:#fff;margin-bottom:1rem;letter-spacing:-0.3px;}
     .prose-body{font-size:16px;color:rgba(255,255,255,0.6);line-height:1.8;}
     .prose-body p{margin-bottom:1rem;}
-    .prose-body p:last-child{margin-bottom:0;}
     .prose-body strong{color:rgba(255,255,255,0.85);font-weight:600;}
     .callout{background:rgba(26,111,255,0.07);border:1px solid rgba(26,111,255,0.2);border-left:3px solid #1A6FFF;padding:1.2rem 1.5rem;border-radius:2px;margin:1.5rem 0;}
     .callout-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#7EB3FF;margin-bottom:0.5rem;}
     .callout-text{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.6;}
-    .realities{display:flex;flex-direction:column;gap:10px;margin-top:1.5rem;}
-    .reality{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);padding:1.2rem 1.5rem;border-radius:2px;cursor:pointer;transition:background 0.15s;}
-    .reality:hover{background:rgba(255,255,255,0.04);}
-    .reality-q{font-size:14px;font-weight:600;color:rgba(255,255,255,0.75);display:flex;align-items:center;justify-content:space-between;gap:1rem;}
-    .reality-q .icon{font-size:12px;color:rgba(255,255,255,0.25);transition:transform 0.2s;flex-shrink:0;}
-    .reality.open .icon{transform:rotate(45deg);color:#7EB3FF;}
-    .reality-a{display:none;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6;margin-top:0.8rem;padding-top:0.8rem;border-top:1px solid rgba(255,255,255,0.06);}
-    .reality.open .reality-a{display:block;}
-    .reality.open{background:rgba(26,111,255,0.05);border-color:rgba(26,111,255,0.2);}
-    .compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:1.5rem;}
-    .compare-col{border-radius:4px;overflow:hidden;}
-    .compare-header{padding:10px 14px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
-    .compare-col.myth .compare-header{background:rgba(239,68,68,0.08);color:#fca5a5;border:1px solid rgba(239,68,68,0.12);border-bottom:none;}
-    .compare-col.real .compare-header{background:rgba(34,197,94,0.1);color:#86efac;border:1px solid rgba(34,197,94,0.15);border-bottom:none;}
-    .compare-item{font-size:13px;color:rgba(255,255,255,0.6);padding:10px 14px;line-height:1.5;border-left:1px solid;border-right:1px solid;border-bottom:1px solid;}
-    .compare-col.myth .compare-item{border-color:rgba(239,68,68,0.1);}
-    .compare-col.real .compare-item{border-color:rgba(34,197,94,0.12);}
-    .checklist{display:flex;flex-direction:column;gap:10px;margin-top:1.5rem;}
-    .check-item{display:flex;align-items:flex-start;gap:12px;padding:1rem 1.2rem;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:2px;cursor:pointer;transition:all 0.15s;}
-    .check-item:hover{background:rgba(255,255,255,0.04);}
-    .check-item.checked{background:rgba(34,197,94,0.05);border-color:rgba(34,197,94,0.2);}
-    .check-box{width:18px;height:18px;border:1.5px solid rgba(255,255,255,0.2);border-radius:2px;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:all 0.15s;font-size:11px;color:#fff;}
-    .check-item.checked .check-box{background:#22c55e;border-color:#22c55e;}
-    .check-text{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.5;}
-    .check-item.checked .check-text{color:rgba(255,255,255,0.3);text-decoration:line-through;}
+    .reality-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:1.5rem;}
+    .reality-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);padding:1.2rem;border-radius:4px;cursor:pointer;position:relative;overflow:hidden;}
+    .reality-card .front{font-size:13px;font-weight:600;color:rgba(255,255,255,0.7);line-height:1.4;transition:opacity 0.2s;}
+    .reality-card .back{position:absolute;inset:0;padding:1.2rem;font-size:12px;color:#7EB3FF;line-height:1.6;opacity:0;transition:opacity 0.2s;background:rgba(26,111,255,0.08);}
+    .reality-card:hover .front{opacity:0;}
+    .reality-card:hover .back{opacity:1;}
+    .survival-list{display:flex;flex-direction:column;gap:10px;margin-top:1.5rem;}
+    .survival-item{display:flex;gap:12px;align-items:flex-start;padding:1rem 1.2rem;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:4px;}
+    .survival-icon{font-size:20px;flex-shrink:0;}
+    .survival-title{font-size:14px;font-weight:600;color:#fff;margin-bottom:0.3rem;}
+    .survival-text{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.5;}
+    .share-bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:1.5rem 2.5rem;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);}
+    .share-text{font-size:14px;color:rgba(255,255,255,0.45);}
+    .share-text strong{color:#fff;}
+    .share-btn{display:flex;align-items:center;gap:8px;background:rgba(26,111,255,0.1);border:1px solid rgba(26,111,255,0.25);color:#7EB3FF;font-size:13px;font-weight:600;padding:10px 20px;border-radius:8px;cursor:pointer;font-family:'Inter',sans-serif;}
+    .share-btn:hover{background:rgba(26,111,255,0.18);}
+    .share-btn.copied{background:rgba(34,197,94,0.1);border-color:rgba(34,197,94,0.3);color:#86efac;}
     .next-page{margin:0 2.5rem 3rem;padding:2rem;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:4px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
     .next-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:0.4rem;}
-    .next-title{font-family:'Archivo Black',sans-serif;font-size:18px;color:#fff;letter-spacing:-0.3px;}
-    .next-btn{background:linear-gradient(135deg,#1A6FFF,#7B6FFF);color:#fff;font-size:13px;font-weight:600;padding:11px 22px;border-radius:2px;cursor:pointer;white-space:nowrap;text-decoration:none;}
+    .next-title{font-family:'Archivo Black',sans-serif;font-size:18px;color:#fff;}
+    .next-btn{background:linear-gradient(135deg,#1A6FFF,#7B6FFF);color:#fff;font-size:13px;font-weight:600;padding:11px 22px;border-radius:2px;text-decoration:none;}
+    .fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
+    .fade-in.visible{opacity:1;transform:translateY(0);}
+    @media(max-width:768px){.two-col{grid-template-columns:1fr;}.sidebar-outer{display:none;}.main-content{padding:0 1.2rem 3rem;border-right:none;}.page-hero{padding:2rem 1.2rem;}.nav{padding:0.9rem 1.2rem;}.share-bar{padding:1.2rem;}.next-page{margin:0 1.2rem 2rem;}.reality-grid{grid-template-columns:1fr;}}
+    .pf-bubble{position:fixed;bottom:2rem;right:2rem;z-index:999;}.pf-btn{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#1A6FFF,#7B6FFF);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 4px 24px rgba(26,111,255,0.45);transition:transform 0.2s;}.pf-btn:hover{transform:scale(1.08);}.pf-label{position:absolute;right:64px;top:50%;transform:translateY(-50%);background:rgba(18,18,30,0.95);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.1);color:#fff;font-size:12px;font-weight:700;padding:6px 12px;border-radius:6px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity 0.2s;font-family:'Archivo Black',sans-serif;}.pf-bubble:hover .pf-label{opacity:1;}.pf-window{position:fixed;bottom:5.5rem;right:2rem;width:390px;height:560px;background:rgba(10,10,20,0.97);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.1);border-radius:18px;box-shadow:0 24px 64px rgba(0,0,0,0.6);z-index:998;display:flex;flex-direction:column;overflow:hidden;transform:scale(0.9) translateY(20px);opacity:0;pointer-events:none;transition:transform 0.25s ease,opacity 0.25s ease;}.pf-window.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all;}.pf-window.fullscreen{width:calc(100vw - 4rem);height:calc(100vh - 4rem);}.pf-header{padding:1rem 1.2rem;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:center;gap:10px;flex-shrink:0;background:rgba(18,18,30,0.5);}.pf-header-icon{width:36px;height:36px;background:linear-gradient(135deg,#1A6FFF,#7B6FFF);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}.pf-header-name{font-family:'Archivo Black',sans-serif;font-size:14px;color:#fff;}.pf-header-status{font-size:11px;color:rgba(255,255,255,0.35);display:flex;align-items:center;gap:4px;margin-top:1px;}.pf-header-status::before{content:'';width:6px;height:6px;border-radius:50%;background:#22c55e;display:inline-block;}.pf-header-actions{margin-left:auto;display:flex;gap:6px;}.pf-icon-btn{background:none;border:none;color:rgba(255,255,255,0.3);font-size:15px;cursor:pointer;padding:5px;line-height:1;border-radius:4px;}.pf-icon-btn:hover{color:#fff;}.pf-messages{flex:1;overflow-y:auto;padding:1.2rem;display:flex;flex-direction:column;gap:14px;scrollbar-width:thin;}.pf-msg{display:flex;gap:8px;align-items:flex-start;max-width:85%;}.pf-msg.user{align-self:flex-end;flex-direction:row-reverse;max-width:80%;}.pf-avatar{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;background:linear-gradient(135deg,#1A6FFF,#7B6FFF);margin-top:2px;}.pf-msg.user .pf-avatar{background:rgba(255,255,255,0.1);}.pf-bubble-inner{font-size:13px;line-height:1.65;padding:10px 14px;border-radius:14px;font-family:'Inter',sans-serif;}.pf-msg.ai .pf-bubble-inner{background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.85);border-radius:4px 14px 14px 14px;border:1px solid rgba(255,255,255,0.07);}.pf-msg.user .pf-bubble-inner{background:linear-gradient(135deg,#1A6FFF,#7B6FFF);color:#fff;border-radius:14px 4px 14px 14px;}.pf-bubble-inner.typing::after{content:'▋';animation:blink 0.7s infinite;color:#7EB3FF;font-size:11px;margin-left:1px;}@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}.pf-typing{display:flex;gap:8px;align-items:center;}.pf-typing-dots{display:flex;gap:4px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.07);padding:10px 14px;border-radius:4px 14px 14px 14px;}.pf-typing-dots span{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.3);animation:pfDot 1.2s infinite;}.pf-typing-dots span:nth-child(2){animation-delay:0.2s;}.pf-typing-dots span:nth-child(3){animation-delay:0.4s;}@keyframes pfDot{0%,60%,100%{opacity:0.3;transform:translateY(0);}30%{opacity:1;transform:translateY(-3px);}}.pf-suggestions{display:flex;flex-wrap:wrap;gap:6px;padding:0 1rem 0.8rem;flex-shrink:0;}.pf-suggestion{background:rgba(26,111,255,0.08);border:1px solid rgba(26,111,255,0.2);color:#7EB3FF;font-size:11px;font-weight:500;padding:5px 11px;border-radius:999px;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;}.pf-suggestion:hover{background:rgba(26,111,255,0.18);}.pf-input-area{padding:0.8rem 1rem;border-top:1px solid rgba(255,255,255,0.07);display:flex;gap:8px;align-items:flex-end;flex-shrink:0;}.pf-input{flex:1;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:9px 13px;font-size:13px;color:#fff;font-family:'Inter',sans-serif;resize:none;outline:none;line-height:1.5;max-height:100px;}.pf-input::placeholder{color:rgba(255,255,255,0.22);}.pf-input:focus{border-color:rgba(26,111,255,0.5);}.pf-send{width:36px;height:36px;background:linear-gradient(135deg,#1A6FFF,#7B6FFF);border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;color:#fff;}.pf-send:disabled{opacity:0.35;cursor:not-allowed;}
   </style>
 </head>
 <body>
@@ -88,269 +85,126 @@
 <div class="site">
   <nav class="nav">
     <a href="index.html" class="nav-logo">This Wasn't On The Syllabus</a>
-    <div class="nav-right">
-      <span class="nav-num">04 / 06</span>
-      <a href="index.html" class="nav-back">← All topics</a>
-    </div>
+    <div class="nav-right"><span class="nav-num">04 / 06</span><a href="index.html" class="nav-back">← All topics</a></div>
   </nav>
-
   <div class="page-hero">
     <div class="page-tag">College Life</div>
-    <div class="page-num">Topic 04</div>
-    <h1 class="page-title">What college is<br><span class="blue">actually like.</span></h1>
-    <p class="page-intro">Roommates, freedom, social pressure, and the adjustment nobody warned you about. Here's the honest version — not the brochure version.</p>
-    <p class="page-honest">*(the dining hall photos are a lie. the rest of this isn't.)*</p>
+    <div class="page-hero-top">
+      <div class="page-num">Topic 04</div>
+      <div class="counter-badge"><span class="counter-dot"></span><span class="counter-num" id="visitorCount">—</span><span class="counter-label">people have read this</span></div>
+    </div>
+    <h1 class="page-title">What college<br><span class="blue">is actually like.</span></h1>
+    <p class="page-intro">The real version — not the brochure. Roommates, freedom, money, mental health, and everything nobody warned you about.</p>
+    <p class="page-honest">*(it's great and terrible at the same time. here's how to survive it.)*</p>
   </div>
-
   <div class="two-col">
     <div class="main-content">
-
       <div class="prose-section" id="s1">
-        <div class="prose-eyebrow">First things first</div>
-        <div class="prose-title">The first semester is weird for almost everyone.</div>
+        <div class="prose-eyebrow">The honest version</div>
+        <div class="prose-title">College is not what the brochure said.</div>
         <div class="prose-body">
-          <p>Here's what they don't say at orientation: the first semester of college is disorienting for the vast majority of students. Even the ones who look like they have it together. Especially those ones, actually.</p>
-          <p>You go from a place where your whole life was structured — classes at the same time, people you've known for years, a bed in a room that's yours — to somewhere completely new, where you're responsible for every decision, surrounded by strangers, and expected to function like an adult immediately.</p>
-          <p>The adjustment is real. Feeling lonely, overwhelmed, or like you made the wrong choice doesn't mean you did. It means you're a human being going through a genuinely hard transition. Give it a semester before you make any big decisions.</p>
+          <p>The brochure shows smiling students on green lawns, perfectly lit libraries, and professors who know your name. The reality is: a lot of dining hall food, figuring out laundry for the first time, and realizing that nobody is making you go to class.</p>
+          <p>That last part is both the best and worst thing about college. <strong>You have more freedom than you've ever had.</strong> No one is checking if you did your homework. No one is making sure you sleep. No one is tracking whether you showed up. That's exhilarating and terrifying in equal measure.</p>
+          <p>The students who do well in college aren't necessarily the smartest — they're the ones who figured out how to manage themselves when nobody else is watching.</p>
         </div>
         <div class="callout">
-          <div class="callout-label">The thing everyone thinks is only them</div>
-          <div class="callout-text">A huge percentage of first-year students feel homesick, overwhelmed, or like they don't fit in. Almost none of them say it out loud, so everyone thinks they're the only one. You're not the only one.</div>
+          <div class="callout-label">The biggest shock</div>
+          <div class="callout-text">In high school, structure keeps you on track. In college, you ARE the structure. Most students don't realize this until they're already behind.</div>
         </div>
       </div>
-
       <div class="prose-section" id="s2">
-        <div class="prose-eyebrow">The reality check</div>
-        <div class="prose-title">What they told you vs. what's true.</div>
-        <div class="prose-body">
-          <p>College tours and brochures are marketing. Here's the side-by-side.</p>
-        </div>
-        <div class="compare">
-          <div class="compare-col myth">
-            <div class="compare-header">What they said</div>
-            <div class="compare-item">"You'll find your people immediately."</div>
-            <div class="compare-item">"Best four years of your life."</div>
-            <div class="compare-item">"Freedom is amazing."</div>
-            <div class="compare-item">"Classes are so engaging."</div>
-            <div class="compare-item">"Everyone's friendly and welcoming."</div>
-          </div>
-          <div class="compare-col real">
-            <div class="compare-header">What's actually true</div>
-            <div class="compare-item">It usually takes a full year to find real friends. That's normal.</div>
-            <div class="compare-item">Some years are great. Some are hard. It's not linear.</div>
-            <div class="compare-item">Freedom with no structure is surprisingly difficult to manage.</div>
-            <div class="compare-item">Some are. Some are a professor reading slides. Both exist.</div>
-            <div class="compare-item">Some are. Some are just as cliquey as high school. Give it time.</div>
-          </div>
+        <div class="prose-eyebrow">Hover to see reality</div>
+        <div class="prose-title">What people say vs. what's actually true.</div>
+        <div class="prose-body"><p>Hover over each one for the honest version.</p></div>
+        <div class="reality-grid">
+          <div class="reality-card"><div class="front">"College is the best four years of your life."</div><div class="back">For some people, yes. For many people, the first year is genuinely hard. Homesickness, loneliness, and figuring out who you are without your old social structure is real work.</div></div>
+          <div class="reality-card"><div class="front">"You'll find your people right away."</div><div class="back">Most people don't. Real friendships in college usually take a semester or two to form. The first few weeks feel like constant socializing that doesn't go anywhere yet.</div></div>
+          <div class="reality-card"><div class="front">"Everyone knows what they're studying."</div><div class="back">A huge percentage of college students change their major at least once. Not knowing is totally normal and actually better than committing to the wrong thing.</div></div>
+          <div class="reality-card"><div class="front">"Professors will help you if you struggle."</div><div class="back">Professors will help you if you ask. They won't come find you. Going to office hours is one of the most underused and most effective things you can do in college.</div></div>
         </div>
       </div>
-
       <div class="prose-section" id="s3">
         <div class="prose-eyebrow">The roommate situation</div>
-        <div class="prose-title">Living with a stranger is a skill nobody taught you.</div>
+        <div class="prose-title">How to not ruin a year of your life.</div>
         <div class="prose-body">
-          <p>Your roommate doesn't have to be your best friend. That's a pressure that makes everything worse. The goal is to <strong>coexist respectfully</strong> — which is actually a useful life skill you'll use forever.</p>
-          <p>Most roommate problems come from one thing: not saying something when it starts to bother you, waiting until it becomes a big thing, and then either exploding or suffering in silence. Neither works.</p>
-          <p>Have the small conversation early. "Hey, I have an 8am — can we keep it quiet after midnight?" is a fine thing to say in week one. It's a much harder conversation in week eight after you've been silently furious for a month.</p>
-        </div>
-        <div class="realities">
-          <div class="reality" onclick="toggleReality(this)">
-            <div class="reality-q">What if we're just completely incompatible? <span class="icon">+</span></div>
-            <div class="reality-a">It happens. Most schools allow room changes after the first few weeks if things are genuinely unworkable. Document specific issues (not just "we don't vibe"), talk to your RA first, and then contact housing if it doesn't improve. You're not stuck forever.</div>
-          </div>
-          <div class="reality" onclick="toggleReality(this)">
-            <div class="reality-q">My roommate has totally different sleep schedules / habits. <span class="icon">+</span></div>
-            <div class="reality-a">This is the most common friction. Sleep masks, earplugs, and a direct early conversation solve about 80% of it. The other 20% requires negotiation. Figure out the two or three things that matter most to you and ask for those specifically — don't ask them to change everything.</div>
-          </div>
-          <div class="reality" onclick="toggleReality(this)">
-            <div class="reality-q">They have friends over constantly and I need quiet. <span class="icon">+</span></div>
-            <div class="reality-a">This is a boundary conversation (see Topic 02). Something like: "I don't mind people over, but I need the room to be quiet for studying between X and Y. Can we figure out something that works for both of us?" Most people are reasonable when you're specific and not accusatory.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="prose-section" id="s4">
-        <div class="prose-eyebrow">The academics</div>
-        <div class="prose-title">College classes are different. Here's how.</div>
-        <div class="prose-body">
-          <p>In high school, there was someone whose job was to make sure you did the work. A teacher who reminded you, a parent who checked, a system that caught you when you slipped. College removes all of that.</p>
-          <p><strong>Professors don't chase you.</strong> If you miss class, many won't notice. If you don't do the reading, nobody will call home. The responsibility lands entirely on you — which sounds great until week four when you realize you haven't started the paper due Friday.</p>
-          <p><strong>Office hours are underused and genuinely useful.</strong> Professors hold them because they're required to, and almost no one shows up. If you go — even just to introduce yourself or ask one question — you are immediately memorable in a way that can matter when grades are borderline or you need a recommendation.</p>
-          <p><strong>The curve and the "vibe" of each class varies wildly.</strong> Some professors grade hard and curve later. Some have easy exams. Some give half the grade on participation. Read reviews, talk to older students, and know what you're getting into before you decide how much to prioritize each class.</p>
+          <p>Living with a stranger is genuinely weird. Even if you both seem similar on paper, real life reveals things — sleep schedules, cleanliness standards, noise preferences, guest policies — that a questionnaire never captures.</p>
+          <p><strong>The single best thing you can do in the first week</strong> is have a direct conversation about expectations before a problem exists. What time do you usually sleep? How do you feel about guests? Who's cleaning what? Awkward to bring up, infinitely less awkward than fighting about it in month two.</p>
         </div>
         <div class="callout">
-          <div class="callout-label">The study habit reset</div>
-          <div class="callout-text">Many students who did well in high school without trying hard hit a wall in college. The material is harder and there's no one reminding you. Building actual study habits — not cramming the night before — is one of the highest-leverage things you can do freshman year.</div>
+          <div class="callout-label">The roommate rule</div>
+          <div class="callout-text">You don't have to be best friends with your roommate. You just have to be able to coexist. Setting basic expectations early makes coexistence possible even when you're very different people.</div>
         </div>
       </div>
-
-      <div class="prose-section" id="s5">
-        <div class="prose-eyebrow">The social stuff</div>
-        <div class="prose-title">On friendships, FOMO, and figuring out who you are.</div>
-        <div class="prose-body">
-          <p>College is a rare window where you're surrounded by people your age, all going through the same upheaval, all looking for connection. That's actually an advantage — but it doesn't always feel like one at first.</p>
-          <p><strong>FOMO is real and mostly a lie.</strong> Social media makes it look like everyone else is having the time of their life every weekend. They're not. They're curating. The people at the party are also sometimes lonely. The people who stayed in are sometimes having a better night.</p>
-          <p><strong>Clubs and organizations are where real friendships actually form.</strong> Not dorms, not random parties — shared interests and repeated contact over time. Join one thing you actually care about in your first month and show up consistently. That's the formula.</p>
-          <p><strong>It's okay if you change.</strong> College is one of the few places where you can genuinely reinvent how you show up — your interests, your friend group, even your name if you want. The person you were in high school doesn't have to follow you.</p>
+      <div class="prose-section" id="s4">
+        <div class="prose-eyebrow">Survival guide</div>
+        <div class="prose-title">Things that actually help.</div>
+        <div class="survival-list">
+          <div class="survival-item"><div class="survival-icon">📅</div><div><div class="survival-title">Use a calendar. A real one.</div><div class="survival-text">College syllabuses front-load all the deadlines at the start of the semester. Put every due date in a calendar on day one. Future you will be incredibly grateful.</div></div></div>
+          <div class="survival-item"><div class="survival-icon">🏥</div><div><div class="survival-title">Find out where the health center is before you need it.</div><div class="survival-text">Student health services are free or cheap. Find them during orientation, not at 11pm when something's wrong.</div></div></div>
+          <div class="survival-item"><div class="survival-icon">💰</div><div><div class="survival-title">Track your spending from day one.</div><div class="survival-text">College is the first time most people manage their own money. It's surprisingly easy to spend your entire semester's budget in six weeks. A basic budget spreadsheet prevents this.</div></div></div>
+          <div class="survival-item"><div class="survival-icon">🧠</div><div><div class="survival-title">Use the counseling center early, not in crisis.</div><div class="survival-text">Most colleges offer free counseling sessions. Going once early — before you're overwhelmed — is way more effective than waiting until things fall apart.</div></div></div>
+          <div class="survival-item"><div class="survival-icon">📚</div><div><div class="survival-title">Go to class. Seriously.</div><div class="survival-text">This sounds obvious but the freedom to skip is real and the consequences are slow. Missing two weeks of lectures can put you an entire grade behind by midterms.</div></div></div>
         </div>
       </div>
-
-      <div class="prose-section" id="s6">
-        <div class="prose-eyebrow">Before you go</div>
-        <div class="prose-title">Things worth doing in your first month.</div>
-        <div class="prose-body">
-          <p>You won't do all of these. Pick three.</p>
-        </div>
-        <div class="checklist">
-          <div class="check-item" onclick="toggleCheck(this)">
-            <div class="check-box"></div>
-            <div class="check-text">Have a real conversation with your roommate about expectations before problems start</div>
-          </div>
-          <div class="check-item" onclick="toggleCheck(this)">
-            <div class="check-box"></div>
-            <div class="check-text">Go to at least one club or org fair and sign up for something you're actually interested in</div>
-          </div>
-          <div class="check-item" onclick="toggleCheck(this)">
-            <div class="check-box"></div>
-            <div class="check-text">Go to office hours for at least one class — even just to say hi and ask a small question</div>
-          </div>
-          <div class="check-item" onclick="toggleCheck(this)">
-            <div class="check-box"></div>
-            <div class="check-text">Build a weekly schedule that includes sleep, meals, and studying — before you need it</div>
-          </div>
-          <div class="check-item" onclick="toggleCheck(this)">
-            <div class="check-box"></div>
-            <div class="check-text">Find out where the campus mental health / counseling center is before you ever need it</div>
-          </div>
-          <div class="check-item" onclick="toggleCheck(this)">
-            <div class="check-box"></div>
-            <div class="check-text">Call someone from home — not to vent, just to stay connected on your own terms</div>
-          </div>
-        </div>
-      </div>
-
     </div>
-
     <div class="sidebar-outer">
       <div class="sidebar">
-        <div class="sidebar-section">
+        <div style="margin-bottom:1.2rem;">
           <div class="sidebar-label">On this page</div>
-          <a href="#s1" class="sidebar-nav-item active">The adjustment</a>
+          <a href="#s1" class="sidebar-nav-item active">The honest version</a>
           <a href="#s2" class="sidebar-nav-item">Reality check</a>
-          <a href="#s3" class="sidebar-nav-item">Roommates</a>
-          <a href="#s4" class="sidebar-nav-item">Academics</a>
-          <a href="#s5" class="sidebar-nav-item">Social life</a>
-          <a href="#s6" class="sidebar-nav-item">First month list</a>
+          <a href="#s3" class="sidebar-nav-item">The roommate situation</a>
+          <a href="#s4" class="sidebar-nav-item">Survival guide</a>
         </div>
         <div class="sidebar-divider"></div>
-        <div class="sidebar-section">
+        <div>
           <div class="sidebar-label">All six topics</div>
-          <a href="brain.html" class="sidebar-topic">
-            <span class="sidebar-topic-icon">🧠</span>
-            <span class="sidebar-topic-text">Your brain is not broken</span>
-          </a>
-          <a href="conversations.html" class="sidebar-topic">
-            <span class="sidebar-topic-icon">💬</span>
-            <span class="sidebar-topic-text">How to have a hard conversation</span>
-          </a>
-          <a href="counselor.html" class="sidebar-topic">
-            <span class="sidebar-topic-icon">🎓</span>
-            <span class="sidebar-topic-text">The stuff your counselor forgot</span>
-          </a>
-          <a href="college.html" class="sidebar-topic current">
-            <span class="sidebar-topic-icon">🏠</span>
-            <span class="sidebar-topic-text">What college is actually like</span>
-          </a>
-          <a href="taxes.html" class="sidebar-topic">
-            <span class="sidebar-topic-icon">💸</span>
-            <span class="sidebar-topic-text">So you have to pay taxes</span>
-          </a>
-          <a href="career.html" class="sidebar-topic">
-            <span class="sidebar-topic-icon">💼</span>
-            <span class="sidebar-topic-text">Nobody's going to hire you like this</span>
-          </a>
+          <a href="brain.html" class="sidebar-topic"><span class="sidebar-topic-icon">🧠</span><span class="sidebar-topic-text">Your brain is not broken</span></a>
+          <a href="conversations.html" class="sidebar-topic"><span class="sidebar-topic-icon">💬</span><span class="sidebar-topic-text">How to have a hard conversation</span></a>
+          <a href="counselor.html" class="sidebar-topic"><span class="sidebar-topic-icon">🎓</span><span class="sidebar-topic-text">The stuff your counselor forgot</span></a>
+          <a href="college.html" class="sidebar-topic current"><span class="sidebar-topic-icon">🏠</span><span class="sidebar-topic-text">What college is actually like</span></a>
+          <a href="taxes.html" class="sidebar-topic"><span class="sidebar-topic-icon">💸</span><span class="sidebar-topic-text">So you have to pay taxes</span></a>
+          <a href="career.html" class="sidebar-topic"><span class="sidebar-topic-icon">💼</span><span class="sidebar-topic-text">Nobody's going to hire you like this</span></a>
         </div>
       </div>
     </div>
   </div>
-
+  <div class="share-bar">
+    <div class="share-text">Found this helpful? <strong>Share it with someone who needs it.</strong></div>
+    <button class="share-btn" id="shareBtn" onclick="handleShare()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg><span id="shareBtnText">Share this page</span></button>
+  </div>
   <div class="next-page">
-    <div>
-      <div class="next-label">Up next — Topic 05</div>
-      <div class="next-title">So You Have to Pay Taxes</div>
-    </div>
+    <div><div class="next-label">Up next — Topic 05</div><div class="next-title">So You Have to Pay Taxes</div></div>
     <a href="taxes.html" class="next-btn">Read next →</a>
   </div>
-
 </div>
-
+<div class="pf-bubble" id="pfBubble">
+  <div class="pf-window" id="pfWindow">
+    <div class="pf-header"><div class="pf-header-icon">🧭</div><div><div class="pf-header-name">Pathfinder</div><div class="pf-header-status">AI Career Advisor</div></div><div class="pf-header-actions"><button class="pf-icon-btn" id="pfFullscreenBtn">⛶</button><button class="pf-icon-btn" id="pfClose">✕</button></div></div>
+    <div class="pf-messages" id="pfMessages"></div>
+    <div class="pf-suggestions" id="pfSuggestions"><button class="pf-suggestion" onclick="pfSuggest('I have no idea what I want to do')">No idea what I want</button><button class="pf-suggestion" onclick="pfSuggest('I like working with my hands')">I like working with my hands</button><button class="pf-suggestion" onclick="pfSuggest('I want to make good money fast')">Good money, fast</button><button class="pf-suggestion" onclick="pfSuggest('I love tech and computers')">I love tech</button></div>
+    <div class="pf-input-area"><textarea class="pf-input" id="pfInput" placeholder="What are you into? Tell Pathfinder..." rows="1"></textarea><button class="pf-send" id="pfSend">➤</button></div>
+  </div>
+  <button class="pf-btn" id="pfBtn">🧭</button>
+  <div class="pf-label">Pathfinder</div>
+</div>
 <script>
-const canvas=document.getElementById('chrome-canvas');
-const ctx=canvas.getContext('2d');
-let W,H,t=0,mouseX=0.5,mouseY=0.5,smoothX=0.5,smoothY=0.5;
-function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
-resize();window.addEventListener('resize',resize);
-window.addEventListener('mousemove',e=>{mouseX=e.clientX/W;mouseY=e.clientY/H;});
-const points=[
-  {tx:0.0,ty:0.0,r:0.7,h:230,s:80,l:20,pull:0.12},
-  {tx:1.0,ty:0.0,r:0.65,h:260,s:70,l:15,pull:0.08},
-  {tx:0.0,ty:1.0,r:0.7,h:240,s:75,l:12,pull:0.06},
-  {tx:1.0,ty:1.0,r:0.65,h:250,s:65,l:18,pull:0.09},
-  {tx:0.5,ty:0.5,r:0.55,h:220,s:85,l:22,pull:0.15},
-  {tx:0.2,ty:0.7,r:0.5,h:275,s:70,l:16,pull:0.07},
-  {tx:0.8,ty:0.3,r:0.5,h:210,s:90,l:18,pull:0.10},
-];
-const drifts=points.map(()=>({ox:Math.random()*Math.PI*2,oy:Math.random()*Math.PI*2,sx:0.00008+Math.random()*0.00006,sy:0.00007+Math.random()*0.00007,amp:0.06+Math.random()*0.08}));
-function draw(){
-  ctx.clearRect(0,0,W,H);ctx.fillStyle='#06060f';ctx.fillRect(0,0,W,H);
-  t+=0.004;smoothX+=(mouseX-smoothX)*0.035;smoothY+=(mouseY-smoothY)*0.035;
-  points.forEach((p,i)=>{
-    const d=drifts[i];
-    const dx=Math.sin(t*d.sx*1000+d.ox)*d.amp,dy=Math.cos(t*d.sy*1000+d.oy)*d.amp;
-    const mx=(smoothX-p.tx)*p.pull,my=(smoothY-p.ty)*p.pull;
-    const bx=(p.tx+dx+mx)*W,by=(p.ty+dy+my)*H,br=p.r*Math.max(W,H);
-    const pulse=0.75+0.15*Math.sin(t*1.2+i);
-    const g=ctx.createRadialGradient(bx,by,0,bx,by,br);
-    g.addColorStop(0,`hsla(${p.h},${p.s}%,${p.l+8}%,${pulse*0.9})`);
-    g.addColorStop(0.25,`hsla(${p.h+5},${p.s-5}%,${p.l+4}%,${pulse*0.6})`);
-    g.addColorStop(0.55,`hsla(${p.h-5},${p.s-10}%,${p.l}%,${pulse*0.25})`);
-    g.addColorStop(1,`hsla(${p.h},${p.s}%,${p.l-5}%,0)`);
-    ctx.fillStyle=g;ctx.beginPath();ctx.arc(bx,by,br,0,Math.PI*2);ctx.fill();
-  });
-  const cx=smoothX*W,cy=smoothY*H;
-  const cg=ctx.createRadialGradient(cx,cy,0,cx,cy,200);
-  cg.addColorStop(0,'hsla(215,100%,70%,0.12)');
-  cg.addColorStop(0.5,'hsla(230,90%,60%,0.05)');
-  cg.addColorStop(1,'hsla(215,80%,50%,0)');
-  ctx.fillStyle=cg;ctx.beginPath();ctx.arc(cx,cy,200,0,Math.PI*2);ctx.fill();
-  requestAnimationFrame(draw);
-}
-draw();
-function toggleReality(el){el.classList.toggle('open');}
-function toggleCheck(el){
-  el.classList.toggle('checked');
-  el.querySelector('.check-box').textContent=el.classList.contains('checked')?'✓':'';
-}
-const sections=document.querySelectorAll('.prose-section[id]');
-const navItems=document.querySelectorAll('.sidebar-nav-item');
-window.addEventListener('scroll',()=>{
-  let current='';
-  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-140)current=s.id;});
-  navItems.forEach(item=>{item.classList.remove('active');if(item.getAttribute('href')==='#'+current)item.classList.add('active');});
-});
+const canvas=document.getElementById('chrome-canvas');const ctx=canvas.getContext('2d');let W,H,t=0,mouseX=0.5,mouseY=0.5,smoothX=0.5,smoothY=0.5;function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}resize();window.addEventListener('resize',resize);window.addEventListener('mousemove',e=>{mouseX=e.clientX/W;mouseY=e.clientY/H;});const pts=[{tx:0.0,ty:0.0,r:0.7,h:230,s:80,l:20,pull:0.12},{tx:1.0,ty:0.0,r:0.65,h:260,s:70,l:15,pull:0.08},{tx:0.0,ty:1.0,r:0.7,h:240,s:75,l:12,pull:0.06},{tx:1.0,ty:1.0,r:0.65,h:250,s:65,l:18,pull:0.09},{tx:0.5,ty:0.5,r:0.55,h:220,s:85,l:22,pull:0.15},{tx:0.2,ty:0.7,r:0.5,h:275,s:70,l:16,pull:0.07},{tx:0.8,ty:0.3,r:0.5,h:210,s:90,l:18,pull:0.10}];const drifts=pts.map(()=>({ox:Math.random()*Math.PI*2,oy:Math.random()*Math.PI*2,sx:0.00008+Math.random()*0.00006,sy:0.00007+Math.random()*0.00007,amp:0.06+Math.random()*0.08}));function draw(){ctx.clearRect(0,0,W,H);ctx.fillStyle='#06060f';ctx.fillRect(0,0,W,H);t+=0.004;smoothX+=(mouseX-smoothX)*0.035;smoothY+=(mouseY-smoothY)*0.035;pts.forEach((p,i)=>{const d=drifts[i];const dx=Math.sin(t*d.sx*1000+d.ox)*d.amp,dy=Math.cos(t*d.sy*1000+d.oy)*d.amp;const mx=(smoothX-p.tx)*p.pull,my=(smoothY-p.ty)*p.pull;const bx=(p.tx+dx+mx)*W,by=(p.ty+dy+my)*H,br=p.r*Math.max(W,H);const pulse=0.75+0.15*Math.sin(t*1.2+i);const g=ctx.createRadialGradient(bx,by,0,bx,by,br);g.addColorStop(0,`hsla(${p.h},${p.s}%,${p.l+8}%,${pulse*0.9})`);g.addColorStop(0.25,`hsla(${p.h+5},${p.s-5}%,${p.l+4}%,${pulse*0.6})`);g.addColorStop(0.55,`hsla(${p.h-5},${p.s-10}%,${p.l}%,${pulse*0.25})`);g.addColorStop(1,`hsla(${p.h},${p.s}%,${p.l-5}%,0)`);ctx.fillStyle=g;ctx.beginPath();ctx.arc(bx,by,br,0,Math.PI*2);ctx.fill();});const cx=smoothX*W,cy=smoothY*H;const cg=ctx.createRadialGradient(cx,cy,0,cx,cy,200);cg.addColorStop(0,'hsla(215,100%,70%,0.12)');cg.addColorStop(0.5,'hsla(230,90%,60%,0.05)');cg.addColorStop(1,'hsla(215,80%,50%,0)');ctx.fillStyle=cg;ctx.beginPath();ctx.arc(cx,cy,200,0,Math.PI*2);ctx.fill();requestAnimationFrame(draw);}draw();
+const sections=document.querySelectorAll('.prose-section[id]');const navItems=document.querySelectorAll('.sidebar-nav-item');window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-140)c=s.id;});navItems.forEach(i=>{i.classList.remove('active');if(i.getAttribute('href')==='#'+c)i.classList.add('active');});});
+const obs=new IntersectionObserver(e=>e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+(async function(){try{const res=await fetch('/api/counter?page=college',{method:'POST',headers:{'Content-Type':'application/json'}});const data=await res.json();const el=document.getElementById('visitorCount');if(el&&data.count){const target=data.count,start=Math.max(0,target-10),startTime=performance.now();function animate(now){const p=Math.min((now-startTime)/1000,1),ease=1-Math.pow(1-p,3);el.textContent=Math.round(start+(target-start)*ease).toLocaleString();if(p<1)requestAnimationFrame(animate);else el.textContent=target.toLocaleString();}requestAnimationFrame(animate);}}catch(e){const el=document.getElementById('visitorCount');if(el)el.textContent='—';}})();
+async function handleShare(){const btn=document.getElementById('shareBtn'),txt=document.getElementById('shareBtnText');try{if(navigator.share){await navigator.share({title:document.title,text:'Check this out — actually useful stuff school never taught us.',url:window.location.href});}else{await navigator.clipboard.writeText(window.location.href);txt.textContent='Link copied!';btn.classList.add('copied');setTimeout(()=>{txt.textContent='Share this page';btn.classList.remove('copied');},2500);}}catch(e){try{await navigator.clipboard.writeText(window.location.href);txt.textContent='Link copied!';btn.classList.add('copied');setTimeout(()=>{txt.textContent='Share this page';btn.classList.remove('copied');},2500);}catch(e2){}}}
+const SYSTEM=`You are Pathfinder — a friendly, slightly sarcastic AI career advisor. Help students find career paths that don't require a four-year degree. Keep responses SHORT — max 3-4 sentences. Ask ONE follow-up question. Be casual and funny like a cool older sibling.`;
+const pfWindow=document.getElementById('pfWindow'),pfBtn=document.getElementById('pfBtn'),pfClose=document.getElementById('pfClose'),pfFullscreenBtn=document.getElementById('pfFullscreenBtn'),pfMessages=document.getElementById('pfMessages'),pfInput=document.getElementById('pfInput'),pfSend=document.getElementById('pfSend'),pfSuggestions=document.getElementById('pfSuggestions');let pfOpen=false,pfLoading=false,pfStarted=false,pfIsFullscreen=false,pfHistory=[];
+pfBtn.addEventListener('click',()=>{pfOpen=!pfOpen;pfWindow.classList.toggle('open',pfOpen);if(pfOpen&&!pfStarted){pfStarted=true;setTimeout(pfOpeningMessage,400);}if(pfOpen)setTimeout(()=>pfInput.focus(),300);});pfClose.addEventListener('click',()=>{pfOpen=false;pfWindow.classList.remove('open');});pfFullscreenBtn.addEventListener('click',()=>{pfIsFullscreen=!pfIsFullscreen;pfWindow.classList.toggle('fullscreen',pfIsFullscreen);pfFullscreenBtn.textContent=pfIsFullscreen?'⊡':'⛶';});pfInput.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();pfSendMessage();}});pfInput.addEventListener('input',()=>{pfInput.style.height='auto';pfInput.style.height=Math.min(pfInput.scrollHeight,100)+'px';});pfSend.addEventListener('click',pfSendMessage);
+function pfOpeningMessage(){pfTypeMessage("Hey! I'm Pathfinder 🧭 — the career advisor school never gave you.\n\nI help students find paths that don't require a four-year degree.\n\nSo — what's something you actually enjoy doing, even if it seems totally random?");}
+window.pfSuggest=function(text){pfInput.value=text;pfSuggestions.style.display='none';pfSendMessage();};
+async function pfSendMessage(){const text=pfInput.value.trim();if(!text||pfLoading)return;pfSuggestions.style.display='none';pfAppend('user',text);pfInput.value='';pfInput.style.height='auto';pfHistory.push({role:'user',content:text});pfLoading=true;pfSend.disabled=true;const typing=pfShowTyping();try{const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:SYSTEM,messages:pfHistory})});const data=await res.json();const reply=data.content.filter(b=>b.type==='text').map(b=>b.text).join('\n');pfRemoveTyping(typing);pfHistory.push({role:'assistant',content:reply});pfTypeMessage(reply);}catch(e){pfRemoveTyping(typing);pfTypeMessage('Something went wrong — try again! 😅');}pfLoading=false;pfSend.disabled=false;}
+function pfTypeMessage(text){const msg=document.createElement('div');msg.className='pf-msg ai';const av=document.createElement('div');av.className='pf-avatar';av.textContent='🧭';const bub=document.createElement('div');bub.className='pf-bubble-inner typing';msg.appendChild(av);msg.appendChild(bub);pfMessages.appendChild(msg);pfMessages.scrollTop=pfMessages.scrollHeight;let i=0;function type(){if(i<text.length){bub.textContent=text.slice(0,i+1);i++;pfMessages.scrollTop=pfMessages.scrollHeight;setTimeout(type,16);}else{bub.classList.remove('typing');bub.innerHTML=pfFormat(text);pfMessages.scrollTop=pfMessages.scrollHeight;pfInput.focus();}}type();}
+function pfAppend(role,text){const msg=document.createElement('div');msg.className=`pf-msg ${role}`;const av=document.createElement('div');av.className='pf-avatar';av.textContent=role==='ai'?'🧭':'👤';const bub=document.createElement('div');bub.className='pf-bubble-inner';bub.innerHTML=pfFormat(text);msg.appendChild(av);msg.appendChild(bub);pfMessages.appendChild(msg);pfMessages.scrollTop=pfMessages.scrollHeight;}
+function pfFormat(t){return t.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/^[•\-] (.+)$/gm,'<li style="margin-left:1rem;margin-bottom:3px;">$1</li>').replace(/\n\n/g,'<br><br>').replace(/\n/g,'<br>');}
+function pfShowTyping(){const t=document.createElement('div');t.className='pf-typing';t.innerHTML=`<div class="pf-avatar">🧭</div><div class="pf-typing-dots"><span></span><span></span><span></span></div>`;pfMessages.appendChild(t);pfMessages.scrollTop=pfMessages.scrollHeight;return t;}
+function pfRemoveTyping(el){if(el&&el.parentNode)el.parentNode.removeChild(el);}
 </script>
-<script>
-window.PATHFINDER_CONFIG={
-  context:"The user is reading the 'What College Is Actually Like' page about dorm life, freedom, and the reality of college. They may be deciding whether college is right for them. Help them think through whether college fits their goals, and surface alternatives if it doesn't.",
-  opening:"Hey! I'm Pathfinder 🧭 — reading up on college life?\n\nHere's the thing nobody says out loud: college is great for some people and a waste of money for others. Depends entirely on what you want.\n\nAre you set on going, still deciding, or secretly hoping there's another way?",
-  suggestions:[
-    {label:'Is college worth it?',text:'Is college actually worth the debt?'},
-    {label:'What if I skip college?',text:'What are my options if I skip college?'},
-    {label:'I want to go but scared',text:'I want to go to college but I\'m scared about the cost'},
-    {label:'Gap year ideas',text:'What can I do during a gap year that actually helps my future?'}
-  ]
-};
-</script>
-<script src="/pathfinder.js"></script>
 </body>
 </html>
