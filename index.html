@@ -210,11 +210,8 @@
   <nav class="nav">
     <div class="nav-logo">This Wasn't On The Syllabus</div>
     <div class="nav-right">
-      <div class="search-btn" onclick="openSearch()">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <span>Search</span>
-        <kbd>⌘K</kbd>
-      </div>
+      <a href="resources.html" style="font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s;white-space:nowrap;" onmouseover="this.style.color='#7EB3FF'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Resources</a>
+
       <div class="nav-joke" id="navJoke" onclick="cycleJoke()">click for a joke</div>
     </div>
   </nav>
@@ -317,22 +314,7 @@
   </div>
 </div>
 
-<!-- SEARCH OVERLAY -->
-<div class="search-overlay" id="searchOverlay" onclick="handleOverlayClick(event)">
-  <div class="search-modal" onclick="event.stopPropagation()">
-    <div class="search-input-wrap">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1A6FFF" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input class="search-input" id="sInput" placeholder="Search topics, keywords..." oninput="doSearch(this.value)" onkeydown="handleSearchKey(event)"/>
-      <span style="font-size:11px;color:rgba(255,255,255,0.2);cursor:pointer;" onclick="closeSearch()">esc</span>
-    </div>
-    <div class="search-results" id="sResults"></div>
-    <div class="search-footer">
-      <div class="sfh"><kbd>↑↓</kbd> navigate</div>
-      <div class="sfh"><kbd>↵</kbd> open</div>
-      <div class="sfh"><kbd>esc</kbd> close</div>
-    </div>
-  </div>
-</div>
+
 
 <!-- PATHFINDER -->
 <div class="pf-bubble" id="pfBubble">
